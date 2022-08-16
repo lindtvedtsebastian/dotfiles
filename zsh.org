@@ -1,4 +1,25 @@
 #+title: ZSH Configuration
+* zenv
+:PROPERTIES:
+:header-args: :tangle ~/.zshenv
+:END:
+
+Prepend path to emacs to path
+
+#+BEGIN_SRC sh
+  # prepend emacs to path
+  PATH=$HOME/git/emacs/src:$PATH
+#+END_SRC 
+
+* zprofile
+:PROPERTIES:
+:header-args: :tangle ~/.zprofile
+:END:
+
+#+BEGIN_SRC sh
+#+END_SRC
+
+
 * zshrc
 :PROPERTIES:
 :header-args: :tangle ~/.zshrc
@@ -18,15 +39,3 @@ Set Java to 11 by default
   java11
 
 #+END_SRC
-* zenv
-:PROPERTIES:
-:header-args: :tangle ~/.zshenv
-:END:
-
-Prepend path to emacs to path
-
-#+BEGIN_SRC sh
-  # prepend emacs to path
-  PATH=$HOME/git/emacs/src:$PATH
-#+END_SRC 
-
