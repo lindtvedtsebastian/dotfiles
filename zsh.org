@@ -22,5 +22,6 @@ Set Java to 11 by default
 Prepend path to emacs to path
 
 #+BEGIN_SRC sh
+  # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 #+END_SRC 
