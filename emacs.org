@@ -276,9 +276,13 @@
 ** Languages
 *** Web
 #+BEGIN_SRC emacs-lisp
-  ;; npm-mode
-  (use-package npm-mode
-    :ensure t)
+    ;; npm-mode
+    (use-package npm-mode
+      :ensure t)
+
+    ;; emmet mode
+    (use-package emmet-mode
+      :ensure t)
 #+END_SRC
 *** Java
 #+BEGIN_SRC emacs-lisp
