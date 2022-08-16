@@ -232,5 +232,38 @@
 
   #+END_SRC
 
+** Language server protocol (LSP)
+#+BEGIN_SRC emacs-lisp
+  
+;; LSP-mode
+(use-package lsp-mode
+  :ensure t
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook
+  (prog-mode . lsp)
+  :config
+  (lsp-enable-which-key-integration t))
+
+(setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
+(setq read-process-output-max (* 10 1024 1024)) ;; 10mb
+(setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+
+(use-package lsp-ui
+  :ensure t
+  :hook (lsp-mode . lsp-ui-mode)
+  :init
+  (setq lsp-ui-sideline-show-hover t))
+
+(use-package company
+  :ensure t
+  :hook (lsp-mode . company-mode)
+  :hook (emacs-lisp-mode . company-mode)
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0)
+  (company-selection-wrap-around t))
+#+END_SRC
 
 
