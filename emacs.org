@@ -75,6 +75,10 @@
 
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t)
+
+  ;; Set window size
+  (add-to-list 'default-frame-alist '(height . 80))
+  (add-to-list 'default-frame-alist '(width . 300))
 #+END_SRC
 ** Git
 #+BEGIN_SRC emacs-lisp 
