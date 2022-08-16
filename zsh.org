@@ -39,3 +39,23 @@ Set Java to 11 by default
   java11
 
 #+END_SRC
+
+* zlogin
+:PROPERTIES:
+:header-args: :tangle ~/.zlogin
+:END:
+
+#+BEGIN_SRC sh
+#+END_SRC
+
+
+* zlogout
+:PROPERTIES:
+:header-args: :tangle ~/.zlogout
+:END:
+
+#+BEGIN_SRC sh
+#+END_SRC
+
+
+
