@@ -45,6 +45,9 @@
   ;; Set the font
   (set-face-attribute 'default nil :font "Iosevka" :height 100)
 
+  ;; Set line number mode to be relative
+  (setq display-line-numbers-type 'relative)
+
   ;; Add line numbers
   (column-number-mode)
   (global-display-line-numbers-mode t)
