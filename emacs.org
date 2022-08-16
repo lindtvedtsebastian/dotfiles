@@ -266,4 +266,12 @@
   (company-selection-wrap-around t))
 #+END_SRC
 
+** Languages
+*** Java
+#+BEGIN_SRC emacs-lisp
+  (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
+  (setq lsp-java-java-path "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home/bin/java")
+  (use-package lsp-java
+    :ensure t)
+#+END_SRC
 
