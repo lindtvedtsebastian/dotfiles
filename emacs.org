@@ -76,3 +76,14 @@
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t)
 #+END_SRC
+** Git
+#+BEGIN_SRC emacs-lisp 
+;; Add magit
+(use-package magit
+  :ensure t)
+
+(use-package forge
+  :ensure t
+  :after magit)
+#+END_SRC
+
