@@ -276,13 +276,29 @@
 ** Languages
 *** Web
 #+BEGIN_SRC emacs-lisp
-    ;; npm-mode
-    (use-package npm-mode
-      :ensure t)
+      ;; npm-mode
+      (use-package npm-mode
+        :ensure t)
 
-    ;; emmet mode
-    (use-package emmet-mode
-      :ensure t)
+      ;; Web mode
+      (use-package web-mode
+        :ensure t
+        :config
+        (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+
+        (setq web-mode-markup-indent-offset 4)
+        (setq web-mode-css-indent-offset 4)
+        (setq web-mode-code-indent-offset 4))
+ 
+      ;; emmet mode
+      (use-package emmet-mode
+        :ensure t
+        :hook web-mode) 
+
+
 #+END_SRC
 *** Java
 #+BEGIN_SRC emacs-lisp
