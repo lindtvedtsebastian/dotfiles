@@ -18,6 +18,10 @@ Set Java to 11 by default
   java11
 
 #+END_SRC
+* zenv
+:PROPERTIES:
+:header-args: :tangle ~/.zshenv
+:END:
 
 Prepend path to emacs to path
 
@@ -25,3 +29,4 @@ Prepend path to emacs to path
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 #+END_SRC 
+
