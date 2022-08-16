@@ -274,6 +274,12 @@
 #+END_SRC
 
 ** Languages
+*** Web
+#+BEGIN_SRC emacs-lisp
+  ;; npm-mode
+  (use-package npm-mode
+    :ensure t)
+#+END_SRC
 *** Java
 #+BEGIN_SRC emacs-lisp
   (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
@@ -281,4 +287,3 @@
   (use-package lsp-java
     :ensure t)
 #+END_SRC
-
