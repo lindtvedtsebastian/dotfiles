@@ -1,6 +1,10 @@
 #+title: Emacs configuration
+* Config
+:PROPERTIES:
+:header-args: :tangle ~/.emacs.d/new_init.el
+:END:
 
-* Package management
+** Package management
 #+BEGIN_SRC emacs-lisp
   ;; Package management
 
@@ -18,21 +22,23 @@
   ;; Initialize use-package on non-Linux platforms
   (unless (package-installed-p 'use-package)
     (package-install 'use-package))
-
+ 
   (require 'use-package)
 #+END_SRC
 
-* General purpose configurations
+** General purpose configurations
 #+BEGIN_SRC emacs-lisp
   ;; General UI configurations
-  (setq inhibit-startup-message t)
+
+  (setq inhibit-startup-message t) ;; Hide startup message
+  (setq inhibit-startup-screen t) ;; Hide startup screen
 
   (scroll-bar-mode 1) 	;; Enable visible scrollbar
   (tool-bar-mode -1)	    ;; Disable the toolbar
   (tooltip-mode -1)	    ;; Disable tooltips
   (set-fringe-mode 10)	;; Set fringe size
   (electric-pair-mode 1)  ;; Auto pair characters
-  
+
   ;; Setup visible bell
   (setq visible-bell t)
 
