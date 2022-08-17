@@ -26,6 +26,7 @@ Old package management
  
   (require 'use-package)
 #+END_SRC
+New (currently in use) package management
 #+BEGIN_SRC emacs-lisp
   (defvar bootstrap-version)
   (let ((bootstrap-file
