@@ -5,7 +5,8 @@
 :END:
 
 ** Package management
-#+BEGIN_SRC emacs-lisp
+Old package management
+#+BEGIN_SRC emacs-lisp :tangle no
   ;; Package management
 
   ;; Initialize Package sources
