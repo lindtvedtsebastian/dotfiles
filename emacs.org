@@ -26,7 +26,9 @@ Old package management
  
   (require 'use-package)
 #+END_SRC
+
 New (currently in use) package management
+
 #+BEGIN_SRC emacs-lisp
   (defvar bootstrap-version)
   (let ((bootstrap-file
@@ -205,10 +207,10 @@ New (currently in use) package management
 #+BEGIN_SRC emacs-lisp
   ;; LSP-mode
   (use-package lsp-mode
+    :hook (web-mode . lsp-deferred)
     :commands (lsp lsp-deferred)
     :init
     (setq lsp-keymap-prefix "C-c l")
-    :hook (prog-mode . lsp-mode)
     :config
     (lsp-enable-which-key-integration t))
 
@@ -238,26 +240,27 @@ New (currently in use) package management
 #+END_SRC
 *** Web
 #+BEGIN_SRC emacs-lisp
-      ;; npm-mode
-      (use-package npm-mode
-        )
+  ;; npm-mode
+  (use-package npm-mode
+    )
 
-      ;; Web mode
-      (use-package web-mode
-        
-        :config
-        (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-        (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-        (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-        (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+  ;; Web mode
+  (use-package web-mode
 
-        (setq web-mode-markup-indent-offset 4)
-        (setq web-mode-css-indent-offset 4)
-        (setq web-mode-code-indent-offset 4))
- 
-      ;; emmet mode
-      (use-package emmet-mode
-        :hook (web-mode . emmet-mode)) 
+
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+
+    (setq web-mode-markup-indent-offset 4)
+    (setq web-mode-css-indent-offset 4)
+    (setq web-mode-code-indent-offset 4))
+
+  ;; emmet mode
+  (use-package emmet-mode
+    :hook (web-mode . emmet-mode)) 
 
 
 #+END_SRC
