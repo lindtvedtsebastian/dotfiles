@@ -113,51 +113,6 @@ New (currently in use) package management
   :after magit)
 #+END_SRC
 
-** E(vi)l mode
-#+BEGIN_SRC emacs-lisp
- ;; Add and initialize Evil mode
-(defun sl/evil-hook ()
-  (dolist (mode '(custom-mode
-                  eshell-mode
-                  git-rebase-mode
-                  sauron-mode
-                  term-mode))
-    (add-to-list 'evil-emacs-state-modes mode)))
-
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  (evil-mode 1)
-  :hook (evil-mode . sl/evil-hook)
-  :config
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-
-  ;; Use visual line motions even outside of visual-line buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
-
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-;; Undo tree
-(use-package undo-tree
-  :after evil
-  :diminish
-  :config
-  (evil-set-undo-system 'undo-tree)
-  (global-undo-tree-mode 1))
-#+END_SRC
-
 ** Ligatures
 #+BEGIN_SRC emacs-lisp
     ;; Add Ligatures
@@ -248,39 +203,39 @@ New (currently in use) package management
 
 ** Language server protocol (LSP)
 #+BEGIN_SRC emacs-lisp
-  
-;; LSP-mode
-(use-package lsp-mode
-  
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook
-  (prog-mode . lsp)
-  :config
-  (lsp-enable-which-key-integration t))
+  ;; LSP-mode
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :hook (prog-mode . lsp-mode)
+    :config
+    (lsp-enable-which-key-integration t))
 
-(setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
-(setq read-process-output-max (* 10 1024 1024)) ;; 10mb
-(setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+  (setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
+  (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
+  (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+  (setq max-lisp-eval-depth 10000) ;; set max eval depth
 
-(use-package lsp-ui
-  
-  :hook (lsp-mode . lsp-ui-mode)
-  :init
-  (setq lsp-ui-sideline-show-hover t))
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :init
+    (setq lsp-ui-sideline-show-hover t))
 
-(use-package company
-  
-  :hook (lsp-mode . company-mode)
-  :hook (emacs-lisp-mode . company-mode)
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0)
-  (company-selection-wrap-around t))
+  (use-package company
+    :hook ((lsp-mode . company-mode)
+           (emacs-lisp-mode . company-mode))
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0)
+    (company-selection-wrap-around t))
 #+END_SRC
 
 ** Languages
+*** Yasnippet
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet)
+#+END_SRC
 *** Web
 #+BEGIN_SRC emacs-lisp
       ;; npm-mode
@@ -302,8 +257,7 @@ New (currently in use) package management
  
       ;; emmet mode
       (use-package emmet-mode
-        
-        :hook web-mode) 
+        :hook (web-mode . emmet-mode)) 
 
 
 #+END_SRC
@@ -311,6 +265,51 @@ New (currently in use) package management
 #+BEGIN_SRC emacs-lisp
   (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
   (setq lsp-java-java-path "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home/bin/java")
-  (use-package lsp-java
-    )
+  
+  (use-package lsp-java)
+#+END_SRC
+
+** E(vi)l mode
+#+BEGIN_SRC emacs-lisp
+ ;; Add and initialize Evil mode
+(defun sl/evil-hook ()
+  (dolist (mode '(custom-mode
+                  eshell-mode
+                  git-rebase-mode
+                  sauron-mode
+                  term-mode))
+    (add-to-list 'evil-emacs-state-modes mode)))
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil)
+  (evil-mode 1)
+  :hook (evil-mode . sl/evil-hook)
+  :config
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  ;; Use visual line motions even outside of visual-line buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+;; Undo tree
+(use-package undo-tree
+  :after evil
+  :diminish
+  :config
+  (evil-set-undo-system 'undo-tree)
+  (global-undo-tree-mode 1))
 #+END_SRC
