@@ -26,6 +26,23 @@ Old package management
  
   (require 'use-package)
 #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 6))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+
+  (straight-use-package-by-default)
+  (setq package-enable-at-startup nil)
+#+END_SRC
 
 ** General purpose configurations
 #+BEGIN_SRC emacs-lisp
@@ -87,11 +104,9 @@ Old package management
 ** Git
 #+BEGIN_SRC emacs-lisp 
 ;; Add magit
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 (use-package forge
-  :ensure t
   :after magit)
 #+END_SRC
 
@@ -107,7 +122,6 @@ Old package management
     (add-to-list 'evil-emacs-state-modes mode)))
 
 (use-package evil
-  :ensure t
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
@@ -128,14 +142,12 @@ Old package management
 
 
 (use-package evil-collection
-  :ensure t
   :after evil
   :config
   (evil-collection-init))
 
 ;; Undo tree
 (use-package undo-tree
-  :ensure t
   :after evil
   :diminish
   :config
@@ -148,7 +160,6 @@ Old package management
   
     ;; Add Ligatures
   (use-package ligature
-    :ensure nil
     :load-path "~/.emacs.d/ligature.el"
     :config
     ;; Enable the "www" ligature in every possible major mode
@@ -177,14 +188,14 @@ Old package management
 #+BEGIN_SRC emacs-lisp
   ;; Diminish bloated modes
   (use-package diminish
-    :ensure t)
+    )
 
   (use-package swiper
-    :ensure t)
+    )
 
   ;; Ivy
   (use-package ivy
-    :ensure t
+    
     :diminish
     :bind (("C-s" . swiper)
            :map ivy-minibuffer-map
@@ -204,13 +215,13 @@ Old package management
 
   ;; Extending Ivy functionality
   (use-package ivy-rich
-    :ensure t
+    
     :init
     (ivy-rich-mode 1))
 
   ;; Counsel
   (use-package counsel
-    :ensure t
+    
     :bind (("M-x" . counsel-M-x)
            ("C-x b" . counsel-ibuffer)
            ("C-x C-f" . counsel-find-file)
@@ -220,7 +231,7 @@ Old package management
 
   ;; Helpful
   (use-package helpful
-    :ensure t
+    
     :custom
     (counsel-describe-function-function #'helpful-callable)
     (counsel-describe-variable-function #'helpful-variable)
@@ -232,7 +243,7 @@ Old package management
 
   ;; Which key
   (use-package which-key
-    :ensure t
+    
     :init (which-key-mode)
     :diminish which-key-mode
     :config
@@ -245,7 +256,7 @@ Old package management
   
 ;; LSP-mode
 (use-package lsp-mode
-  :ensure t
+  
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
@@ -259,13 +270,13 @@ Old package management
 (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
 
 (use-package lsp-ui
-  :ensure t
+  
   :hook (lsp-mode . lsp-ui-mode)
   :init
   (setq lsp-ui-sideline-show-hover t))
 
 (use-package company
-  :ensure t
+  
   :hook (lsp-mode . company-mode)
   :hook (emacs-lisp-mode . company-mode)
   :custom
@@ -279,11 +290,11 @@ Old package management
 #+BEGIN_SRC emacs-lisp
       ;; npm-mode
       (use-package npm-mode
-        :ensure t)
+        )
 
       ;; Web mode
       (use-package web-mode
-        :ensure t
+        
         :config
         (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
         (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
@@ -296,7 +307,7 @@ Old package management
  
       ;; emmet mode
       (use-package emmet-mode
-        :ensure t
+        
         :hook web-mode) 
 
 
@@ -306,5 +317,5 @@ Old package management
   (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
   (setq lsp-java-java-path "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home/bin/java")
   (use-package lsp-java
-    :ensure t)
+    )
 #+END_SRC
