@@ -40,7 +40,9 @@ Old package management
         (eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 
-  (straight-use-package-by-default)
+  (straight-use-package 'use-package)
+
+  (setq straight-use-package-by-default t)
   (setq package-enable-at-startup nil)
 #+END_SRC
 
@@ -157,10 +159,8 @@ Old package management
 
 ** Ligatures
 #+BEGIN_SRC emacs-lisp
-  
     ;; Add Ligatures
   (use-package ligature
-    :load-path "~/.emacs.d/ligature.el"
     :config
     ;; Enable the "www" ligature in every possible major mode
     (ligature-set-ligatures 't '("www"))
@@ -187,15 +187,12 @@ Old package management
 ** QoL
 #+BEGIN_SRC emacs-lisp
   ;; Diminish bloated modes
-  (use-package diminish
-    )
+  (use-package diminish)
 
-  (use-package swiper
-    )
+  (use-package swiper)
 
   ;; Ivy
   (use-package ivy
-    
     :diminish
     :bind (("C-s" . swiper)
            :map ivy-minibuffer-map
@@ -213,25 +210,22 @@ Old package management
     :config
     (ivy-mode 1))
 
-  ;; Extending Ivy functionality
-  (use-package ivy-rich
-    
-    :init
-    (ivy-rich-mode 1))
-
   ;; Counsel
   (use-package counsel
-    
     :bind (("M-x" . counsel-M-x)
            ("C-x b" . counsel-ibuffer)
            ("C-x C-f" . counsel-find-file)
            :map minibuffer-local-map
            ("C-r" . 'counsel-minibuffer-history)))
 
+  ;; Extending Ivy functionality
+  (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
 
   ;; Helpful
   (use-package helpful
-    
+
     :custom
     (counsel-describe-function-function #'helpful-callable)
     (counsel-describe-variable-function #'helpful-variable)
@@ -243,7 +237,7 @@ Old package management
 
   ;; Which key
   (use-package which-key
-    
+
     :init (which-key-mode)
     :diminish which-key-mode
     :config
