@@ -368,3 +368,23 @@ The actual org-mode package
           (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
 
 #+END_SRC
+*** Org-bullets and visual-fill-mode
+Some visual modifications and visual fill column mode
+
+#+begin_src emacs-lisp
+  (use-package org-bullets
+    :after org
+    :hook (org-mode . org-bullets-mode)
+    :custom
+    (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+  (defun sl/org-mode-visual-fill ()
+    (setq visual-fill-column-width 100
+          visual-fill-column-center-text t)
+    (visual-fill-column-mode 1))
+
+  (use-package visual-fill-column
+    :defer t
+    :hook (org-mode . sl/org-mode-visual-fill))
+  
+#+end_src
