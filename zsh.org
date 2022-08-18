@@ -48,6 +48,12 @@ Set Java to 11 by default
   fpath=($ZDOTDIR $fpath)
   autoload -Uz prompt.zsh; prompt.zsh
 
+  if [[ ! -d $ZDOTDIR/plugins/zsh-autosuggestions ]]                                               
+      then git clone "http://github.com/zsh-users/zsh-autosuggestions" $ZDOTDIR/plugins/zsh-autosuggestions
+  fi
+
+  source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
