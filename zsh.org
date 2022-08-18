@@ -114,7 +114,6 @@ Set Java to 11 by default
 #+BEGIN_SRC sh
 #+END_SRC
 
-
 * prompt
 :PROPERTIES:
 :header-args: :tangle ~/.config/zsh/prompt.zsh
