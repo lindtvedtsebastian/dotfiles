@@ -319,3 +319,16 @@ New (currently in use) package management
   (evil-set-undo-system 'undo-tree)
   (global-undo-tree-mode 1))
 #+END_SRC
+
+** Org-mode
+Define some font sizes for different types of headings
+#+BEGIN_SRC emacs-lisp
+  (defun sl/org-font-setup ()
+  ;; Set some faces for org heading levels
+  (dolist (face '((org-level-1 . 1.2)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.05)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.0)))
+    (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
+#+END_SRC
