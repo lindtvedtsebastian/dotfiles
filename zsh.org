@@ -37,8 +37,15 @@ Prepend path to emacs to path
 :END:
 
 Set Java to 11 by default
+Define some color variables
 
-#+BEGIN_SRC sh
+#+begin_src shell
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NOCOLOR='\033[0;0m'
+  
+#+end_src
 
   # Initialize autocomplete
   autoload -U compinit; compinit
