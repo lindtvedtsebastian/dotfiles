@@ -222,7 +222,6 @@ New (currently in use) package management
 #+begin_src emacs-lisp
   ;; LSP-mode
   (use-package lsp-mode
-    :hook (web-mode . lsp-deferred)
     :commands (lsp lsp-deferred)
     :init
     (setq lsp-keymap-prefix "C-c l")
@@ -261,8 +260,7 @@ New (currently in use) package management
 
   ;; Web mode
   (use-package web-mode
-
-
+    :hook (web-mode . lsp-deferred)
     :config
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
@@ -288,9 +286,19 @@ New (currently in use) package management
 #+end_src
 *** Terraform
 #+begin_src emacs-lisp
-    (use-package terraform-mode
-      :config
-      (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
+
+  (add-to-list 'lsp-language-id-configuration '(terraform-mode . "terraform"))
+
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("~/git/terraform-lsp/terraform-lsp" "-enable-log-file"))
+                    :major-modes '(terraform-mode)
+                    :server-id 'terraform-ls))
+
+
+  (use-package terraform-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
+    :hook (terraform-mode . lsp-deferred))
 #+end_src
 
 ** E(vi)l mode
