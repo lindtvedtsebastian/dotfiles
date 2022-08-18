@@ -44,6 +44,8 @@ Set Java to 11 by default
   # Initialize autocomplete
   autoload -U compinit; compinit
 
+  _comp_options+=(globdots) # With hidden files
+
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
