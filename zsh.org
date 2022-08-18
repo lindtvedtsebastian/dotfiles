@@ -7,13 +7,25 @@
 Prepend path to emacs to path
 
 #+BEGIN_SRC sh
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+  export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+
+  export EDITOR="emacs"
+  export VISUAL="emacs"
+
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # Zsh folder
+  export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
+  export HISTSIZE=10000 # Maximum events for internal history
+  export SAVEHIST=10000 # Maximum events in history file
+
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 #+END_SRC 
 
 * zprofile
 :PROPERTIES:
-:header-args: :tangle ~/.zprofile
+:header-args: :tangle ~/.config/zsh/.zprofile
 :END:
 
 #+BEGIN_SRC sh
@@ -22,7 +34,7 @@ Prepend path to emacs to path
 
 * zshrc
 :PROPERTIES:
-:header-args: :tangle ~/.zshrc
+:header-args: :tangle ~/.config/zsh/.zshrc
 :END:
 
 Set Java to 11 by default
@@ -42,7 +54,7 @@ Set Java to 11 by default
 
 * zlogin
 :PROPERTIES:
-:header-args: :tangle ~/.zlogin
+:header-args: :tangle ~/.config/zsh/.zlogin
 :END:
 
 #+BEGIN_SRC sh
@@ -51,7 +63,7 @@ Set Java to 11 by default
 
 * zlogout
 :PROPERTIES:
-:header-args: :tangle ~/.zlogout
+:header-args: :tangle ~/.config/zsh/.zlogout
 :END:
 
 #+BEGIN_SRC sh
