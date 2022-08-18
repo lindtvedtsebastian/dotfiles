@@ -57,6 +57,8 @@ New (currently in use) package management
 
 #+end_src
 
+
+
 ** General purpose configurations
 #+begin_src emacs-lisp
   ;; General UI configurations
@@ -113,6 +115,10 @@ New (currently in use) package management
   ;; Set window size
   (add-to-list 'default-frame-alist '(height . 80))
   (add-to-list 'default-frame-alist '(width . 300))
+#+end_src
+** Set theme
+#+begin_src emacs-lisp
+  (load-theme 'chalk t)
 #+end_src
 ** Git
 #+begin_src emacs-lisp 
