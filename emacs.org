@@ -286,6 +286,12 @@ New (currently in use) package management
 #+begin_src emacs-lisp
   (use-package lsp-java)
 #+end_src
+*** Terraform
+#+begin_src emacs-lisp
+    (use-package terraform-mode
+      :config
+      (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
+#+end_src
 
 ** E(vi)l mode
 #+begin_src emacs-lisp
