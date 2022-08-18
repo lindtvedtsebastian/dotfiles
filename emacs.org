@@ -332,3 +332,11 @@ Define some font sizes for different types of headings
                   (org-level-5 . 1.0)))
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 #+END_SRC
+
+Common actions to perform when org-mode starts
+#+BEGIN_SRC emacs-lisp
+  (defun sl/org-mode-setup ()
+    (org-indent-mode)
+    (variable-pitch-mode 0)
+    (visual-line-mode 1))
+#+END_SRC
