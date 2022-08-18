@@ -3,7 +3,6 @@
 :PROPERTIES:
 :header-args: :tangle ~/.emacs.d/init.el
 :END:
-
 ** Package management
 Old package management
 #+begin_src emacs-lisp :tangle no
