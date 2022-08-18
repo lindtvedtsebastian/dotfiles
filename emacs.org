@@ -279,9 +279,6 @@ New (currently in use) package management
 #+end_src
 *** Java
 #+begin_src emacs-lisp
-  (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
-  (setq lsp-java-java-path "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home/bin/java")
-  
   (use-package lsp-java)
 #+end_src
 
