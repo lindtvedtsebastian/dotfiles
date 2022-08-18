@@ -36,7 +36,6 @@ Prepend path to emacs to path
 :header-args: :tangle ~/.config/zsh/.zshrc
 :END:
 
-Set Java to 11 by default
 Define some color variables
 
 #+begin_src shell
@@ -47,6 +46,10 @@ NOCOLOR='\033[0;0m'
   
 #+end_src
 
+Set up autocomplete and suggestions
+
+#+BEGIN_SRC shell
+
   # Initialize autocomplete
   autoload -U compinit; compinit
 
@@ -56,12 +59,21 @@ NOCOLOR='\033[0;0m'
   autoload -Uz prompt.zsh; prompt.zsh
 
   if [[ ! -d $ZDOTDIR/plugins/zsh-autosuggestions ]]                                               
-      then git clone "http://github.com/zsh-users/zsh-autosuggestions" $ZDOTDIR/plugins/zsh-autosuggestions
+      then
+          echo "${RED}zsh-autosuggestions not found, cloning${NOCOLOR}"
+          git clone "http://github.com/zsh-users/zsh-autosuggestions" $ZDOTDIR/plugins/zsh-autosuggestions
+          echo "${GREEN}zsh-autosuggestions successfully cloned${NOCOLOR}"
   fi
 
   source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
+
+ #+end_src
+ 
+Set Java to 11 by default
+
+ #+begin_src shell
 
   export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 
