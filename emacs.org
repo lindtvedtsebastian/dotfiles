@@ -6,7 +6,7 @@
 
 ** Package management
 Old package management
-#+BEGIN_SRC emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle no
   ;; Package management
 
   ;; Initialize Package sources
@@ -25,11 +25,11 @@ Old package management
     (package-install 'use-package))
  
   (require 'use-package)
-#+END_SRC
+#+end_src
 
 New (currently in use) package management
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defvar bootstrap-version)
   (let ((bootstrap-file
          (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -47,10 +47,10 @@ New (currently in use) package management
 
   (setq straight-use-package-by-default t)
   (setq package-enable-at-startup nil)
-#+END_SRC
+#+end_src
 
 ** General purpose configurations
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; General UI configurations
 
   (setq inhibit-startup-message t) ;; Hide startup message
@@ -105,18 +105,18 @@ New (currently in use) package management
   ;; Set window size
   (add-to-list 'default-frame-alist '(height . 80))
   (add-to-list 'default-frame-alist '(width . 300))
-#+END_SRC
+#+end_src
 ** Git
-#+BEGIN_SRC emacs-lisp 
+#+begin_src emacs-lisp 
 ;; Add magit
 (use-package magit)
 
 (use-package forge
   :after magit)
-#+END_SRC
+#+end_src
 
 ** Ligatures
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
     ;; Add Ligatures
   (use-package ligature
     :config
@@ -140,10 +140,10 @@ New (currently in use) package management
   
     (global-ligature-mode t))
   
-#+END_SRC 
+#+end_src 
 
 ** QoL
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; Diminish bloated modes
   (use-package diminish)
 
@@ -201,10 +201,10 @@ New (currently in use) package management
     :config
     (setq which-key-idle-delay 0))
 
-  #+END_SRC
+  #+end_src
 
 ** Language server protocol (LSP)
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; LSP-mode
   (use-package lsp-mode
     :hook (web-mode . lsp-deferred)
@@ -231,15 +231,15 @@ New (currently in use) package management
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0)
     (company-selection-wrap-around t))
-#+END_SRC
+#+end_src
 
 ** Languages
 *** Yasnippet
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package yasnippet)
-#+END_SRC
+#+end_src
 *** Web
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; npm-mode
   (use-package npm-mode
     )
@@ -266,17 +266,17 @@ New (currently in use) package management
     :hook (web-mode . emmet-mode)) 
 
 
-#+END_SRC
+#+end_src
 *** Java
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setenv "JAVA_HOME" "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home")
   (setq lsp-java-java-path "/Users/sebastian/Library/Java/JavaVirtualMachines/corretto-17.0.4/Contents/Home/bin/java")
   
   (use-package lsp-java)
-#+END_SRC
+#+end_src
 
 ** E(vi)l mode
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
  ;; Add and initialize Evil mode
 (defun sl/evil-hook ()
   (dolist (mode '(custom-mode
@@ -318,13 +318,15 @@ New (currently in use) package management
   :config
   (evil-set-undo-system 'undo-tree)
   (global-undo-tree-mode 1))
-#+END_SRC
+#+end_src
 
 ** Org-mode
 
+*** Font setup
+
 Define some font sizes for different types of headings
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defun sl/org-font-setup ()
   ;; Set some faces for org heading levels
   (dolist (face '((org-level-1 . 1.2)
@@ -333,20 +335,22 @@ Define some font sizes for different types of headings
                   (org-level-4 . 1.0)
                   (org-level-5 . 1.0)))
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
-#+END_SRC
+#+end_src
 
+*** Org-mode hook
 Common actions to perform when org-mode starts
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (defun sl/org-mode-setup ()
     (org-indent-mode)
     (variable-pitch-mode 0)
     (visual-line-mode 1))
-#+END_SRC
+#+end_src
 
+*** Org package
 The actual org-mode package
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   
 (use-package org
   :hook (org-mode . sl/org-mode-setup)
@@ -367,7 +371,8 @@ The actual org-mode package
         '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
           (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
 
-#+END_SRC
+#+end_src
+
 *** Org-bullets and visual-fill-mode
 Some visual modifications and visual fill column mode
 
@@ -388,6 +393,7 @@ Some visual modifications and visual fill column mode
     :hook (org-mode . sl/org-mode-visual-fill))
   
 #+end_src
+
 *** Org-tempo
 #+begin_src emacs-lisp
   (require 'org-tempo)
