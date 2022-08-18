@@ -252,6 +252,9 @@ New (currently in use) package management
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.ts?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
 
     (setq web-mode-markup-indent-offset 4)
