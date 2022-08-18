@@ -312,15 +312,31 @@ New (currently in use) package management
     :after evil
     :config
     (evil-collection-init))
-
-  ;; Undo tree
-  (use-package undo-tree
-    :after evil
-    :diminish
-    :config
-    (evil-set-undo-system 'undo-tree)
-    (global-undo-tree-mode 1))
 #+end_src
+
+** Undo-tree
+
+#+begin_src emacs-lisp
+
+    ;; Define undo-tree directory
+    (defvar undo-history-dir (concat user-emacs-directory "undo/")
+      "Directory to save undo history files to")
+
+    ;; Create dir if not exists
+    (unless (file-exists-p undo-history-dir)
+      (make-directory undo-history-dir t))
+
+    ;; Undo tree
+    (use-package undo-tree
+      :after evil
+      :diminish
+      :config
+      (evil-set-undo-system 'undo-tree)
+      (global-undo-tree-mode 1)
+      (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
+
+#+end_src
+
 
 ** Org-mode
 
