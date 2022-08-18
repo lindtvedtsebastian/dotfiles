@@ -321,7 +321,9 @@ New (currently in use) package management
 #+END_SRC
 
 ** Org-mode
+
 Define some font sizes for different types of headings
+
 #+BEGIN_SRC emacs-lisp
   (defun sl/org-font-setup ()
   ;; Set some faces for org heading levels
@@ -334,9 +336,35 @@ Define some font sizes for different types of headings
 #+END_SRC
 
 Common actions to perform when org-mode starts
+
 #+BEGIN_SRC emacs-lisp
   (defun sl/org-mode-setup ()
     (org-indent-mode)
     (variable-pitch-mode 0)
     (visual-line-mode 1))
+#+END_SRC
+
+The actual org-mode package
+
+#+BEGIN_SRC emacs-lisp
+  
+(use-package org
+  :hook (org-mode . sl/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾")
+
+  (sl/org-font-setup)
+  (advice-add 'org-refile :after #'org-save-all-org-buffers)
+
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-startup-with-inline-images t)
+  (setq org-src-tab-acts-natively t)
+
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
+          (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
+
 #+END_SRC
