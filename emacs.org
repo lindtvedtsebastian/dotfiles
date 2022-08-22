@@ -525,7 +525,7 @@ Some visual modifications and visual fill column mode
                                   `(mode-line ((t (:foreground ,chalk-background :background ,chalk-foreground))))
                                   `(font-lock-keyword-face ((t (:foreground ,chalk-orange :weight bold))))
                                   `(font-lock-variable-name-face ((t (:foreground ,chalk-purple))))
-                                  `(font-lock-comment-face ((t (:foreground ,chalk-lightgrey))))
+                                  `(font-lock-comment-face ((t (:foreground ,chalk-darkgrey))))
                                   `(org-block ((t (:background ,chalk-highlight))))
                                   `(org-block-begin-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
                                   `(org-block-end-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
