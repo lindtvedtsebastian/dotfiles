@@ -443,7 +443,7 @@ Some visual modifications and visual fill column mode
   (use-package visual-fill-column
     :defer t
     :hook (org-mode . sl/org-mode-visual-fill))
-  
+
 #+end_src
 
 *** Org-tempo
@@ -467,70 +467,74 @@ Some visual modifications and visual fill column mode
 :header-args: :tangle ~/.emacs.d/themes/chalk-theme.el
 :END:
 #+begin_src emacs-lisp
-          (deftheme chalk
-            "A light theme inspired by chalk colors, created by Sebastian Lindtvedt")
+      (deftheme chalk
+        "A light theme inspired by chalk colors, created by Sebastian Lindtvedt")
 
-          (defgroup chalk-palette nil
-            "Light chalk color palette")
+      (defgroup chalk-palette nil
+        "Light chalk color palette")
 
-          (defcustom chalk-foreground "#37474f"
-            "Default foreground color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-foreground "#37474f"
+        "Default foreground color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-background "#ffffff"
-            "Default background color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-background "#ffffff"
+        "Default background color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-highlight "#eaeaea"
-            "Default highlight color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-highlight "#eaeaea"
+        "Default highlight color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-blue "#bbe0f2"
-            "Default blue color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-blue "#bbe0f2"
+        "Default blue color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-yellow "#f2eda1"
-            "Default yellow color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-yellow "#f2eda1"
+        "Default yellow color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-red "#ff5a5f"
-            "Default red color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-brightyellow "#FFFFEA"
+        "A bright yellow color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-orange "#feab91"
-            "Default orange color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-red "#ff5a5f"
+        "Default red color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-green "#b3e1d0"
-            "Default green color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-orange "#feab91"
+        "Default orange color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-purple "#6b3fb8"
-            "Default purple color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-green "#b3e1d0"
+        "Default green color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-lightgrey "#c2cdd2"
-            "Default light grey color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-purple "#6b3fb8"
+        "Default purple color"
+        :type 'color :group 'chalk-palette)
 
-          (defcustom chalk-darkgrey "#232323"
-            "Default dark grey color"
-            :type 'color :group 'chalk-palette)
+      (defcustom chalk-lightgrey "#c2cdd2"
+        "Default light grey color"
+        :type 'color :group 'chalk-palette)
 
-          (custom-theme-set-faces 'chalk
-                                  `(default ((t (:foreground ,chalk-foreground :background ,chalk-background))))
-                                  `(cursor ((t (:foreground ,chalk-background :background ,chalk-foreground))))
-                                  `(mouse ((t (:foreground ,chalk-foreground :background ,chalk-background))))
-                                  `(scroll-bar ((t (:foreground ,chalk-foreground :background ,chalk-background))))
-                                  `(mode-line ((t (:foreground ,chalk-background :background ,chalk-foreground))))
-                                  `(font-lock-keyword-face ((t (:foreground ,chalk-orange :weight bold))))
-                                  `(font-lock-variable-name-face ((t (:foreground ,chalk-purple))))
-                                  `(font-lock-comment-face ((t (:foreground ,chalk-darkgrey))))
-                                  `(org-block ((t (:background ,chalk-highlight))))
-                                  `(org-block-begin-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
-                                  `(org-block-end-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
-                                  )
+      (defcustom chalk-darkgrey "#232323"
+        "Default dark grey color"
+        :type 'color :group 'chalk-palette)
 
-          (provide-theme 'chalk)
+      (custom-theme-set-faces 'chalk
+                              `(default ((t (:foreground ,chalk-foreground :background ,chalk-background))))
+                              `(cursor ((t (:foreground ,chalk-background :background ,chalk-foreground))))
+                              `(mouse ((t (:foreground ,chalk-foreground :background ,chalk-background))))
+                              `(scroll-bar ((t (:foreground ,chalk-foreground :background ,chalk-background))))
+                              `(mode-line ((t (:foreground ,chalk-background :background ,chalk-foreground))))
+                              `(font-lock-keyword-face ((t (:foreground ,chalk-orange :weight bold))))
+                              `(font-lock-variable-name-face ((t (:foreground ,chalk-purple))))
+                              `(font-lock-comment-face ((t (:foreground ,chalk-darkgrey))))
+                              `(org-block ((t (:background ,chalk-brightyellow))))
+                              `(org-block-begin-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
+                              `(org-block-end-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
+                              )
+
+      (provide-theme 'chalk)
 #+end_src
 
