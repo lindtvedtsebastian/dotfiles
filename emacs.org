@@ -119,6 +119,10 @@ New (currently in use) package management
 #+begin_src emacs-lisp
   (load-theme 'chalk t)
 #+end_src
+** Rainbow mode
+#+begin_src emacs-lisp
+(use-package rainbow-mode)
+#+end_src
 ** Git
 #+begin_src emacs-lisp 
   ;; Add magit
