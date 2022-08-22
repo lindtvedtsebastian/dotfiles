@@ -436,7 +436,7 @@ Some visual modifications and visual fill column mode
     (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
   (defun sl/org-mode-visual-fill ()
-    (setq visual-fill-column-width 100
+    (setq visual-fill-column-width 250
           visual-fill-column-center-text t)
     (visual-fill-column-mode 1))
 
