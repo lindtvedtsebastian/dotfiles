@@ -220,31 +220,39 @@ New (currently in use) package management
 
 ** Language server protocol (LSP)
 #+begin_src emacs-lisp
-  ;; LSP-mode
-  (use-package lsp-mode
+    ;; LSP-mode
+    (use-package lsp-mode
     :commands (lsp lsp-deferred)
-    :init
-    (setq lsp-keymap-prefix "C-c l")
+    :init (setq lsp-keymap-prefix "C-c l")
     :config
-    (lsp-enable-which-key-integration t))
+    (lsp-enable-which-key-integration t)
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
+              :major-modes '(terraform-mode)
+              :server-id 'terraform-ls)))
 
-  (setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
-  (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
-  (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
-  (setq max-lisp-eval-depth 10000) ;; set max eval depth
+  (use-package terraform-mode
+    :hook (terraform-mode . lsp-deferred))
 
-  (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :init
-    (setq lsp-ui-sideline-show-hover t))
+    (setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
+    (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
+    (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+    (setq max-lisp-eval-depth 10000) ;; set max eval depth
 
-  (use-package company
-    :hook ((lsp-mode . company-mode)
-           (emacs-lisp-mode . company-mode))
-    :custom
-    (company-minimum-prefix-length 1)
-    (company-idle-delay 0.0)
-    (company-selection-wrap-around t))
+    (use-package lsp-ui
+      :hook (lsp-mode . lsp-ui-mode)
+      :init
+      (setq lsp-ui-sideline-show-hover t))
+
+    (use-package company
+      :hook ((lsp-mode . company-mode)
+             (emacs-lisp-mode . company-mode))
+      :custom
+      (company-minimum-prefix-length 1)
+      (company-idle-delay 0.0)
+      (company-selection-wrap-around t))
+#+end_src
+
 ** eglot
 #+begin_src emacs-lisp
       (use-package eglot
@@ -255,7 +263,9 @@ New (currently in use) package management
 ** Languages
 *** Yasnippet
 #+begin_src emacs-lisp
-  (use-package yasnippet)
+      (use-package yasnippet
+        :config
+        (yas-global-mode t))
 #+end_src
 *** Web
 #+begin_src emacs-lisp
@@ -292,18 +302,10 @@ New (currently in use) package management
 *** Terraform
 #+begin_src emacs-lisp
 
-  (add-to-list 'lsp-language-id-configuration '(terraform-mode . "terraform"))
-
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("~/git/terraform-lsp/terraform-lsp" "-enable-log-file"))
-                    :major-modes '(terraform-mode)
-                    :server-id 'terraform-ls))
-
-
   (use-package terraform-mode
     :config
-    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
-    :hook (terraform-mode . lsp-deferred))
+    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
+  
 #+end_src
 
 ** E(vi)l mode
