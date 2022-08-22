@@ -238,8 +238,8 @@ New (currently in use) package management
   (use-package terraform-mode
     :hook (terraform-mode . lsp-deferred))
 
-    (setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
-    (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
+    (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
+    (setq read-process-output-max (* 8 1024 1024)) ;; 10mb
     (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
     (setq max-lisp-eval-depth 10000) ;; set max eval depth
 
