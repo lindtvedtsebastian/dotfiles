@@ -502,7 +502,7 @@ Some visual modifications and visual fill column mode
   :type 'color :group 'chalk-palette)
 
 (defcustom chalk-green "#b3e1d0"
-  "Default green color" 
+  "Default green color"
   :type 'color :group 'chalk-palette)
 
 (defcustom chalk-purple "#6b3fb8"
