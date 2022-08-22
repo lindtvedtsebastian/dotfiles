@@ -245,6 +245,11 @@ New (currently in use) package management
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0)
     (company-selection-wrap-around t))
+** eglot
+#+begin_src emacs-lisp
+      (use-package eglot
+        :config
+        (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve"))))
 #+end_src
 
 ** Languages
