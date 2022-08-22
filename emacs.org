@@ -521,7 +521,8 @@ Some visual modifications and visual fill column mode
 						`(mode-line ((t (:foreground ,chalk-background :background ,chalk-foreground))))
 						`(font-lock-keyword-face ((t (:foreground ,chalk-orange :weight bold))))
 						`(font-lock-variable-name-face ((t (:foreground ,chalk-purple))))
-						`(font-lock-comment-face ((t (:foreground ,chalk-lightgrey)))))
+						`(font-lock-comment-face ((t (:foreground ,chalk-lightgrey))))
+                        `(org-block ((t (:background ,chalk-highlight)))))
 
 (provide-theme 'chalk)
 #+end_src
