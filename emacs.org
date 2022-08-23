@@ -237,6 +237,7 @@ New (currently in use) package management
     (use-package lsp-mode
     :commands (lsp lsp-deferred)
     :init (setq lsp-keymap-prefix "C-c l")
+    :hook (sh-mode . lsp-deferred)
     :config
     (lsp-enable-which-key-integration t)
     (lsp-register-client
