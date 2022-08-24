@@ -245,9 +245,6 @@ New (currently in use) package management
               :major-modes '(terraform-mode)
               :server-id 'terraform-ls)))
 
-  (use-package terraform-mode
-    :hook (terraform-mode . lsp-deferred))
-
     (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
     (setq read-process-output-max (* 8 1024 1024)) ;; 8mb
     (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
@@ -318,8 +315,9 @@ New (currently in use) package management
 
   (use-package terraform-mode
     :config
-    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
-  
+    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
+    :hook (terraform-mode . lsp-deferred))
+
 #+end_src
 
 ** E(vi)l mode
