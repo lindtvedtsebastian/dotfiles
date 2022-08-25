@@ -132,6 +132,14 @@ New (currently in use) package management
 #+begin_src emacs-lisp
 (use-package rainbow-mode)
 #+end_src
+** Adjust parenthesis/bracket/brace highlighting duration
+#+begin_src emacs-lisp
+  (use-package paren
+    :straight nil
+    :init
+    (setq show-paren-delay 0)
+    )
+#+end_src
 ** Git
 #+begin_src emacs-lisp 
   ;; Add magit
