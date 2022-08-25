@@ -371,6 +371,10 @@ New (currently in use) package management
     :after evil
     :config
     (evil-collection-init))
+
+  (use-package evil-commentary
+    :diminish
+    :config (evil-commentary-mode t))
 #+end_src
 
 ** Undo-tree
