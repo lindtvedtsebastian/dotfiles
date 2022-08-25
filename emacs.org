@@ -241,27 +241,29 @@ New (currently in use) package management
 
 ** Language server protocol (LSP)
 #+begin_src emacs-lisp
-    ;; LSP-mode
-    (use-package lsp-mode
-    :commands (lsp lsp-deferred)
-    :init (setq lsp-keymap-prefix "C-c l")
-    :hook (sh-mode . lsp-deferred)
-    :config
-    (lsp-enable-which-key-integration t)
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
-              :major-modes '(terraform-mode)
-              :server-id 'terraform-ls)))
+  ;; LSP-mode
+  (use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-completion-provider :none)
+  :hook (sh-mode . lsp-deferred)
+  :config
+  (lsp-enable-which-key-integration t)
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
+            :major-modes '(terraform-mode)
+            :server-id 'terraform-ls)))
 
-    (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
-    (setq read-process-output-max (* 8 1024 1024)) ;; 8mb
-    (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
-    (setq max-lisp-eval-depth 10000) ;; set max eval depth
+  (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
+  (setq read-process-output-max (* 8 1024 1024)) ;; 8mb
+  (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+  (setq max-lisp-eval-depth 10000) ;; set max eval depth
 
-    (use-package lsp-ui
-      :hook (lsp-mode . lsp-ui-mode)
-      :init
-      (setq lsp-ui-sideline-show-hover t))
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :init
+    (setq lsp-ui-sideline-show-hover t))
 
 #+end_src
 
