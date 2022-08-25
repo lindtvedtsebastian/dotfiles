@@ -277,6 +277,13 @@ New (currently in use) package management
     (company-selection-wrap-around t))
 
 #+end_src
+
+** Flycheck
+#+begin_src emacs-lisp
+    (use-package flycheck
+      :config
+      (global-flycheck-mode t))
+#+end_src
 ** eglot
 #+begin_src emacs-lisp
       (use-package eglot
