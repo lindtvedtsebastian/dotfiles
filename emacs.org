@@ -268,14 +268,15 @@ New (currently in use) package management
 ** Company
 #+begin_src emacs-lisp
 
-    (use-package company
-      :hook ((lsp-mode . company-mode)
-             (emacs-lisp-mode . company-mode))
-      :custom
-      (company-minimum-prefix-length 1)
-      (company-idle-delay 0.0)
-      (company-selection-wrap-around t)
-      (add-to-list 'company-backend 'company-files))
+  (use-package company
+    :hook ((lsp-mode . company-mode)
+           (emacs-lisp-mode . company-mode))
+    :init
+    (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dapprev)))
+    :custom
+    (company-minimum-prefix-length 1)
+    (company-idle-delay 0.0)
+    (company-selection-wrap-around t))
 
 #+end_src
 
