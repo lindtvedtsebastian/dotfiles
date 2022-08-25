@@ -75,7 +75,7 @@ New (currently in use) package management
               (setq visible-bell t)
 
               ;; Set the font
-              (set-face-attribute 'default nil :font "Iosevka" :height 100)
+              (set-face-attribute 'default nil :font "Iosevka" :height 140)
 
               ;; Set line number mode to be relative
               (setq display-line-numbers-type 'relative)
