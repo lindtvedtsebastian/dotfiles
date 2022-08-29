@@ -56,8 +56,6 @@ New (currently in use) package management
 
 #+end_src
 
-
-
 ** General purpose configurations
 #+begin_src emacs-lisp
   ;; General UI configurations
@@ -69,7 +67,7 @@ New (currently in use) package management
   (tooltip-mode -1)	    ;; Disable tooltips
   (set-fringe-mode 10)	;; Set fringe size
   (electric-pair-mode 1)  ;; Auto pair characters
-
+  
   ;; some scrolling settings
   (scroll-bar-mode -1) 	;; Disable visible scrollbar
   (pixel-scroll-precision-mode t)
@@ -130,14 +128,17 @@ New (currently in use) package management
                                    (time-subtract (current-time) before-init-time)))
                           gcs-done)))
 #+end_src
+
 ** Set theme
 #+begin_src emacs-lisp
   (load-theme 'chalk t)
 #+end_src
+
 ** Rainbow mode
 #+begin_src emacs-lisp
 (use-package rainbow-mode)
 #+end_src
+
 ** Adjust parenthesis/bracket/brace highlighting duration
 #+begin_src emacs-lisp
   (use-package paren
@@ -146,6 +147,7 @@ New (currently in use) package management
     (setq show-paren-delay 0)
     )
 #+end_src
+
 ** Git
 #+begin_src emacs-lisp 
   ;; Add magit
@@ -294,6 +296,7 @@ New (currently in use) package management
       :config
       (global-flycheck-mode t))
 #+end_src
+
 ** eglot
 #+begin_src emacs-lisp
       (use-package eglot
@@ -308,6 +311,7 @@ New (currently in use) package management
         :config
         (yas-global-mode t))
 #+end_src
+
 *** Web
 #+begin_src emacs-lisp
   ;; npm-mode
@@ -336,10 +340,12 @@ New (currently in use) package management
 
 
 #+end_src
+
 *** Java
 #+begin_src emacs-lisp
   (use-package lsp-java)
 #+end_src
+
 *** Terraform
 #+begin_src emacs-lisp
 
@@ -349,6 +355,7 @@ New (currently in use) package management
     :hook (terraform-mode . lsp-deferred))
 
 #+end_src
+
 *** Python
 #+begin_src emacs-lisp
   (use-package lsp-jedi
@@ -507,8 +514,6 @@ Some visual modifications and visual fill column mode
   (add-to-list 'org-structure-template-alist '("go" . "src go"))
 
 #+end_src
-
-
 
 
 * Themes
