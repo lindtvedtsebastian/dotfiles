@@ -139,6 +139,17 @@ New (currently in use) package management
 (use-package rainbow-mode)
 #+end_src
 
+** Treemacs
+#+begin_src emacs-lisp
+          (use-package treemacs
+            :config
+            (treemacs-follow-mode t))
+
+          (use-package treemacs-evil
+            :requires treemacs
+            :after (treemacs evil))
+#+end_src
+
 ** Adjust parenthesis/bracket/brace highlighting duration
 #+begin_src emacs-lisp
   (use-package paren
