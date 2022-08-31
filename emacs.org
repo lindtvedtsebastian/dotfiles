@@ -257,7 +257,7 @@ New (currently in use) package management
     (setq which-key-idle-delay 0))
 
   #+end_src
-
+  
 ** Language server protocol (LSP)
 #+begin_src emacs-lisp
   ;; LSP-mode
@@ -362,9 +362,9 @@ New (currently in use) package management
 
   (use-package terraform-mode
     :hook (terraform-mode . lsp-deferred)
+    :hook (terraform-mode . terraform-format-on-save-mode)
     :config
-    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
-    (setq terraform-format-on-save-mode t))
+    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
 
 #+end_src
 
