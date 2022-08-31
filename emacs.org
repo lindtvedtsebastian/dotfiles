@@ -584,6 +584,10 @@ Some visual modifications and visual fill column mode
         "Default light grey color"
         :type 'color :group 'chalk-palette)
 
+      (defcustom chalk-verylightgrey "#E4EEF4"
+        "Default very light grey color"
+        :type 'color :group 'chalk-palette)
+
       (defcustom chalk-darkgrey "#232323"
         "Default dark grey color"
         :type 'color :group 'chalk-palette)
@@ -597,7 +601,7 @@ Some visual modifications and visual fill column mode
                               `(font-lock-keyword-face ((t (:foreground ,chalk-orange :weight bold))))
                               `(font-lock-variable-name-face ((t (:foreground ,chalk-purple))))
                               `(font-lock-comment-face ((t (:foreground ,chalk-darkgrey))))
-                              `(org-block ((t (:background ,chalk-brightyellow))))
+                              `(org-block ((t (:background ,chalk-verylightgrey))))
                               `(org-block-begin-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
                               `(org-block-end-line ((t (:foreground ,chalk-foreground :background ,chalk-lightgrey))))
                               )
