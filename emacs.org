@@ -131,9 +131,8 @@ New (currently in use) package management
 
 ** Set theme
 #+begin_src emacs-lisp
-  (load-theme 'chalk t)
+(load-theme 'chalk t)
 #+end_src
-
 ** Rainbow mode
 #+begin_src emacs-lisp
 (use-package rainbow-mode)
@@ -584,7 +583,7 @@ Some visual modifications and visual fill column mode
         "Default light grey color"
         :type 'color :group 'chalk-palette)
 
-      (defcustom chalk-verylightgrey "#E4EEF4"
+      (defcustom chalk-verylightgrey "#eceff1"
         "Default very light grey color"
         :type 'color :group 'chalk-palette)
 
@@ -608,4 +607,5 @@ Some visual modifications and visual fill column mode
 
       (provide-theme 'chalk)
 #+end_src
+** 
 
