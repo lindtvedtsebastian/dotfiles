@@ -369,13 +369,9 @@ New (currently in use) package management
 
 *** Python
 #+begin_src emacs-lisp
-      (use-package lsp-jedi
-        :after lsp-mode
-        :hook (python-mode . lsp-deferred)
-        :config
-        (with-eval-after-load "lsp-mode"
-          (add-to-list 'lsp-disabled-clients 'pyls)
-          (add-to-list 'lsp-enabled-clients 'jedi)))
+          (use-package python
+            :hook
+            (python-mode . lsp-deferred))
 #+end_src
 
 
