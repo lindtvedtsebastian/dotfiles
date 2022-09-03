@@ -185,6 +185,11 @@ New (currently in use) package management
   
 #+end_src 
 
+*** Diminish
+#+begin_src emacs-lisp
+  (use-package diminish)
+#+end_src
+
 ** Git
 #+begin_src emacs-lisp 
   ;; Add magit
@@ -198,9 +203,6 @@ New (currently in use) package management
 
 ** QoL
 #+begin_src emacs-lisp
-  ;; Diminish bloated modes
-  (use-package diminish)
-
   (use-package swiper)
 
   ;; Ivy
@@ -257,6 +259,29 @@ New (currently in use) package management
 
   #+end_src
   
+*** Undo-tree
+
+#+begin_src emacs-lisp
+
+    ;; Define undo-tree directory
+    (defvar undo-history-dir (concat user-emacs-directory "undo/")
+      "Directory to save undo history files to")
+
+    ;; Create dir if not exists
+    (unless (file-exists-p undo-history-dir)
+      (make-directory undo-history-dir t))
+
+    ;; Undo tree
+    (use-package undo-tree
+      :after evil
+      :diminish
+      :config
+      (evil-set-undo-system 'undo-tree)
+      (global-undo-tree-mode 1)
+      (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
+
+#+end_src
+
 ** Projectile
 #+begin_src emacs-lisp
       (use-package projectile
@@ -385,7 +410,8 @@ New (currently in use) package management
     (python-mode . lsp-deferred))
 #+end_src
 
-** E(vi)l mode
+** Keybindings
+*** E(vi)l mode
 #+begin_src emacs-lisp
    ;; Add and initialize Evil mode
   (defun sl/evil-hook ()
@@ -426,27 +452,9 @@ New (currently in use) package management
     :config (evil-commentary-mode t))
 #+end_src
 
-** Undo-tree
-
+*** General
 #+begin_src emacs-lisp
-
-    ;; Define undo-tree directory
-    (defvar undo-history-dir (concat user-emacs-directory "undo/")
-      "Directory to save undo history files to")
-
-    ;; Create dir if not exists
-    (unless (file-exists-p undo-history-dir)
-      (make-directory undo-history-dir t))
-
-    ;; Undo tree
-    (use-package undo-tree
-      :after evil
-      :diminish
-      :config
-      (evil-set-undo-system 'undo-tree)
-      (global-undo-tree-mode 1)
-      (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
-
+  
 #+end_src
 
 ** Org-mode
