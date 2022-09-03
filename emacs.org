@@ -465,10 +465,11 @@ New (currently in use) package management
 *** Leader keys
 #+begin_src emacs-lisp
       (ls/leader-keys
-        "p" '(:ignore t :which-key "Projectile")
-        "pr" '(projectile-run-project :which-key "Run the current projectile project")
-        "pf" '(projectile--find-file :which-key "Projectile find file")
-        "pF" '(projectile-find-file-other-window :which-key "Projectile find file new window"))
+        ;; Projectile
+        "p" '(:ignore t :which-key "projectile")
+        "pr" '(projectile-run-project :which-key "run project")
+        "pf" '(projectile--find-file :which-key "find file")
+        "pF" '(projectile-find-file-other-window :which-key "find file new window")
 #+end_src
 
 ** Org-mode
