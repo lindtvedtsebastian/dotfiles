@@ -48,15 +48,14 @@ New (currently in use) package management
   (setq package-enable-at-startup nil)
 #+end_src
 
-** Get PATH
+** Path
 #+begin_src emacs-lisp
-
     (use-package exec-path-from-shell
       :config (exec-path-from-shell-initialize))
-
 #+end_src
 
-** General purpose configurations
+** User interface
+*** General purpose configurations
 #+begin_src emacs-lisp
   ;; General UI configurations
 
@@ -129,16 +128,17 @@ New (currently in use) package management
                           gcs-done)))
 #+end_src
 
-** Set theme
+*** Set theme
 #+begin_src emacs-lisp
 (load-theme 'chalk t)
 #+end_src
-** Rainbow mode
+
+*** Rainbow mode
 #+begin_src emacs-lisp
 (use-package rainbow-mode)
 #+end_src
 
-** Treemacs
+*** Treemacs
 #+begin_src emacs-lisp
           (use-package treemacs
             :config
@@ -149,7 +149,7 @@ New (currently in use) package management
             :after (treemacs evil))
 #+end_src
 
-** Adjust parenthesis/bracket/brace highlighting duration
+*** Adjust parenthesis/bracket/brace highlighting duration
 #+begin_src emacs-lisp
   (use-package paren
     :straight nil
@@ -158,18 +158,7 @@ New (currently in use) package management
     )
 #+end_src
 
-** Git
-#+begin_src emacs-lisp 
-  ;; Add magit
-  (use-package magit)
-
-  (use-package forge
-    :after magit
-    :init
-    (setq forge-add-default-bindings nil))
-#+end_src
-
-** Ligatures
+*** Ligatures
 #+begin_src emacs-lisp
     ;; Add Ligatures
   (use-package ligature
@@ -195,6 +184,17 @@ New (currently in use) package management
     (global-ligature-mode t))
   
 #+end_src 
+
+** Git
+#+begin_src emacs-lisp 
+  ;; Add magit
+  (use-package magit)
+
+  (use-package forge
+    :after magit
+    :init
+    (setq forge-add-default-bindings nil))
+#+end_src
 
 ** QoL
 #+begin_src emacs-lisp
@@ -263,21 +263,23 @@ New (currently in use) package management
         :config
         (projectile-mode +1))
 #+end_src
-** Language server protocol (LSP)
+
+** Development 
+*** Language server protocol (LSP)
 #+begin_src emacs-lisp
   ;; LSP-mode
   (use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  (setq lsp-completion-provider :none)
-  :hook (sh-mode . lsp-deferred)
-  :config
-  (lsp-enable-which-key-integration t)
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
-            :major-modes '(terraform-mode)
-            :server-id 'terraform-ls)))
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    (setq lsp-completion-provider :none)
+    :hook (sh-mode . lsp-deferred)
+    :config
+    (lsp-enable-which-key-integration t)
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
+                      :major-modes '(terraform-mode)
+                      :server-id 'terraform-ls)))
 
   (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
   (setq read-process-output-max (* 8 1024 1024)) ;; 8mb
@@ -291,7 +293,7 @@ New (currently in use) package management
 
 #+end_src
 
-** Company
+*** Company
 #+begin_src emacs-lisp
 
   (use-package company
@@ -306,29 +308,29 @@ New (currently in use) package management
 
 #+end_src
 
-** Flycheck
+*** Flycheck
 #+begin_src emacs-lisp
-    (use-package flycheck
-      :config
-      (global-flycheck-mode t))
+  (use-package flycheck
+    :config
+    (global-flycheck-mode t))
 #+end_src
 
-** eglot
+*** eglot
 #+begin_src emacs-lisp
-      (use-package eglot
-        :config
-        (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve"))))
+  (use-package eglot
+    :config
+    (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve"))))
 #+end_src
 
-** Languages
-*** Yasnippet
+*** Languages
+**** Yasnippet
 #+begin_src emacs-lisp
-      (use-package yasnippet
-        :config
-        (yas-global-mode t))
+  (use-package yasnippet
+    :config
+    (yas-global-mode t))
 #+end_src
 
-*** Web
+**** Web
 #+begin_src emacs-lisp
   ;; npm-mode
   (use-package npm-mode
@@ -357,7 +359,7 @@ New (currently in use) package management
 
 #+end_src
 
-*** Java
+**** Java
 #+begin_src emacs-lisp
   (use-package lsp-java
     :hook (java-mode . lsp-deferred)
@@ -365,7 +367,7 @@ New (currently in use) package management
     (add-to-list 'auto-mode-alist '("\\.java?\\'" . java-mode)))
 #+end_src
 
-*** Terraform
+**** Terraform
 #+begin_src emacs-lisp
 
   (use-package terraform-mode
@@ -376,13 +378,12 @@ New (currently in use) package management
 
 #+end_src
 
-*** Python
+**** Python
 #+begin_src emacs-lisp
-          (use-package python
-            :hook
-            (python-mode . lsp-deferred))
+  (use-package python
+    :hook
+    (python-mode . lsp-deferred))
 #+end_src
-
 
 ** E(vi)l mode
 #+begin_src emacs-lisp
@@ -615,5 +616,6 @@ Some visual modifications and visual fill column mode
 
       (provide-theme 'chalk)
 #+end_src
+
 ** 
 
