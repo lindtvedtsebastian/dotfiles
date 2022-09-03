@@ -455,6 +455,14 @@ New (currently in use) package management
 *** General
 #+begin_src emacs-lisp
   
+    (use-package general
+      :config
+      (general-create-definer ls/leader-keys
+                              :keymaps '(normal insert visual emacs)
+                              :prefix "SPC"
+                              :global-prefix "C-SPC"))
+#+end_src
+
 #+end_src
 
 ** Org-mode
