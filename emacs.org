@@ -470,6 +470,10 @@ New (currently in use) package management
         "pr" '(projectile-run-project :which-key "run project")
         "pf" '(projectile--find-file :which-key "find file")
         "pF" '(projectile-find-file-other-window :which-key "find file new window")
+
+        "o" '(:ignore t :which-key "org")
+        "oa" '(org-agenda :which-key "agenda")
+        "oc" '(org-capture :which-key "capture"))
 #+end_src
 
 ** Org-mode
