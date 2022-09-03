@@ -454,7 +454,6 @@ New (currently in use) package management
 
 *** General
 #+begin_src emacs-lisp
-  
     (use-package general
       :config
       (general-create-definer ls/leader-keys
@@ -463,6 +462,13 @@ New (currently in use) package management
                               :global-prefix "C-SPC"))
 #+end_src
 
+*** Leader keys
+#+begin_src emacs-lisp
+      (ls/leader-keys
+        "p" '(:ignore t :which-key "Projectile")
+        "pr" '(projectile-run-project :which-key "Run the current projectile project")
+        "pf" '(projectile--find-file :which-key "Projectile find file")
+        "pF" '(projectile-find-file-other-window :which-key "Projectile find file new window"))
 #+end_src
 
 ** Org-mode
