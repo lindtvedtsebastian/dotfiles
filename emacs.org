@@ -356,7 +356,7 @@ New (currently in use) package management
   (use-package lsp-java
     :hook (java-mode . lsp-deferred)
     :config
-    (add-to-list 'auto-mode-alist '("\\.java?\\" . java-mode)))
+    (add-to-list 'auto-mode-alist '("\\.java?\\'" . java-mode)))
 #+end_src
 
 *** Terraform
