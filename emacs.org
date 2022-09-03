@@ -257,6 +257,12 @@ New (currently in use) package management
 
   #+end_src
   
+** Projectile
+#+begin_src emacs-lisp
+      (use-package projectile
+        :config
+        (projectile-mode +1))
+#+end_src
 ** Language server protocol (LSP)
 #+begin_src emacs-lisp
   ;; LSP-mode
