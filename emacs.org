@@ -507,25 +507,28 @@ Common actions to perform when org-mode starts
 The actual org-mode package
 
 #+begin_src emacs-lisp
-  
-(use-package org
-  :hook (org-mode . sl/org-mode-setup)
-  :config
-  (setq org-ellipsis " ▾")
 
-  (sl/org-font-setup)
-  (advice-add 'org-refile :after #'org-save-all-org-buffers)
+  (use-package org
+    :hook (org-mode . sl/org-mode-setup)
+    :config
+    (setq org-ellipsis " ▾")
 
-  (setq org-agenda-start-with-log-mode t)
-  (setq org-log-done 'time)
-  (setq org-log-into-drawer t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-startup-with-inline-images t)
-  (setq org-src-tab-acts-natively t)
+    (sl/org-font-setup)
+    (advice-add 'org-refile :after #'org-save-all-org-buffers)
 
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
-          (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
+    (setq org-agenda-start-with-log-mode t)
+    (setq org-log-done 'time)
+    (setq org-log-into-drawer t)
+    (setq org-src-tab-acts-natively t)
+    (setq org-startup-with-inline-images t)
+    (setq org-src-tab-acts-natively t)
+
+    (setq org-agenda-files
+          (directory-files-recursively "~/Dropbox/main/" "\\.org$"))
+
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
+            (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
 
 #+end_src
 
