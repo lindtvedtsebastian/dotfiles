@@ -569,6 +569,13 @@ Some visual modifications and visual fill column mode
 
 #+end_src
 
+*** Org-roam
+#+begin_src emacs-lisp
+    (use-package org-roam
+      :config
+      (setq org-roam-directory "~/Dropbox/main/org/roam")
+      (setq org-roam-db-autosync-mode t))
+#+end_src
 
 * Themes
 ** Chalk
