@@ -571,10 +571,18 @@ Some visual modifications and visual fill column mode
 
 *** Org-roam
 #+begin_src emacs-lisp
-    (use-package org-roam
-      :config
-      (setq org-roam-directory "~/Dropbox/main/org/roam")
-      (setq org-roam-db-autosync-mode t))
+              (use-package org-roam
+                :config
+                (setq org-roam-directory "~/Dropbox/main/org/roam")
+                (setq org-roam-db-autosync-mode t))
+
+              (use-package org-roam-ui
+                :after org-roam
+                :config
+                (setq org-roam-ui-sync-theme t
+                      org-roam-ui-follow t
+                      org-roam-ui-update-on-save t
+                      org-roam-ui-open-on-start t))
 #+end_src
 
 * Themes
