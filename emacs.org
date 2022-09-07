@@ -464,16 +464,18 @@ New (currently in use) package management
 
 *** Leader keys
 #+begin_src emacs-lisp
-      (ls/leader-keys
-        ;; Projectile
-        "p" '(:ignore t :which-key "projectile")
-        "pr" '(projectile-run-project :which-key "run project")
-        "pf" '(projectile--find-file :which-key "find file")
-        "pF" '(projectile-find-file-other-window :which-key "find file new window")
+          (ls/leader-keys
+            ;; Projectile
+            "p" '(:ignore t :which-key "projectile")
+            "pr" '(projectile-run-project :which-key "run project")
+            "pf" '(projectile--find-file :which-key "find file")
+            "pF" '(projectile-find-file-other-window :which-key "find file new window")
 
-        "o" '(:ignore t :which-key "org")
-        "oa" '(org-agenda :which-key "agenda")
-        "oc" '(org-capture :which-key "capture"))
+            "o" '(:ignore t :which-key "org")
+            "oa" '(org-agenda :which-key "agenda")
+            "oc" '(org-capture :which-key "capture")
+            "of" '(org-roam-node-find :which-key "find node")
+            "oi" '(org-roam-node-insert :which-key "insert node"))
 #+end_src
 
 ** Org-mode
