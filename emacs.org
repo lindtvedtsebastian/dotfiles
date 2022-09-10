@@ -130,7 +130,7 @@ New (currently in use) package management
 
 *** Set theme
 #+begin_src emacs-lisp
-(load-theme 'chalk t)
+  (load-theme 'chalk t)
 #+end_src
 
 *** Rainbow mode
@@ -667,5 +667,88 @@ Some visual modifications and visual fill column mode
 
       (provide-theme 'chalk)
 #+end_src
+** Relaxed
+:PROPERTIES:
+:header-args: :tangle ~/.emacs.d/themes/relaxed-theme.el
+:END:
 
+#+begin_src emacs-lisp
+      (deftheme relaxed
+              "A light theme inspired by relaxed colors, created by Sebastian Lindtvedt")
+
+            (defgroup relaxed-palette nil
+              "Light relaxed color palette")
+
+            (defcustom relaxed-foreground "#f2f2f2"
+              "Default foreground color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-background "#2e3440"
+              "Default background color"
+              :type 'color :group 'relaxed-palette)
+
+      (defcustom relaxed-background-highlight "57647b"
+        "Default background highlight color"
+        :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-highlight "#ffffff"
+              "Default highlight color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-blue "#bbe0f2"
+              "Default blue color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-yellow "#f2eda1"
+              "Default yellow color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-brightyellow "#FFFFEA"
+              "A bright yellow color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-red "#ff5a5f"
+              "Default red color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-orange "#feab91"
+              "Default orange color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-green "#b3e1d0"
+              "Default green color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-purple "#6b3fb8"
+              "Default purple color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-lightgrey "#c2cdd2"
+              "Default light grey color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-verylightgrey "#eceff1"
+              "Default very light grey color"
+              :type 'color :group 'relaxed-palette)
+
+            (defcustom relaxed-darkgrey "#232323"
+              "Default dark grey color"
+              :type 'color :group 'relaxed-palette)
+
+            (custom-theme-set-faces 'relaxed
+                                    `(default ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                                    `(cursor ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
+                                    `(mouse ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                                    `(scroll-bar ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                                    `(mode-line ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
+                                    `(font-lock-keyword-face ((t (:foreground ,relaxed-orange :weight bold))))
+                                    `(font-lock-variable-name-face ((t (:foreground ,relaxed-purple))))
+                                    `(font-lock-comment-face ((t (:foreground ,relaxed-darkgrey))))
+                                    `(org-block ((t (:background ,relaxed-background-highlight))))
+                                    `(org-block-begin-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
+                                    `(org-block-end-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
+                                    )
+
+            (provide-theme 'relaxed)
+#+end_src
 
