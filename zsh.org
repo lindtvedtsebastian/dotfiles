@@ -21,6 +21,9 @@ Prepend path to emacs to path
 
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
+
+  # add kotlin language server to path
+  PATH=$HOME/git/kotlin-language-server/server/build/install/server/bin:$PATH
 #+END_SRC 
 
 * zprofile
