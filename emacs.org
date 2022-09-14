@@ -325,7 +325,7 @@ New (currently in use) package management
     :hook ((lsp-mode . company-mode)
            (emacs-lisp-mode . company-mode))
     :init
-    (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dapprev)))
+    (setq company-backends '((company-files company-keywords company-capf company-yasnippet company-dabbrev-code company-etags company-dapprev)))
     :custom
     (company-minimum-prefix-length 1)
     (company-idle-delay 0.0)
