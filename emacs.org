@@ -593,6 +593,23 @@ Some visual modifications and visual fill column mode
                       org-roam-ui-open-on-start t))
 #+end_src
 
+* Snippets
+** Kotlin-mode
+:PROPERTIES:
+:header-args: :tangle (concat "~/.emacs.d/snippets/kotlin-mode/" (nth 4 (org-heading-components))) :mkdirp yes
+:END:
+*** class
+#+begin_src emacs-lisp
+  # -*- mode: snippet -*-
+  # contributor: Sebastian Lindtvedt
+  # name: class
+  # key: class
+  # --
+  class ${1:name}${2:($3)}${4: : $5}${6: {
+  $0
+  }}
+#+end_src
+
 * Themes
 ** Chalk
 :PROPERTIES:
