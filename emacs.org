@@ -66,7 +66,7 @@ New (currently in use) package management
   (tooltip-mode -1)	    ;; Disable tooltips
   (set-fringe-mode 10)	;; Set fringe size
   (electric-pair-mode 1)  ;; Auto pair characters
-  
+
   ;; some scrolling settings
   (scroll-bar-mode -1) 	;; Disable visible scrollbar
   (pixel-scroll-precision-mode t)
@@ -79,6 +79,9 @@ New (currently in use) package management
 
   ;; Set the font
   (set-face-attribute 'default nil :font "Iosevka" :height 140)
+
+  ;; Set the fixed-pitch font
+  (set-face-attribute 'fixed-pitch nil :font "Iosevka")
 
   ;; Set line number mode to be relative
   (setq display-line-numbers-type 'relative)
