@@ -620,6 +620,46 @@ Some visual modifications and visual fill column mode
   }}
 #+end_src
 *** kdoc_function
+** Web mode
+:PROPERTIES:
+:header-args: :tangle (concat "~/.emacs.d/snippets/web-mode/" (nth 4 (org-heading-components))) :mkdirp yes
+:END:
+*** rnfcts
+React native functional component TypeScript
+#+begin_src emacs-lisp
+  # -*- mode: snippet -*-
+  # contributor: Sebastian Lindtvedt
+  # name: rnfcts
+  # key: rnfcts
+  # --
+
+  import React from 'react';
+  import { View, StyleSheet } from 'react-native';
+
+  type $2Props = {}
+
+
+  const ${2:function_name}: React.FC<$2Props> = ({
+      // props
+  }) => {
+  return (
+          <View style={styles.container}>
+
+          </View>)
+  }
+
+  const styles = StyleSheet.create({
+      container: {
+      grid: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+      }
+  })
+
+  export default $2
+
+#+end_src
+
 
 * Themes
 ** Chalk
