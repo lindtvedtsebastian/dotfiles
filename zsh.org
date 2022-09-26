@@ -19,6 +19,9 @@ Prepend path to emacs to path
   export HISTSIZE=10000 # Maximum events for internal history
   export SAVEHIST=10000 # Maximum events in history file
 
+  # Encodings
+  export LANG=en_US.UTF-8
+
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 
@@ -35,7 +38,6 @@ Prepend path to emacs to path
 :END:
 
 #+BEGIN_SRC sh
-  export LANG=en_US.UTF-8
 #+END_SRC
 
 * zshrc
