@@ -387,6 +387,10 @@ New (currently in use) package management
     (setq web-mode-css-indent-offset 4)
     (setq web-mode-code-indent-offset 4))
 
+  (use-package js2-mode)
+
+  (use-package json-mode)
+
   ;; emmet mode
   (use-package emmet-mode
     :hook (web-mode . emmet-mode)) 
