@@ -213,7 +213,7 @@ Set Java to 11 by default
       precmd_vcs_info() { vcs_info }
       precmd_functions+=( precmd_vcs_info )
       setopt prompt_subst
-      zstyle ':vcs_info:git:*' formats '%b'
+      zstyle ':vcs_info:git:*' formats '%10b'
   }
 
   prompt_git_info() {
