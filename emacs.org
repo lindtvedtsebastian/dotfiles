@@ -220,7 +220,8 @@ New (currently in use) package management
 #+end_src
 
 ** QoL
-#+begin_src emacs-lisp
+*** Swiper/Ivy/Counsel/Ivy-rich/Helpful/Which-key
+#+begin_src emacs-lisp :tangle no
   (use-package swiper)
 
   ;; Ivy
@@ -341,6 +342,7 @@ New (currently in use) package management
       (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
 
 #+end_src
+
 
 ** Projectile
 #+begin_src emacs-lisp
