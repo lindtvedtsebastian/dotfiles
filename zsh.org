@@ -25,6 +25,9 @@ Prepend path to emacs to path
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 
+  # Increase emacs lsp performance
+  export LSP_USE_PLISTS=true
+
   # add kotlin language server to path
   PATH=$HOME/git/kotlin-language-server/server/build/install/server/bin:$PATH
 
