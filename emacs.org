@@ -524,32 +524,34 @@ New (currently in use) package management
 
 *** General
 #+begin_src emacs-lisp
-    (use-package general
-      :config
-      (general-create-definer ls/leader-keys
-                              :keymaps '(normal insert visual emacs)
-                              :prefix "SPC"
-                              :global-prefix "C-SPC"))
+  (use-package general
+    :config
+    (general-create-definer ls/leader-keys
+                            :keymaps '(normal insert visual emacs)
+                            :prefix "SPC"
+                            :global-prefix "C-SPC"))
 #+end_src
 
 *** Leader keys
 #+begin_src emacs-lisp
-          (ls/leader-keys
-            ;; Projectile
-            "p" '(:ignore t :which-key "projectile")
-            "pr" '(projectile-run-project :which-key "run project")
-            "pf" '(projectile--find-file :which-key "find file")
-            "pF" '(projectile-find-file-other-window :which-key "find file new window")
+  (ls/leader-keys
+    ;; Projectile
+    "p" '(:ignore t :which-key "projectile")
+    "pr" '(projectile-run-project :which-key "run project")
+    "pf" '(projectile--find-file :which-key "find file")
+    "pF" '(projectile-find-file-other-window :which-key "find file new window")
 
-            "o" '(:ignore t :which-key "org")
-            "oa" '(org-agenda :which-key "agenda")
-            "oc" '(org-capture :which-key "capture")
-            "of" '(org-roam-node-find :which-key "find node")
-            "oi" '(org-roam-node-insert :which-key "insert node"))
+    "o" '(:ignore t :which-key "org")
+    "oa" '(org-agenda :which-key "agenda")
+    "oc" '(org-capture :which-key "capture")
+    "of" '(org-roam-node-find :which-key "find node")
+    "oi" '(org-roam-node-insert :which-key "insert node")
+
+    "l" '(:ignore t :which-key "lsp")
+    "le" '(lsp-eslint-apply-all-fixes :which-key "eslint"))
 #+end_src
 
 ** Org-mode
-
 *** Font setup
 
 Define some font sizes for different types of headings
