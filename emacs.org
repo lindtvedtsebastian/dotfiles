@@ -52,6 +52,9 @@ New (currently in use) package management
 #+begin_src emacs-lisp
     (use-package exec-path-from-shell
       :config (exec-path-from-shell-initialize))
+  
+  (exec-path-from-shell-copy-env "LSP_USE_PLISTS")
+#+end_src
 #+end_src
 
 ** User interface
