@@ -693,39 +693,36 @@ Some visual modifications and visual fill column mode
 :PROPERTIES:
 :header-args: :tangle (concat "~/.emacs.d/snippets/web-mode/" (nth 4 (org-heading-components))) :mkdirp yes
 :END:
-*** rnfcts
-React native functional component TypeScript
+*** rnfc
+React native functional component
 #+begin_src emacs-lisp
-  # -*- mode: snippet -*-
-  # contributor: Sebastian Lindtvedt
-  # name: rnfcts
-  # key: rnfcts
-  # --
+    # -*- mode: snippet -*-
+    # contributor: Sebastian Lindtvedt
+    # name: react native functional component
+    # key: rnfc
+    # --
 
-  import React from 'react';
-  import { View, StyleSheet } from 'react-native';
+import React from "react"
+import { View, StyleSheet, Text } from "react-native"
 
-  type $2Props = {}
-
-
-  const ${2:function_name}: React.FC<$2Props> = ({
-      // props
-  }) => {
+function ${1:component_name}() {
   return (
-          <View style={styles.container}>
+    <View styles={styles.container}>
+      <Text>$1</Text>
+    </View>
+  )
+}
 
-          </View>)
-  }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+})
 
-  const styles = StyleSheet.create({
-      container: {
-      grid: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
-      }
-  })
+export default $1
 
-  export default $2
 
 #+end_src
 
