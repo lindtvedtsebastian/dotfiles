@@ -548,6 +548,8 @@ New (currently in use) package management
     "oc" '(org-capture :which-key "capture")
     "of" '(org-roam-node-find :which-key "find node")
     "oi" '(org-roam-node-insert :which-key "insert node")
+    "ot" '(org-roam-tag-add :which-key "add tag")
+    "or" '(org-roam-ref-add :which-key "add ref")
 
     "l" '(:ignore t :which-key "lsp")
     "le" '(lsp-eslint-apply-all-fixes :which-key "eslint"))
