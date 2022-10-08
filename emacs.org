@@ -543,6 +543,7 @@ New (currently in use) package management
     "pf" '(projectile--find-file :which-key "find file")
     "pF" '(projectile-find-file-other-window :which-key "find file new window")
 
+    ;; Org
     "o" '(:ignore t :which-key "org")
     "oa" '(org-agenda :which-key "agenda")
     "oc" '(org-capture :which-key "capture")
@@ -551,8 +552,17 @@ New (currently in use) package management
     "ot" '(org-roam-tag-add :which-key "add tag")
     "or" '(org-roam-ref-add :which-key "add ref")
 
+    ;; LSP
     "l" '(:ignore t :which-key "lsp")
-    "le" '(lsp-eslint-apply-all-fixes :which-key "eslint"))
+    "le" '(lsp-eslint-apply-all-fixes :which-key "eslint")
+
+    ;; Window management
+    "w" '(:ignore t :which-key "window")
+    "wo" '(other-window :which-key "other window")
+    "wr" '(split-window-right :which-key "split right")
+    "wb" '(split-window-below :which-key "split below")
+    "wc" '(delete-window :which-key "delete window")
+    "wk" '(kill-buffer-and-window :which-key "kill window"))
 #+end_src
 
 ** Org-mode
