@@ -645,6 +645,14 @@ Some visual modifications and visual fill column mode
 
 #+end_src
 
+*** Org babel
+#+begin_src emacs-lisp
+  ;; PlantUML
+  (setq org-plantuml-exec-mode 'plantuml)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t)))
+#+end_src
 *** Org-tempo
 #+begin_src emacs-lisp
   (require 'org-tempo)
@@ -654,6 +662,7 @@ Some visual modifications and visual fill column mode
   (add-to-list 'org-structure-template-alist '("py" . "src python"))
   (add-to-list 'org-structure-template-alist '("kt" . "src kotlin"))
   (add-to-list 'org-structure-template-alist '("go" . "src go"))
+  (add-to-list 'org-structure-template-alist '("pl" . "src plantuml"))
 
 #+end_src
 
