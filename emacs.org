@@ -443,6 +443,10 @@ New (currently in use) package management
 
   (use-package json-mode)
 
+  (use-package prettier-js
+    :hook
+    (web-mode . prettier-js))
+
   ;; emmet mode
   (use-package emmet-mode
     :hook (web-mode . emmet-mode)) 
