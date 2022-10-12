@@ -551,6 +551,8 @@ New (currently in use) package management
     "oi" '(org-roam-node-insert :which-key "insert node")
     "ot" '(org-roam-tag-add :which-key "add tag")
     "or" '(org-roam-ref-add :which-key "add ref")
+    "ob" '(org-babel-execute-src-block :which-key "execute src")
+    "od" '(org-display-inline-images :which-key "display imgs")
 
     ;; LSP
     "l" '(:ignore t :which-key "lsp")
