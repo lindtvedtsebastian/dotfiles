@@ -445,7 +445,7 @@ New (currently in use) package management
 
   (use-package prettier-js
     :hook
-    (web-mode . prettier-js))
+    (web-mode . prettier-js-mode))
 
   ;; emmet mode
   (use-package emmet-mode
@@ -484,6 +484,11 @@ New (currently in use) package management
   (use-package python
     :hook
     (python-mode . lsp-deferred))
+#+end_src
+
+**** YAML
+#+begin_src emacs-lisp
+(use-package yaml-mode)
 #+end_src
 
 ** Keybindings
