@@ -312,11 +312,21 @@ New (currently in use) package management
 #+end_src
 *** Consult
 #+begin_src emacs-lisp
-  (use-package consult
-    :bind (
-           ("C-x b" . consult-buffer)
-           ("C-s" . consult-line)
-           ))
+    (use-package consult
+      :bind (
+             ("C-x b" . consult-buffer)
+             ("C-s" . consult-line)
+             ))
+
+  ;; Use `consult-completion-in-region' if Vertico is enabled.
+  ;; Otherwise use the default `completion--in-region' function.
+  (setq completion-in-region-function
+        (lambda (&rest args)
+          (apply (if vertico-mode
+                     #'consult-completion-in-region
+                   #'completion--in-region)
+                 args)))
+
 #+end_src
 *** Orderless
 #+begin_src emacs-lisp
