@@ -123,6 +123,7 @@ New (currently in use) package management
   (load custom-file)
 
   ;; Set custom theme folder location
+  (setq-default custom-theme-directory "~/.emacs.d/themes/")
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
   ;; Customize TAB behaviour
@@ -157,7 +158,7 @@ New (currently in use) package management
 
 *** Set theme
 #+begin_src emacs-lisp
-  (load-theme 'chalk t)
+  (load-theme 'autumn t)
 #+end_src
 
 *** Rainbow mode
@@ -944,5 +945,72 @@ export default $1
                                     )
 
             (provide-theme 'relaxed)
+#+end_src
+** Autumn
+:PROPERTIES:
+:header-args: :tangle ~/.emacs.d/themes/autumn-theme.el :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+  (deftheme autumn
+    "autumn inspired theme with relaxed colors")
+
+  (custom-theme-set-faces
+   'autumn
+   '(cursor ((t (:background "#ffffff"))))
+   '(fixed-pitch ((t (:family "Iosevka" :foundry "nil" :width normal :height 140 :weight regular :slant normal))))
+   '(variable-pitch ((((type w32)) (:foundry "outline" :family "Arial")) (t (:family "Sans Serif"))))
+   '(escape-glyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
+   '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
+   '(minibuffer-prompt ((t (:foreground "#dae9fd"))))
+   '(highlight ((t (:background "#2d3043"))))
+   '(region ((t (:extend t :background "#4e6d7f"))))
+   '(shadow ((((class color grayscale) (min-colors 88) (background light)) (:foreground "grey50")) (((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey70")) (((class color) (min-colors 8) (background light)) (:foreground "green")) (((class color) (min-colors 8) (background dark)) (:foreground "yellow"))))
+   '(secondary-selection ((t (:extend t :background "gray92"))))
+   '(trailing-whitespace ((((class color) (background light)) (:background "red1")) (((class color) (background dark)) (:background "red1")) (t (:inverse-video t))))
+   '(font-lock-builtin-face ((((class grayscale) (background light)) (:weight bold :foreground "LightGray")) (((class grayscale) (background dark)) (:weight bold :foreground "DimGray")) (((class color) (min-colors 88) (background light)) (:foreground "dark slate blue")) (((class color) (min-colors 88) (background dark)) (:foreground "LightSteelBlue")) (((class color) (min-colors 16) (background light)) (:foreground "Orchid")) (((class color) (min-colors 16) (background dark)) (:foreground "LightSteelBlue")) (((class color) (min-colors 8)) (:weight bold :foreground "blue")) (t (:weight bold))))
+   '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
+   '(font-lock-comment-face ((t (:foreground "thistle1"))))
+   '(font-lock-constant-face ((t (:foreground "DarkSlateGray2"))))
+   '(font-lock-doc-face ((t (:inherit font-lock-string-face))))
+   '(font-lock-doc-markup-face ((t (:inherit font-lock-constant-face))))
+   '(font-lock-function-name-face ((t (:foreground "LightYellow1"))))
+   '(font-lock-keyword-face ((t (:foreground "#dae9fd" :weight bold))))
+   '(font-lock-negation-char-face ((t nil)))
+   '(font-lock-preprocessor-face ((t (:inherit font-lock-builtin-face))))
+   '(font-lock-regexp-grouping-backslash ((t (:inherit bold))))
+   '(font-lock-regexp-grouping-construct ((t (:inherit bold))))
+   '(font-lock-string-face ((t (:foreground "#c7b4a4" :slant oblique))))
+   '(font-lock-type-face ((t (:foreground "Aquamarine"))))
+   '(font-lock-variable-name-face ((t (:foreground "#00a385"))))
+   '(font-lock-warning-face ((t (:inherit error))))
+   '(button ((t (:inherit link))))
+   '(link-visited ((t (:inherit link :foreground "violet"))))
+   '(fringe ((((class color) (background light)) (:background "grey95")) (((class color) (background dark)) (:background "grey10")) (t (:background "gray"))))
+   '(tooltip ((t (:inherit variable-pitch :background "lightyellow" :foreground "black"))))
+   '(isearch ((((class color) (min-colors 88) (background light)) (:foreground "lightskyblue1" :background "magenta3")) (((class color) (min-colors 88) (background dark)) (:foreground "brown4" :background "palevioletred2")) (((class color) (min-colors 16)) (:foreground "cyan1" :background "magenta4")) (((class color) (min-colors 8)) (:foreground "cyan1" :background "magenta4")) (t (:inverse-video t))))
+   '(isearch-fail ((((class color) (min-colors 88) (background light)) (:background "RosyBrown1")) (((class color) (min-colors 88) (background dark)) (:background "red4")) (((class color) (min-colors 16)) (:background "red")) (((class color) (min-colors 8)) (:background "red")) (((class color grayscale)) (:foreground "grey")) (t (:inverse-video t))))
+   '(lazy-highlight ((((class color) (min-colors 88) (background light)) (:distant-foreground "black" :background "paleturquoise")) (((class color) (min-colors 88) (background dark)) (:distant-foreground "white" :background "paleturquoise4")) (((class color) (min-colors 16)) (:distant-foreground "white" :background "turquoise3")) (((class color) (min-colors 8)) (:distant-foreground "white" :background "turquoise3")) (t (:underline (:color foreground-color :style line :position nil)))))
+   '(match ((t (:background "gray92"))))
+   '(next-error ((t (:inherit region))))
+   '(query-replace ((t (:inherit isearch))))
+   '(org-block ((t (:extend t :background "#2b2f42"))))
+   '(org-block-begin-line ((t (:background "#3b4059"))))
+   '(org-block-end-line ((t (:inherit org-block-begin-line :extend t))))
+   '(link ((t (:foreground "wheat2" :underline t))))
+   '(orderless-match-face-0 ((t (:foreground "wheat2" :weight bold))))
+   '(orderless-match-face-1 ((default (:weight bold)) (((class color) (min-colors 88) (background dark)) (:foreground "#ed92f8")) (((class color) (min-colors 88) (background light)) (:foreground "#8f0075")) (t (:foreground "magenta"))))
+   '(orderless-match-face-2 ((default (:weight bold)) (((class color) (min-colors 88) (background dark)) (:foreground "#90d800")) (((class color) (min-colors 88) (background light)) (:foreground "#145a00")) (t (:foreground "green"))))
+   '(orderless-match-face-3 ((default (:weight bold)) (((class color) (min-colors 88) (background dark)) (:foreground "#f0ce43")) (((class color) (min-colors 88) (background light)) (:foreground "#804000")) (t (:foreground "yellow"))))
+   '(mode-line ((t (:background "#dae9fd" :foreground "#2b2f42"))))
+   '(mode-line-inactive ((t (:inherit mode-line :background "#2b2f42" :foreground "#dae9fd" :weight light))))
+   '(header-line ((t (:background "#2b2f42" :foreground "#dae9fd" :box (:line-width (2 . 2) :color "#dae9fd" :style released-button)))))
+   '(web-mode-html-tag-face ((t (:foreground "Aquamarine"))))
+   '(magit-header-line ((t (:inherit (magit-section-heading)))))
+   '(magit-section-heading ((t (:extend t :foreground "#dae9fd" :weight bold))))
+   '(default ((t (:inherit nil :extend nil :stipple nil :background "#1e2033" :foreground "#bdcadb" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight regular :height 140 :width normal :foundry "nil" :family "Iosevka")))))
+
+  (provide-theme 'autumn)
+
 #+end_src
 
