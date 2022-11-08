@@ -366,9 +366,11 @@ New (currently in use) package management
 
 ** Projectile
 #+begin_src emacs-lisp
-      (use-package projectile
-        :config
-        (projectile-mode +1))
+  (use-package projectile
+    :config
+    (add-to-list 'projectile-globally-ignored-directories "*node_modules") 
+    (add-to-list 'projectile-globally-ignored-directories "*build") 
+    (projectile-mode +1))
 #+end_src
 
 ** Development 
