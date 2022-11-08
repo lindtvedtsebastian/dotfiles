@@ -54,6 +54,9 @@ New (currently in use) package management
       :config (exec-path-from-shell-initialize))
   
   (exec-path-from-shell-copy-env "LSP_USE_PLISTS")
+
+  ;; load env variables
+  (load-file "~/.emacs.d/env.el")
 #+end_src
 
 ** Native compilation
