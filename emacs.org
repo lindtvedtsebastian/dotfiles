@@ -472,11 +472,6 @@ New (currently in use) package management
     :hook
     (web-mode . prettier-js-mode))
 
-  ;; emmet mode
-  (use-package emmet-mode
-    :hook (web-mode . emmet-mode)) 
-
-
 #+end_src
 
 **** Java
