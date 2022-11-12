@@ -36,6 +36,9 @@ Prepend path to emacs to path
 
   # add tilemaker to path
   PATH=$HOME/git/tilemaker:$PATH
+
+  # Add cargo to path
+  PATH=$HOME/.cargo/env:$PATH
 #+END_SRC 
 
 * zprofile
