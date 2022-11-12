@@ -1,14 +1,15 @@
 #+title: XMonad config
 
 #+begin_src haskell :tangle ~/.config/xmonad/xmonad.hs :mkdirp yes
-import XMonad
-import XMonad.Util.EZConfig
+  import XMonad
+  import XMonad.Util.EZConfig
+  import XMonad.Hooks.EwmhDesktops
 
-main :: IO()
-main = xmonad $ def
-  { modMask = mod4Mask -- Rebind Mod to the super key
-  , terminal = "alacritty"
-  }
-  `additionalKeysP`
-  [ ("M-p", spawn "rofi -show drun")]
+  main :: IO()
+  main = xmonad $ ewmhFullscreen . ewmh $ def
+    { modMask = mod4Mask -- Rebind Mod to the super key
+    , terminal = "alacritty"
+    }
+    `additionalKeysP`
+    [ ("M-p", spawn "rofi -show drun")]
 #+end_src
