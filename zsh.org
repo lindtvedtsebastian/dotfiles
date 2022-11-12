@@ -1,7 +1,7 @@
 #+title: ZSH Configuration
 * zenv
 :PROPERTIES:
-:header-args: :tangle ~/.zshenv
+:header-args: :tangle ~/.zshenv :mkdirp yes
 :END:
 
 Prepend path to emacs to path
@@ -22,6 +22,9 @@ Prepend path to emacs to path
   # Encodings
   export LANG=en_US.UTF-8
 
+  # add .local/bin to path
+  PATH=$HOME/.local/bin:$PATH
+
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
 
@@ -37,7 +40,7 @@ Prepend path to emacs to path
 
 * zprofile
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zprofile
+:header-args: :tangle ~/.config/zsh/.zprofile :mkdirp yes
 :END:
 
 #+BEGIN_SRC sh
@@ -45,7 +48,7 @@ Prepend path to emacs to path
 
 * zshrc
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zshrc
+:header-args: :tangle ~/.config/zsh/.zshrc :mkdirp yes
 :END:
 
 Define some color variables
@@ -124,7 +127,7 @@ Set Java to 11 by default
 
 * zlogin
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zlogin
+:header-args: :tangle ~/.config/zsh/.zlogin :mkdirp yes
 :END:
 
 #+BEGIN_SRC sh
@@ -132,7 +135,7 @@ Set Java to 11 by default
 
 * zlogout
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/.zlogout
+:header-args: :tangle ~/.config/zsh/.zlogout :mkdirp yes
 :END:
 
 #+BEGIN_SRC sh
@@ -140,7 +143,7 @@ Set Java to 11 by default
 
 * prompt
 :PROPERTIES:
-:header-args: :tangle ~/.config/zsh/prompt.zsh
+:header-args: :tangle ~/.config/zsh/prompt.zsh :mkdirp yes
 :END:
 
 #+begin_src shell
