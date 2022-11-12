@@ -519,6 +519,13 @@ New (currently in use) package management
     (haskell-mode . lsp-deferred))
 #+end_src
 
+**** Rust
+#+begin_src emacs-lisp
+    (use-package rust-mode
+      :hook
+      (rust-mode . lsp-deferred))
+#+end_src
+
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
