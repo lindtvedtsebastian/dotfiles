@@ -511,6 +511,14 @@ New (currently in use) package management
 (use-package yaml-mode)
 #+end_src
 
+**** Haskell
+#+begin_src emacs-lisp
+  (use-package lsp-haskell)
+  (use-package haskell-mode
+    :hook
+    (haskell-mode . lsp-deferred))
+#+end_src
+
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
@@ -695,6 +703,7 @@ Some visual modifications and visual fill column mode
   (add-to-list 'org-structure-template-alist '("kt" . "src kotlin"))
   (add-to-list 'org-structure-template-alist '("go" . "src go"))
   (add-to-list 'org-structure-template-alist '("pl" . "src plantuml"))
+  (add-to-list 'org-structure-template-alist '("hs" . "src haskell"))
 
 #+end_src
 
