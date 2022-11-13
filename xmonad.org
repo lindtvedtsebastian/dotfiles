@@ -5,10 +5,15 @@
   import XMonad.Util.EZConfig
   import XMonad.Hooks.EwmhDesktops
 
+
+  -- Workspaces (ewmh)
+  myWorkspaces = ["1","2","3","4"]
+
   main :: IO()
   main = xmonad $ ewmhFullscreen . ewmh $ def
     { modMask = mod4Mask -- Rebind Mod to the super key
     , terminal = "alacritty"
+    , workspaces = myWorkspaces
     }
     `additionalKeysP`
     [ ("M-p", spawn "rofi -show drun")]
