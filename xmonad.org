@@ -4,16 +4,25 @@
   import XMonad
   import XMonad.Util.EZConfig
   import XMonad.Hooks.EwmhDesktops
-
+  import XMonad.Hooks.ManageDocks
 
   -- Workspaces (ewmh)
   myWorkspaces = ["1","2","3","4"]
 
+  -- Layout hook
+  myLayoutHook = avoidStruts (tiled ||| Mirror tiled ||| Full)
+    where
+      tiled = Tall nmaster delta ratio
+      nmaster = 1      -- Default number of windows in the master pane
+      ratio = 1/2      -- Default proportion of screen occupied by master pane
+      delta = 3/100    -- Percent of screen to increment by when resizing panes
+
   main :: IO()
-  main = xmonad $ ewmhFullscreen . ewmh $ def
+  main = xmonad $ ewmhFullscreen . ewmh $ docks def
     { modMask = mod4Mask -- Rebind Mod to the super key
     , terminal = "alacritty"
     , workspaces = myWorkspaces
+    , layoutHook = myLayoutHook
     }
     `additionalKeysP`
     [ ("M-p", spawn "rofi -show drun")]
