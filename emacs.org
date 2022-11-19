@@ -659,11 +659,11 @@ The actual org-mode package
       (setq org-src-tab-acts-natively t)
 
       (setq org-agenda-files
-            (directory-files-recursively "~/Dropbox/main/" "\\.org$"))
+            (directory-files-recursively "~/Dropbox/shared/" "\\.org$"))
 
       (setq org-refile-targets
-            '(("~/Dropbox/main/org/archive.org" :maxlevel . 1)
-              ("~/Dropbox/main/org/active.org" :maxlevel . 1)))
+            '(("~/Dropbox/shared/org/archive.org" :maxlevel . 1)
+              ("~/Dropbox/shared/org/active.org" :maxlevel . 1)))
 
       (setq org-todo-keywords
             '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
@@ -718,7 +718,7 @@ Some visual modifications and visual fill column mode
 #+begin_src emacs-lisp
   (use-package org-roam
     :config
-    (setq org-roam-directory "~/Dropbox/main/org/roam")
+    (setq org-roam-directory "~/Dropbox/shared/org/roam")
     (setq org-roam-db-autosync-mode t))
 
   (use-package org-roam-ui
