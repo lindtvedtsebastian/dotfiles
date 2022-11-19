@@ -336,6 +336,10 @@ New (currently in use) package management
                  args)))
 
 #+end_src
+
+#+begin_src emacs-lisp
+(use-package embark-consult)
+#+end_src
 *** Orderless
 #+begin_src emacs-lisp
       (use-package orderless
