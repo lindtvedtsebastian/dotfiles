@@ -85,10 +85,6 @@ New (currently in use) package management
 
   ;; some scrolling settings
   (scroll-bar-mode -1) 	;; Disable visible scrollbar
-  (pixel-scroll-precision-mode t)
-  (setq pixel-scroll-precision-large-scroll-height 40.0)
-  (setq pixel-scroll-precision-interpolation-factor 30)
-
 
   ;; Setup visible bell
   (setq visible-bell t)
