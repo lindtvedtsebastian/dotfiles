@@ -55,6 +55,7 @@
   font-1 = iosevka:weight=bold;2
 
   modules-left = xworkspaces xwindow
+  modules-center = music_player
   modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
 
   cursor-click = pointer
@@ -172,6 +173,14 @@
   [settings]
   screenchange-reload = true
   pseudo-transparency = true
+
+  [module/music_player]
+  type = custom/script
+  exec = ~/dotfiles/scripts/playerctl_meta.sh
+
+  interval = 2
+
+  click-left = ~/dotfiles/scripts/playerctl_playpause.sh &
 
   ; vim:ft=dosini
 #+end_src
