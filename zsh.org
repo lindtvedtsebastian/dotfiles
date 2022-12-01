@@ -33,6 +33,8 @@ Prepend path to emacs to path
 
   # add kotlin language server to path
   PATH=$HOME/git/kotlin-language-server/server/build/install/server/bin:$PATH
+  # add kotlin debug adapter to path
+  PATH=$HOME/git/kotlin-debug-adapter/adapter/build/install/adapter/bin:$PATH
 
   # add tilemaker to path
   PATH=$HOME/git/tilemaker:$PATH
