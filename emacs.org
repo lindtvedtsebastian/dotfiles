@@ -585,6 +585,11 @@ New (currently in use) package management
       (rust-mode . lsp-deferred))
 #+end_src
 
+**** RON
+#+begin_src emacs-lisp
+(use-package ron-mode)
+#+end_src
+
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
