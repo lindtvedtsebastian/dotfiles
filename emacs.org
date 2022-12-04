@@ -652,6 +652,7 @@ New (currently in use) package management
     "pf" '(projectile--find-file :which-key "find file")
     "pF" '(projectile-find-file-other-window :which-key "find file new window")
     "pg" '(projectile-grep :which-key "grep")
+    "ps" '(projectile-switch-project :which-key "switch project")
 
     ;; Org
     "o" '(:ignore t :which-key "org")
