@@ -280,6 +280,7 @@ New (currently in use) package management
 
 
   #+end_src
+  
 *** Which-key
 #+begin_src emacs-lisp
   (use-package which-key
@@ -289,6 +290,7 @@ New (currently in use) package management
     :config
     (setq which-key-idle-delay 0))
 #+end_src
+
 *** Vertico
 #+begin_src emacs-lisp
   (use-package vertico
@@ -365,7 +367,6 @@ New (currently in use) package management
       (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
 
 #+end_src
-
 
 ** Projectile
 #+begin_src emacs-lisp
