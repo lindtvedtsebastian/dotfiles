@@ -650,6 +650,7 @@ New (currently in use) package management
     ;; Projectile
     "p" '(:ignore t :which-key "projectile")
     "pr" '(projectile-run-project :which-key "run project")
+    "pR" '(projectile-replace :which-key "replace")
     "pf" '(projectile--find-file :which-key "find file")
     "pF" '(projectile-find-file-other-window :which-key "find file new window")
     "pg" '(projectile-grep :which-key "grep")
