@@ -388,15 +388,16 @@ New (currently in use) package management
     (setq lsp-completion-provider :none)
     :hook (sh-mode . lsp-deferred)
     :config
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.cache\\'")
     (lsp-enable-which-key-integration t)
     (lsp-register-client
      (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
                       :major-modes '(terraform-mode)
                       :server-id 'terraform-ls)))
 
-  (setq gc-cons-threshold (* 8 1024 1024)) ;; 8mb
-  (setq read-process-output-max (* 8 1024 1024)) ;; 8mb
-  (setq lsp-file-watch-threshold 3000) ;; Watch 3000 folders max
+  (setq gc-cons-threshold (* 16 1024 1024)) ;; 16mb
+  (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
+  (setq lsp-file-watch-threshold 1000) ;; Watch 1000 folders max
   (setq max-lisp-eval-depth 10000) ;; set max eval depth
 
   (use-package lsp-ui
