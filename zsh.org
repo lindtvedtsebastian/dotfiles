@@ -117,19 +117,6 @@ Set up autocomplete and suggestions
 
  #+end_src
  
-Set Java to 11 by default
-
- #+begin_src shell
-
-  export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-
-  alias java11='export JAVA_HOME=$JAVA_11_HOME'
-
-  # default to Java 11
-  java11
-
-#+END_SRC
-
 * zlogin
 :PROPERTIES:
 :header-args: :tangle ~/.config/zsh/.zlogin :mkdirp yes
