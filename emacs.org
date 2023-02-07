@@ -377,6 +377,16 @@ New (currently in use) package management
     (projectile-mode +1))
 #+end_src
 
+** ripgrep
+#+begin_src emacs-lisp
+(use-package rg)
+#+end_src
+
+** ag (the silver searcher)
+#+begin_src emacs-lisp
+(use-package ag)
+#+end_src
+
 ** Development 
 *** Language server protocol (LSP)
 #+begin_src emacs-lisp
