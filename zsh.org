@@ -19,6 +19,10 @@ Prepend path to emacs to path
   export HISTSIZE=10000 # Maximum events for internal history
   export SAVEHIST=10000 # Maximum events in history file
 
+  # gpg
+  GPG_TTY=$(tty)
+  export GPG_TTY
+
   # Encodings
   export LANG=en_US.UTF-8
 

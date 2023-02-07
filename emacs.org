@@ -70,6 +70,12 @@ New (currently in use) package management
 (use-package vterm)
 #+end_src
 
+** gnupg
+#+begin_src emacs-lisp
+(require 'epg)
+  (setq epa-pinentry-mode 'loopback)
+#+end_src
+
 ** User interface
 *** General purpose configurations
 #+begin_src emacs-lisp

@@ -1,0 +1,28 @@
+#+title: gnupg configuration
+
+* General info 
+After tangling the config in this file, reload the conf:
+
+#+begin_src shell :tangle no
+gpgconf --reload gpg-agent
+#+end_src
+
+* Loopback
+:PROPERTIES:
+:header-args: :tangle ~/.gnupg/gpg-agent.conf :mkdirp yes
+:END:
+
+#+begin_src sh
+  # Explicitly set emacs as allowed pinentry
+  allow-emacs-pinentry
+  # Allow clients like emacs to retrieve the password in its own way, and pass it on to pgp
+  allow-loopback-entry
+#+end_src
+
+
+* Pinentry program
+When on MacOS, set pinentry program aswell
+#+begin_src sh :tangle (when (eq system-type 'darwin) "~/.gnupg/gpg-agent.conf")
+  # Set the pinentry program
+  pinentry-program /opt/homebrew/bin/pinentry-mac
+#+end_src
