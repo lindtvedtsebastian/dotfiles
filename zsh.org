@@ -11,8 +11,8 @@ Prepend path to emacs to path
   export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
   export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-  export EDITOR="emacs"
-  export VISUAL="emacs"
+  export EDITOR="emacsclient"
+  export VISUAL="emacsclient"
 
   export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # Zsh folder
   export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
