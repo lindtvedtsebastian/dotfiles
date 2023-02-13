@@ -59,6 +59,12 @@ New (currently in use) package management
   (load-file "~/.emacs.d/env.el")
 #+end_src
 
+** Server
+Starts emacs server, allowing other programs/processes to send "things" to the existing emacs client
+#+begin_src emacs-lisp
+(server-start)
+#+end_src
+
 ** Native compilation
 #+begin_src emacs-lisp
 (setq comp-async-report-warnings-errors nil)
