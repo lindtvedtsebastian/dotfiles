@@ -361,55 +361,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (dap-ui-controls-mode 1)
 #+end_src
 
-**** *** DAP kotlin
-#+begin_src emacs-lisp
-  (require 'lsp-kotlin)
-  (require 'dap-mode)
-
-  (setq lsp-kotlin-debug-adapter-path "~/git/kotlin-debug-adapter/adapter/build/install/adapter/bin/kotlin-debug-adapter")
-
-  (defun dap-kotlin-populate-launch-args (conf)
-    ;; we require mainClass and projectRoot to be filled in in the launch configuration.
-    ;; dap-kotlin does currently not support a fallback if not defined
-    (-> conf
-        (dap--put-if-absent :request "launch")
-        (dap--put-if-absent :projectRoot (lsp-workspace-root))
-        (dap--put-if-absent :mainClass (file-name-base))
-        (dap--put-if-absent :name "Kotlin Launch")))
-
-  (defun dap-kotlin-populate-attach-args (conf)
-    (-> conf
-        (dap--put-if-absent :request "attach")
-        (dap--put-if-absent :name "Kotlin Attach")
-        (dap--put-if-absent :projectRoot (lsp-workspace-root))
-        (dap--put-if-absent :hostName "localhost")
-        (dap--put-if-absent :port 5005)
-        (dap--put-if-absent :timeout 2000)))
-
-  (defun dap-kotlin-populate-default-args (conf)
-    (setq conf (pcase (plist-get conf :request)
-                 ("launch" (dap-kotlin-populate-launch-args conf))
-                 ("attach" (dap-kotlin-populate-attach-args conf))
-                 (_ (error "Unsupported dap-request"))))
-
-    (-> conf
-        (dap--put-if-absent :type "kotlin")
-        (plist-put :dap-server-path (list lsp-kotlin-debug-adapter-path))))
-
-  (dap-register-debug-provider "kotlin" #'dap-kotlin-populate-default-args)
-
-  (dap-register-debug-template "Kotlin Attach"
-                               (list :type "kotlin"
-                                     :request "attach"
-                                     :noDebug nil))
-
-  (dap-register-debug-template "Kotlin Launch"
-                               (list :type "kotlin"
-                                     :request "launch"
-                                     :noDebug nil))
-
-  (provide 'dap-kotlin)
-#+end_src
 *** Company
 #+begin_src emacs-lisp
 
