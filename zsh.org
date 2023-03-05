@@ -40,9 +40,6 @@ Prepend path to emacs to path
   # add kotlin debug adapter to path
   PATH=$HOME/git/kotlin-debug-adapter/adapter/build/install/adapter/bin:$PATH
 
-  # add tilemaker to path
-  PATH=$HOME/git/tilemaker:$PATH
-
   # Add cargo to path
   PATH=$HOME/.cargo/env:$PATH
 #+END_SRC 
