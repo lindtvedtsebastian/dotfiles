@@ -206,11 +206,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+begin_src emacs-lisp 
   ;; Add magit
   (use-package magit)
-
-  (use-package forge
-    :after magit
-    :init
-    (setq forge-add-default-bindings nil))
 #+end_src
 
 ** QoL
