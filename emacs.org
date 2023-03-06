@@ -313,11 +313,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 (use-package rg)
 #+end_src
 
-** ag (the silver searcher)
-#+begin_src emacs-lisp
-(use-package ag)
-#+end_src
-
 ** Development 
 *** Flycheck
 #+begin_src emacs-lisp
