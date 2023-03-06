@@ -319,35 +319,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+end_src
 
 ** Development 
-*** Language server protocol (LSP)
-#+begin_src emacs-lisp
-  ;; LSP-mode
-  (use-package lsp-mode
-    :commands (lsp lsp-deferred)
-    :init
-    (setq lsp-keymap-prefix "C-c l")
-    (setq lsp-completion-provider :none)
-    :hook (sh-mode . lsp-deferred)
-    :config
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.cache\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\Pods\\'")
-    (lsp-enable-which-key-integration t)
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
-                      :major-modes '(terraform-mode)
-                      :server-id 'terraform-ls)))
-
-  (setq gc-cons-threshold (* 16 1024 1024)) ;; 16mb
-  (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
-  (setq lsp-file-watch-threshold 1000) ;; Watch 1000 folders max
-  (setq max-lisp-eval-depth 10000) ;; set max eval depth
-
-  (use-package lsp-ui
-    :hook (lsp-mode . lsp-ui-mode)
-    :init
-    (setq lsp-ui-sideline-show-hover t))
-
-#+end_src
 
 *** Debug Adapter Protocol (DAP)
 #+begin_src emacs-lisp
