@@ -359,103 +359,12 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve"))))
 #+end_src
 
-*** Languages
-**** Yasnippet
+*** Yasnippet
 #+begin_src emacs-lisp
   (use-package yasnippet
     :config
     (yas-global-mode t))
 #+end_src
-
-**** Web
-#+begin_src emacs-lisp
-  ;; npm-mode
-  (use-package npm-mode
-    )
-
-  ;; Web mode
-  (use-package web-mode
-    :hook (web-mode . lsp-deferred)
-    :init
-    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-
-    (setq web-mode-markup-indent-offset 4)
-    (setq web-mode-css-indent-offset 4)
-    (setq web-mode-code-indent-offset 4))
-
-  (use-package js2-mode)
-
-  (use-package json-mode)
-
-  (use-package prettier-js
-    :hook
-    (web-mode . prettier-js-mode))
-
-#+end_src
-
-**** Java
-#+begin_src emacs-lisp
-  (use-package lsp-java
-    :hook (java-mode . lsp-deferred)
-    :config
-    (add-to-list 'auto-mode-alist '("\\.java?\\'" . java-mode)))
-#+end_src
-
-**** Kotlin
-#+begin_src emacs-lisp
-  (use-package kotlin-mode
-    :hook (kotlin-mode . lsp-deferred))
-#+end_src
-
-**** Terraform
-#+begin_src emacs-lisp
-
-  (use-package terraform-mode
-    :hook (terraform-mode . lsp-deferred)
-    :hook (terraform-mode . terraform-format-on-save-mode)
-    :config
-    (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode)))
-
-#+end_src
-
-**** Python
-#+begin_src emacs-lisp
-  (use-package python
-    :hook
-    (python-mode . lsp-deferred))
-#+end_src
-
-**** YAML
-#+begin_src emacs-lisp
-(use-package yaml-mode)
-#+end_src
-
-**** Haskell
-#+begin_src emacs-lisp
-  (use-package lsp-haskell)
-  (use-package haskell-mode
-    :hook
-    (haskell-mode . lsp-deferred))
-#+end_src
-
-**** Rust
-#+begin_src emacs-lisp
-    (use-package rust-mode
-      :hook
-      (rust-mode . lsp-deferred))
-#+end_src
-
-**** RON
-#+begin_src emacs-lisp
-(use-package ron-mode)
-#+end_src
-
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
