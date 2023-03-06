@@ -119,6 +119,9 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   ;; Modify backup folder
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
+  ;; Disable creation of lockfiles
+  (setq create-lockfiles nil)
+
   ;; Enable Dired navigation with a
   (put 'dired-find-alternate-file 'disabled nil)
 
