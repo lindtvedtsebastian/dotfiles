@@ -319,22 +319,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+end_src
 
 ** Development 
-
-*** Company
-#+begin_src emacs-lisp
-
-  (use-package company
-    :hook ((lsp-mode . company-mode)
-           (emacs-lisp-mode . company-mode))
-    :init
-    (setq company-backends '((company-files company-keywords company-capf company-yasnippet company-dabbrev-code company-etags company-dapprev)))
-    :custom
-    (company-minimum-prefix-length 1)
-    (company-idle-delay 0.0)
-    (company-selection-wrap-around t))
-
-#+end_src
-
 *** Flycheck
 #+begin_src emacs-lisp
   (use-package flycheck
