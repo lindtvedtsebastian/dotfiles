@@ -143,6 +143,8 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
                                    (time-subtract (current-time) before-init-time)))
                           gcs-done)))
 
+
+  (setq tab-always-indent 'complete)
 #+end_src
 
 *** Set theme
@@ -344,10 +346,31 @@ Setup some tree-sitter languages
 
 *** eglot
 #+begin_src emacs-lisp
-    (use-package eglot
+  (use-package eglot
+    :config
+    (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
+    (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
+    (add-to-list 'eglot-server-programs '(tsx-ts-mode . ("typescript-language-server" "--stdio")))
+    :hook
+    tsx-mode)
+#+end_src
+
+*** Typescript (TSX)
+#+begin_src emacs-lisp
+  (use-package typescript-ts-mode
+    :straight nil
+    :hook
+    (tsx-ts-mode . eglot-ensure))
+#+end_src
+
+*** Apheleia
+#+begin_src emacs-lisp
+    (use-package apheleia
       :config
-      (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
-      (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("typescript-language-server" "--stdio"))))
+      (apheleia-global-mode +1))
+#+end_src
+
+
 *** Corfu
 #+begin_src emacs-lisp
   (use-package corfu
