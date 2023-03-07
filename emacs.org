@@ -362,6 +362,14 @@ Setup some tree-sitter languages
     (global-corfu-mode))
 #+end_src
 
+*** Kind-icon
+#+begin_src emacs-lisp
+  (use-package kind-icon
+    :after corfu
+    :custom
+    (kind-icon-default-face 'corfu-default)
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
 *** Yasnippet
