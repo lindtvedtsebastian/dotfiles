@@ -344,9 +344,10 @@ Setup some tree-sitter languages
 
 *** eglot
 #+begin_src emacs-lisp
-  (use-package eglot
-    :config
-    (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve"))))
+    (use-package eglot
+      :config
+      (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
+      (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("typescript-language-server" "--stdio"))))
 #+end_src
 
 *** Yasnippet
@@ -355,6 +356,7 @@ Setup some tree-sitter languages
     :config
     (yas-global-mode t))
 #+end_src
+
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
