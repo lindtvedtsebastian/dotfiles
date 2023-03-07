@@ -348,6 +348,20 @@ Setup some tree-sitter languages
       :config
       (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
       (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("typescript-language-server" "--stdio"))))
+*** Corfu
+#+begin_src emacs-lisp
+  (use-package corfu
+    :custom
+    (corfu-cycle-t)
+    (corfu-auto t)
+    (corfu-auto-prefix 2)
+    (corfu-auto-delay 0)
+    (corfu-separator ?\s)
+    (corfu-quit-at-boundary nil)
+    :init
+    (global-corfu-mode))
+#+end_src
+
 #+end_src
 
 *** Yasnippet
