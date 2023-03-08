@@ -81,7 +81,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (setq visible-bell t)
 
   ;; Set the font
-  (set-face-attribute 'default nil :font "Iosevka" :weight 'normal)
+  (set-face-attribute 'default nil :font "Iosevka" :weight 'normal :height 140)
 
   ;; Set the fixed-pitch font
   (set-face-attribute 'fixed-pitch nil :font "Iosevka")
