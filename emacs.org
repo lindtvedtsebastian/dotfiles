@@ -344,24 +344,6 @@ Setup some tree-sitter languages
     (global-flycheck-mode t))
 #+end_src
 
-*** eglot
-#+begin_src emacs-lisp
-  (use-package eglot
-    :config
-    (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
-    (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
-    (add-to-list 'eglot-server-programs '(tsx-ts-mode . ("typescript-language-server" "--stdio")))
-    :hook
-    tsx-mode)
-#+end_src
-
-*** Typescript (TSX)
-#+begin_src emacs-lisp
-  (use-package typescript-ts-mode
-    :straight nil
-    :hook
-    (tsx-ts-mode . eglot-ensure))
-#+end_src
 
 *** Apheleia
 #+begin_src emacs-lisp
