@@ -354,9 +354,17 @@ Setup some tree-sitter languages
     (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
     (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
     :hook
-    (typescript-ts-mode . lsp)
     (lsp-mode . lsp-enable-which-key-integration)
+    (tsx-ts-mode)
     :commands lsp)
+#+end_src
+
+*** Typescript (tsx)
+#+begin_src emacs-lisp
+  (use-package typescript-ts-mode
+    :straight nil
+    :mode
+    ("\\.tsx\\'" . tsx-ts-mode))
 #+end_src
 
 *** Apheleia
