@@ -81,7 +81,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (setq visible-bell t)
 
   ;; Set the font
-  (set-face-attribute 'default nil :font "Iosevka" :weight 'medium)
+  (set-face-attribute 'default nil :font "Iosevka" :weight 'normal)
 
   ;; Set the fixed-pitch font
   (set-face-attribute 'fixed-pitch nil :font "Iosevka")
@@ -189,9 +189,10 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
                                          "\\\\" "://"))
     ;; Enables ligature checks globally in all buffers. You can also do it
     ;; per mode with `ligature-mode'.
-  
+
     (global-ligature-mode t))
   
+
 #+end_src 
 
 *** Diminish
