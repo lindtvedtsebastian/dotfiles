@@ -30,11 +30,12 @@
 #+begin_src emacs-lisp
     (use-package exec-path-from-shell
       :config (exec-path-from-shell-initialize))
-  
+
   (exec-path-from-shell-copy-env "LSP_USE_PLISTS")
 
   ;; load env variables
   (load-file "~/.emacs.d/env.el")
+
 #+end_src
 
 ** Server
@@ -80,7 +81,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (setq visible-bell t)
 
   ;; Set the font
-  (set-face-attribute 'default nil :font "Iosevka" :height 140)
+  (set-face-attribute 'default nil :font "Iosevka" :weight 'medium)
 
   ;; Set the fixed-pitch font
   (set-face-attribute 'fixed-pitch nil :font "Iosevka")
