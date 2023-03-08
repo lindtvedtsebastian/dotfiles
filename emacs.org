@@ -353,6 +353,7 @@ Setup some tree-sitter languages
     (setq lsp-keymap-prefix "C-c l")
     (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
     (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
+    (setq lsp-idle-delay 0)
     :hook
     (lsp-mode . lsp-enable-which-key-integration)
     (tsx-ts-mode)
