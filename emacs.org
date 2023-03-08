@@ -337,13 +337,23 @@ Setup some tree-sitter languages
   
 #+end_src
 
-*** Flycheck
+*** flycheck
 #+begin_src emacs-lisp
   (use-package flycheck
     :config
     (global-flycheck-mode t))
 #+end_src
 
+*** lsp-mode
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :hook
+    (typescript-ts-mode . lsp)
+    (lsp-mode . lsp-enable-which-key-integration)
+    :commands lsp)
+#+end_src
 
 *** Apheleia
 #+begin_src emacs-lisp
