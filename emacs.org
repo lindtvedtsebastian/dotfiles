@@ -349,6 +349,8 @@ Setup some tree-sitter languages
   (use-package lsp-mode
     :init
     (setq lsp-keymap-prefix "C-c l")
+    (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
+    (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
     :hook
     (typescript-ts-mode . lsp)
     (lsp-mode . lsp-enable-which-key-integration)
