@@ -384,8 +384,6 @@ Setup some tree-sitter languages
     (corfu-auto t)
     (corfu-auto-prefix 2)
     (corfu-auto-delay 0)
-    (corfu-separator ?\s)
-    (corfu-quit-at-boundary nil)
     :init
     (global-corfu-mode))
 #+end_src
