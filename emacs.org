@@ -300,6 +300,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     :config
     (add-to-list 'projectile-globally-ignored-directories "*node_modules") 
     (add-to-list 'projectile-globally-ignored-directories "*build") 
+    (setq projectile-auto-discover nil)
     (projectile-mode +1))
 #+end_src
 
