@@ -205,17 +205,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (use-package magit)
 #+end_src
 
-** QoL
-*** Which-key
-#+begin_src emacs-lisp
-  (use-package which-key
-
-    :init (which-key-mode)
-    :diminish which-key-mode
-    :config
-    (setq which-key-idle-delay 0))
-#+end_src
-
+** Completions
 *** Vertico
 #+begin_src emacs-lisp
   (use-package vertico
@@ -228,6 +218,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   :init
   (vertico-mode))
 #+end_src
+
 *** Marginalia
 #+begin_src emacs-lisp
   (use-package marginalia
@@ -237,10 +228,12 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     :init
     (marginalia-mode))
 #+end_src
+
 *** Embark
 #+begin_src emacs-lisp
 (use-package embark)
 #+end_src
+
 *** Consult
 #+begin_src emacs-lisp
     (use-package consult
@@ -263,6 +256,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+begin_src emacs-lisp
 (use-package embark-consult)
 #+end_src
+
 *** Orderless
 #+begin_src emacs-lisp
       (use-package orderless
@@ -270,26 +264,57 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
         (completion-styles '(orderless basic))
         (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
-*** Undo-tree
 
+*** Corfu
+#+begin_src emacs-lisp
+  (use-package corfu
+    :custom
+    (corfu-cycle-t)
+    (corfu-auto t)
+    (corfu-auto-prefix 2)
+    (corfu-auto-delay 0)
+    :init
+    (global-corfu-mode))
+#+end_src
+
+*** Kind-icon
+*** Which-key
+#+begin_src emacs-lisp
+  (use-package which-key
+
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0))
+#+end_src
+
+** Undo-tree
 #+begin_src emacs-lisp
 
-    ;; Define undo-tree directory
-    (defvar undo-history-dir (concat user-emacs-directory "undo/")
-      "Directory to save undo history files to")
+  ;; Define undo-tree directory
+  (defvar undo-history-dir (concat user-emacs-directory "undo/")
+    "Directory to save undo history files to")
 
-    ;; Create dir if not exists
-    (unless (file-exists-p undo-history-dir)
-      (make-directory undo-history-dir t))
+  ;; Create dir if not exists
+  (unless (file-exists-p undo-history-dir)
+    (make-directory undo-history-dir t))
 
-    ;; Undo tree
-    (use-package undo-tree
-      :after evil
-      :diminish
-      :config
-      (evil-set-undo-system 'undo-tree)
-      (global-undo-tree-mode 1)
-      (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
+  ;; Undo tree
+  (use-package undo-tree
+    :after evil
+    :diminish
+    :config
+    (evil-set-undo-system 'undo-tree)
+    (global-undo-tree-mode 1)
+    (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
+
+  (with-eval-after-load 'evil
+  (defun evil-select-xml-tag (beg end type &optional count inclusive)
+    (cond
+     ((and (not inclusive) (= (abs (or count 1)) 1))
+      (evil-select-block #'evil-up-xml-tag beg end type count nil t))
+     (t
+      (evil-select-block #'evil-up-xml-tag beg end type count inclusive)))))
 
 #+end_src
 
@@ -361,6 +386,7 @@ Setup some tree-sitter languages
 #+end_src
 
 *** Typescript (tsx)
+
 #+begin_src emacs-lisp
   (use-package typescript-ts-mode
     :straight nil
@@ -375,20 +401,14 @@ Setup some tree-sitter languages
       (apheleia-global-mode +1))
 #+end_src
 
-
-*** Corfu
+*** Yasnippet
 #+begin_src emacs-lisp
-  (use-package corfu
-    :custom
-    (corfu-cycle-t)
-    (corfu-auto t)
-    (corfu-auto-prefix 2)
-    (corfu-auto-delay 0)
-    :init
-    (global-corfu-mode))
+  (use-package yasnippet
+    :config
+    (yas-global-mode t))
 #+end_src
 
-*** Kind-icon
+
 #+begin_src emacs-lisp
   (use-package kind-icon
     :after corfu
@@ -396,13 +416,6 @@ Setup some tree-sitter languages
     (kind-icon-default-face 'corfu-default)
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-#+end_src
-
-*** Yasnippet
-#+begin_src emacs-lisp
-  (use-package yasnippet
-    :config
-    (yas-global-mode t))
 #+end_src
 
 ** Keybindings
@@ -584,6 +597,7 @@ Some visual modifications and visual fill column mode
      '((plantuml . t)
        (sql . t)))
 #+end_src
+
 *** Org-tempo
 #+begin_src emacs-lisp
   (require 'org-tempo)
@@ -629,6 +643,7 @@ Some visual modifications and visual fill column mode
             )
           ))
 #+end_src
+
 * Snippets
 ** Kotlin-mode
 :PROPERTIES:
