@@ -394,6 +394,11 @@ Setup some tree-sitter languages
     ("\\.tsx\\'" . tsx-ts-mode))
 #+end_src
 
+*** GraphQL
+#+begin_src emacs-lisp
+(use-package graphql-mode)
+#+end_src
+
 *** Apheleia
 #+begin_src emacs-lisp
     (use-package apheleia
