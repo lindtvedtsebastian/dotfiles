@@ -379,6 +379,8 @@ Setup some tree-sitter languages
     (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
     (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
     (setq lsp-idle-delay 0)
+    ;; This is hardcoded, bad and error prone.. Do something to make this work better
+    (setq lsp-clients-typescript-plugins (vector '(:name "typescript-plugin-css-modules" :location "/opt/homebrew/lib/node_modules/")))
     :hook
     (lsp-mode . lsp-enable-which-key-integration)
     (tsx-ts-mode)
