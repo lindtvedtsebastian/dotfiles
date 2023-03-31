@@ -387,12 +387,12 @@ Setup some tree-sitter languages
     :commands lsp)
 #+end_src
 
-*** Typescript (tsx)
-
+*** Typescript 
 #+begin_src emacs-lisp
   (use-package typescript-ts-mode
     :straight nil
     :mode
+    ("\\.ts\\'" . typescript-ts-mode)
     ("\\.tsx\\'" . tsx-ts-mode))
 #+end_src
 
