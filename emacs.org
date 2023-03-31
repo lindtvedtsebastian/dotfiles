@@ -384,6 +384,7 @@ Setup some tree-sitter languages
     :hook
     (lsp-mode . lsp-enable-which-key-integration)
     (tsx-ts-mode)
+    (typescript-ts-mode)
     :commands lsp)
 #+end_src
 
