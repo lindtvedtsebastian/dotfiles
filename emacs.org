@@ -63,88 +63,87 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 ** User interface
 *** General purpose configurations
 #+begin_src emacs-lisp
-    ;; General UI configurations
-  --> 
-    (setq inhibit-startup-message t) ;; Hide startup message
-    (setq inhibit-startup-screen t) ;; Hide startup screen
+  ;; General UI configurations 
+  (setq inhibit-startup-message t) ;; Hide startup message
+  (setq inhibit-startup-screen t) ;; Hide startup screen
 
-    (tool-bar-mode -1)	    ;; Disable the toolbar
-    (tooltip-mode -1)	    ;; Disable tooltips
-    (set-fringe-mode 10)	;; Set fringe size
-    (electric-pair-mode 1)  ;; Auto pair characters
+  (tool-bar-mode -1)	    ;; Disable the toolbar
+  (tooltip-mode -1)	    ;; Disable tooltips
+  (set-fringe-mode 10)	;; Set fringe size
+  (electric-pair-mode 1)  ;; Auto pair characters
 
-    ;; some scrolling settings
-    (scroll-bar-mode -1) 	;; Disable visible scrollbar
+  ;; some scrolling settings
+  (scroll-bar-mode -1) 	;; Disable visible scrollbar
 
-    ;; Setup visible bell
-    (setq visible-bell t)
+  ;; Setup visible bell
+  (setq visible-bell t)
 
-    ;; Set the font
-    (set-face-attribute 'default nil :font "Iosevka" :weight 'medium :height 140)
+  ;; Set the font
+  (set-face-attribute 'default nil :font "Iosevka Custom" :weight 'normal :width 'normal :height 140)
 
-    ;; Set the fixed-pitch font
-    (set-face-attribute 'fixed-pitch nil :font "Iosevka")
+  ;; Set the fixed-pitch font
+  (set-face-attribute 'fixed-pitch nil :font "Iosevka Custom")
 
-    ;; Set line number mode to be relative
-    (setq display-line-numbers-type 'relative)
+  ;; Set line number mode to be relative
+  (setq display-line-numbers-type 'relative)
 
-    ;; Add line numbers
-    (column-number-mode)
-    (global-display-line-numbers-mode t)
+  ;; Add line numbers
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
 
-    ;; Improve scrolling
-    (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) 	;; Scroll 1 line at a time
-    (setq mouse-wheel-progressive-speed nil) 		;; Disable scroll acceleration
+  ;; Improve scrolling
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) 	;; Scroll 1 line at a time
+  (setq mouse-wheel-progressive-speed nil) 		;; Disable scroll acceleration
 
-    ;; Set coding system
-    (set-language-environment "UTF-8")
-    (prefer-coding-system 'utf-8)
-    (set-default-coding-systems 'utf-8)
-    (set-terminal-coding-system 'utf-8)
-    (set-keyboard-coding-system 'utf-8)
-    (set-selection-coding-system 'utf-8)
-    (set-file-name-coding-system 'utf-8)
-    (set-clipboard-coding-system 'utf-8)
-    (set-buffer-file-coding-system 'utf-8) 
+  ;; Set coding system
+  (set-language-environment "UTF-8")
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (set-file-name-coding-system 'utf-8)
+  (set-clipboard-coding-system 'utf-8)
+  (set-buffer-file-coding-system 'utf-8) 
 
-    ;; Set custom file location
-    (customize-save-variable 'custom-file "~/.emacs.d/custom.el")
-    (load custom-file)
+  ;; Set custom file location
+  (customize-save-variable 'custom-file "~/.emacs.d/custom.el")
+  (load custom-file)
 
-    ;; Set custom theme folder location
-    (setq-default custom-theme-directory "~/.emacs.d/themes/")
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+  ;; Set custom theme folder location
+  (setq-default custom-theme-directory "~/.emacs.d/themes/")
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-    ;; Customize TAB behaviour
-    (setq-default tab-width 4)
+  ;; Customize TAB behaviour
+  (setq-default tab-width 4)
 
-    ;; Modify backup folder
-    (setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
+  ;; Modify backup folder
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
-    ;; Disable creation of lockfiles
-    (setq create-lockfiles nil)
+  ;; Disable creation of lockfiles
+  (setq create-lockfiles nil)
 
-    ;; Enable Dired navigation with a
-    (put 'dired-find-alternate-file 'disabled nil)
+  ;; Enable Dired navigation with a
+  (put 'dired-find-alternate-file 'disabled nil)
 
-    ;; Enable recursive minibuffers
-    (setq enable-recursive-minibuffers t)
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t)
 
-    ;; Set window size
-    (add-to-list 'default-frame-alist '(height . 65))
-    (add-to-list 'default-frame-alist '(width . 300))
+  ;; Set window size
+  (add-to-list 'default-frame-alist '(height . 65))
+  (add-to-list 'default-frame-alist '(width . 300))
 
-    ;; Startup timer
-    (add-to-list 'after-init-hook
-                 (lambda ()
-                   (message "Emacs loaded in %s with %d garbage collections."
-                            (format "%.2f seconds"
-                                    (float-time
-                                     (time-subtract (current-time) before-init-time)))
-                            gcs-done)))
+  ;; Startup timer
+  (add-to-list 'after-init-hook
+               (lambda ()
+                 (message "Emacs loaded in %s with %d garbage collections."
+                          (format "%.2f seconds"
+                                  (float-time
+                                   (time-subtract (current-time) before-init-time)))
+                          gcs-done)))
 
 
-    (setq tab-always-indent 'complete)
+  (setq tab-always-indent 'complete)
 #+end_src
 
 *** Set theme
