@@ -445,6 +445,13 @@ wip swift flychecking
     :hook
     (swift-mode . #'setup-swift-mode))
 #+end_src
+*** GDScript
+#+begin_src emacs-lisp
+  (use-package gdscript-mode
+    :straight (gdscript-mode
+               :type git
+               :host github
+               :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
 
 *** Apheleia
