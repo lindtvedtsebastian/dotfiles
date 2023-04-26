@@ -427,6 +427,24 @@ Setup some tree-sitter languages
     :after lsp-mode
     :config
     (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
+
+
+#+end_src
+
+wip swift flychecking
+#+begin_src emacs-lisp :tangle no
+  (defun setup-swift-mode ()
+    (flycheck-mode +1)
+    (flycheck-swift-setup))
+
+  (use-package flycheck-swift
+    :after flycheck
+    :config
+    (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk")
+    (setq flycheck-swift-target "arm64-apple-ios16.2")
+    :hook
+    (swift-mode . #'setup-swift-mode))
+#+end_src
 #+end_src
 
 *** Apheleia
