@@ -453,6 +453,13 @@ wip swift flychecking
                :host github
                :repo "godotengine/emacs-gdscript-mode"))
 #+end_src
+*** JSON
+#+begin_src emacs-lisp
+  (use-package json-ts-mode
+    :straight nil
+    :mode
+    ("\\.json\\'"))
+#+end_src
 
 *** Apheleia
 #+begin_src emacs-lisp
