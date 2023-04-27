@@ -9,15 +9,15 @@
 
   (defvar bootstrap-version)
   (let ((bootstrap-file
-	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-	(bootstrap-version 6))
+         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+        (bootstrap-version 6))
     (unless (file-exists-p bootstrap-file)
       (with-current-buffer
-	  (url-retrieve-synchronously
-	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-	   'silent 'inhibit-cookies)
-	(goto-char (point-max))
-	(eval-print-last-sexp)))
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
+        (goto-char (point-max))
+        (eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 
   (straight-use-package 'use-package)
@@ -28,8 +28,8 @@
 
 ** Path
 #+begin_src emacs-lisp
-    (use-package exec-path-from-shell
-      :config (exec-path-from-shell-initialize))
+  (use-package exec-path-from-shell
+    :config (exec-path-from-shell-initialize))
 
   (exec-path-from-shell-copy-env "LSP_USE_PLISTS")
 
@@ -40,23 +40,23 @@
 ** Server
 Starts emacs server, allowing other programs/processes to send "things" to the existing emacs client
 #+begin_src emacs-lisp
-(server-start)
+  (server-start)
 #+end_src
 
 ** Native compilation
 #+begin_src emacs-lisp
-(setq comp-async-report-warnings-errors nil)
-(setq native-comp-async-report-warnings-errors nil)
+  (setq comp-async-report-warnings-errors nil)
+  (setq native-comp-async-report-warnings-errors nil)
 #+end_src
 
 ** Terminal
 #+begin_src emacs-lisp
-(use-package vterm)
+  (use-package vterm)
 #+end_src
 
 ** gnupg
 #+begin_src emacs-lisp
-(require 'epg)
+  (require 'epg)
   (setq epa-pinentry-mode 'loopback)
 #+end_src
 
@@ -153,7 +153,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
 *** Rainbow mode
 #+begin_src emacs-lisp
-(use-package rainbow-mode)
+  (use-package rainbow-mode)
 #+end_src
 
 *** Adjust parenthesis/bracket/brace highlighting duration
@@ -167,7 +167,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
 *** Ligatures
 #+begin_src emacs-lisp
-    ;; Add Ligatures
+  ;; Add Ligatures
   (use-package ligature
     :config
     ;; Enable the "www" ligature in every possible major mode
@@ -189,7 +189,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     ;; per mode with `ligature-mode'.
 
     (global-ligature-mode t))
-  
+
 
 #+end_src 
 
@@ -199,8 +199,8 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+end_src
 
 ** Git
+*** Magit
 #+begin_src emacs-lisp 
-  ;; Add magit
   (use-package magit)
 #+end_src
 
@@ -208,14 +208,14 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 *** Vertico
 #+begin_src emacs-lisp
   (use-package vertico
-  :bind (:map vertico-map
-              ("C-j" . vertico-next)
-              ("C-k" . vertico-previous)
-              ("C-f" . vertico-exit))
-  :custom
-  (vertico-cycle t)
-  :init
-  (vertico-mode))
+    :bind (:map vertico-map
+                ("C-j" . vertico-next)
+                ("C-k" . vertico-previous)
+                ("C-f" . vertico-exit))
+    :custom
+    (vertico-cycle t)
+    :init
+    (vertico-mode))
 #+end_src
 
 *** Marginalia
@@ -230,16 +230,16 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
 *** Embark
 #+begin_src emacs-lisp
-(use-package embark)
+  (use-package embark)
 #+end_src
 
 *** Consult
 #+begin_src emacs-lisp
-    (use-package consult
-      :bind (
-             ("C-x b" . consult-buffer)
-             ("C-s" . consult-line)
-             ))
+  (use-package consult
+    :bind (
+           ("C-x b" . consult-buffer)
+           ("C-s" . consult-line)
+           ))
 
   ;; Use `consult-completion-in-region' if Vertico is enabled.
   ;; Otherwise use the default `completion--in-region' function.
@@ -253,15 +253,15 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+end_src
 
 #+begin_src emacs-lisp
-(use-package embark-consult)
+  (use-package embark-consult)
 #+end_src
 
 *** Orderless
 #+begin_src emacs-lisp
-      (use-package orderless
-        :custom
-        (completion-styles '(orderless basic))
-        (completion-category-overrides '((file (styles basic partial-completion)))))
+  (use-package orderless
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 
 *** Corfu
@@ -308,12 +308,12 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     (setq undo-tree-history-directory-alist `(("." . ,undo-history-dir))))
 
   (with-eval-after-load 'evil
-  (defun evil-select-xml-tag (beg end type &optional count inclusive)
-    (cond
-     ((and (not inclusive) (= (abs (or count 1)) 1))
-      (evil-select-block #'evil-up-xml-tag beg end type count nil t))
-     (t
-      (evil-select-block #'evil-up-xml-tag beg end type count inclusive)))))
+    (defun evil-select-xml-tag (beg end type &optional count inclusive)
+      (cond
+       ((and (not inclusive) (= (abs (or count 1)) 1))
+        (evil-select-block #'evil-up-xml-tag beg end type count nil t))
+       (t
+        (evil-select-block #'evil-up-xml-tag beg end type count inclusive)))))
 
 #+end_src
 
@@ -329,42 +329,40 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
 ** ripgrep
 #+begin_src emacs-lisp
-(use-package rg)
+  (use-package rg)
 #+end_src
 
 ** Development 
 *** Treesit
 Setup some tree-sitter languages
 #+begin_src emacs-lisp
-    (use-package treesit
-      :straight nil
-      :init
-      (setq treesit-language-source-alist
-       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
-         (c . ("https://github.com/tree-sitter/tree-sitter-c"))
-         (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-         (css . ("https://github.com/tree-sitter/tree-sitter-css"))
-         (go . ("https://github.com/tree-sitter/tree-sitter-go"))
-         (html . ("https://github.com/tree-sitter/tree-sitter-html"))
-         (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-         (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-         (lua . ("https://github.com/Azganoth/tree-sitter-lua"))
-         (make . ("https://github.com/alemuller/tree-sitter-make"))
-         (ocaml . ("https://github.com/tree-sitter/tree-sitter-ocaml" "ocaml/src" "ocaml"))
-         (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-         (php . ("https://github.com/tree-sitter/tree-sitter-php"))
-         (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
-         (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
-         (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
-         (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
-         (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
-         (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
-         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))
-         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml")))))
-  
-#+end_src
+  (use-package treesit
+    :straight nil
+    :init
+    (setq treesit-language-source-alist
+          '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
+            (c . ("https://github.com/tree-sitter/tree-sitter-c"))
+            (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+            (css . ("https://github.com/tree-sitter/tree-sitter-css"))
+            (go . ("https://github.com/tree-sitter/tree-sitter-go"))
+            (html . ("https://github.com/tree-sitter/tree-sitter-html"))
+            (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
+            (json . ("https://github.com/tree-sitter/tree-sitter-json"))
+            (lua . ("https://github.com/Azganoth/tree-sitter-lua"))
+            (make . ("https://github.com/alemuller/tree-sitter-make"))
+            (ocaml . ("https://github.com/tree-sitter/tree-sitter-ocaml" "ocaml/src" "ocaml"))
+            (python . ("https://github.com/tree-sitter/tree-sitter-python"))
+            (php . ("https://github.com/tree-sitter/tree-sitter-php"))
+            (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src"))
+            (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
+            (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
+            (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
+            (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
+            (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
+            (zig . ("https://github.com/GrayJack/tree-sitter-zig"))
+            (yaml . ("https://github.com/ikatyang/tree-sitter-yaml")))))
 
-#+RESULTS:
+#+end_src
 
 *** flycheck
 #+begin_src emacs-lisp
@@ -401,7 +399,7 @@ Setup some tree-sitter languages
 
 *** GraphQL
 #+begin_src emacs-lisp
-(use-package graphql-mode)
+  (use-package graphql-mode)
 #+end_src
 
 *** Swift
@@ -463,9 +461,9 @@ wip swift flychecking
 
 *** Apheleia
 #+begin_src emacs-lisp
-    (use-package apheleia
-      :config
-      (apheleia-global-mode +1))
+  (use-package apheleia
+    :config
+    (apheleia-global-mode +1))
 #+end_src
 
 *** Yasnippet
@@ -488,44 +486,44 @@ wip swift flychecking
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
-         ;; Add and initialize Evil mode
-        (defun sl/evil-hook ()
-          (dolist (mode '(custom-mode
-                          eshell-mode
-                          git-rebase-mode
-                          sauron-mode
-                          vterm-mode
-                          term-mode))
-            (add-to-list 'evil-emacs-state-modes mode)))
+  ;; Add and initialize Evil mode
+  (defun sl/evil-hook ()
+    (dolist (mode '(custom-mode
+                    eshell-mode
+                    git-rebase-mode
+                    sauron-mode
+                    vterm-mode
+                    term-mode))
+      (add-to-list 'evil-emacs-state-modes mode)))
 
-        (use-package evil
-          :init
-          (setq evil-want-integration t)
-          (setq evil-want-keybinding nil)
-          (setq evil-want-C-u-scroll t)
-          (setq evil-want-C-i-jump nil)
-          (evil-mode 1)
-          :hook (evil-mode . sl/evil-hook)
-          :config
-          (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-          (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (use-package evil
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    (evil-mode 1)
+    :hook (evil-mode . sl/evil-hook)
+    :config
+    (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+    (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
-          ;; Use visual line motions even outside of visual-line buffers
-          (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-          (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+    ;; Use visual line motions even outside of visual-line buffers
+    (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+    (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
-          (evil-set-initial-state 'messages-buffer-mode 'normal)
-          (evil-set-initial-state 'dashboard-mode 'normal))
+    (evil-set-initial-state 'messages-buffer-mode 'normal)
+    (evil-set-initial-state 'dashboard-mode 'normal))
 
 
-        (use-package evil-collection
-          :after evil
-          :config
-          (evil-collection-init))
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
 
-        (use-package evil-commentary
-          :diminish
-          :config (evil-commentary-mode t))
+  (use-package evil-commentary
+    :diminish
+    :config (evil-commentary-mode t))
 
 #+end_src
 
@@ -534,9 +532,9 @@ wip swift flychecking
   (use-package general
     :config
     (general-create-definer ls/leader-keys
-                            :keymaps '(normal insert visual emacs)
-                            :prefix "SPC"
-                            :global-prefix "C-SPC"))
+      :keymaps '(normal insert visual emacs)
+      :prefix "SPC"
+      :global-prefix "C-SPC"))
 #+end_src
 
 *** Leader keys
@@ -583,13 +581,13 @@ Define some font sizes for different types of headings
 
 #+begin_src emacs-lisp
   (defun sl/org-font-setup ()
-  ;; Set some faces for org heading levels
-  (dolist (face '((org-level-1 . 1.2)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.05)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 1.0)))
-    (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
+    ;; Set some faces for org heading levels
+    (dolist (face '((org-level-1 . 1.2)
+                    (org-level-2 . 1.1)
+                    (org-level-3 . 1.05)
+                    (org-level-4 . 1.0)
+                    (org-level-5 . 1.0)))
+      (set-face-attribute (car face) nil :weight 'regular :height (cdr face))))
 #+end_src
 
 *** Org-mode hook
@@ -607,31 +605,31 @@ The actual org-mode package
 
 #+begin_src emacs-lisp
 
-    (use-package org
-      :hook (org-mode . sl/org-mode-setup)
-      :config
-      (setq org-ellipsis " ▾")
+  (use-package org
+    :hook (org-mode . sl/org-mode-setup)
+    :config
+    (setq org-ellipsis " ▾")
 
-      (sl/org-font-setup)
-      (advice-add 'org-refile :after #'org-save-all-org-buffers)
+    (sl/org-font-setup)
+    (advice-add 'org-refile :after #'org-save-all-org-buffers)
 
-      (setq org-agenda-start-with-log-mode t)
-      (setq org-log-done 'time)
-      (setq org-log-into-drawer t)
-      (setq org-src-tab-acts-natively t)
-      (setq org-startup-with-inline-images t)
-      (setq org-src-tab-acts-natively t)
+    (setq org-agenda-start-with-log-mode t)
+    (setq org-log-done 'time)
+    (setq org-log-into-drawer t)
+    (setq org-src-tab-acts-natively t)
+    (setq org-startup-with-inline-images t)
+    (setq org-src-tab-acts-natively t)
 
-      (setq org-agenda-files
-            (directory-files-recursively "~/Dropbox/shared/" "\\.org$"))
+    (setq org-agenda-files
+          (directory-files-recursively "~/Dropbox/shared/" "\\.org$"))
 
-      (setq org-refile-targets
-            '(("~/Dropbox/shared/org/archive.org" :maxlevel . 1)
-              ("~/Dropbox/shared/org/active.org" :maxlevel . 1)))
+    (setq org-refile-targets
+          '(("~/Dropbox/shared/org/archive.org" :maxlevel . 1)
+            ("~/Dropbox/shared/org/active.org" :maxlevel . 1)))
 
-      (setq org-todo-keywords
-            '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
-              (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "NEXT(n)" "IN PROGRESS(p)" "|" "DONE(d!)")
+            (sequence "BACKLOG(b)" "ACTIVE(a)" "|" "REVIEW(r)" "FINISHED(f)" "CANCELLED(c)"))))
 
 #+end_src
 
@@ -658,12 +656,12 @@ Some visual modifications and visual fill column mode
 
 *** Org babel
 #+begin_src emacs-lisp
-    ;; PlantUML
-    (setq org-plantuml-exec-mode 'plantuml)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((plantuml . t)
-       (sql . t)))
+  ;; PlantUML
+  (setq org-plantuml-exec-mode 'plantuml)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t)
+     (sql . t)))
 #+end_src
 
 *** Org-tempo
@@ -736,32 +734,32 @@ Some visual modifications and visual fill column mode
 *** rnfc
 React native functional component
 #+begin_src emacs-lisp
-    # -*- mode: snippet -*-
-    # contributor: Sebastian Lindtvedt
-    # name: react native functional component
-    # key: rnfc
-    # --
+  # -*- mode: snippet -*-
+  # contributor: Sebastian Lindtvedt
+  # name: react native functional component
+  # key: rnfc
+  # --
 
-import React from "react"
-import { View, StyleSheet, Text } from "react-native"
+  import React from "react"
+  import { View, StyleSheet, Text } from "react-native"
 
-function ${1:component_name}() {
+  function ${1:component_name}() {
   return (
-    <View styles={styles.container}>
-      <Text>$1</Text>
-    </View>
-  )
-}
+          <View styles={styles.container}>
+          <Text>$1</Text>
+          </View>
+          )
+  }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-  },
-})
+  const styles = StyleSheet.create({
+                                   container: {
+                                   flex: 1,
+                                   width: '100%',
+                                   height: '100%',
+                                   },
+                                   })
 
-export default $1
+  export default $1
 
 
 #+end_src
@@ -852,83 +850,83 @@ export default $1
 :END:
 
 #+begin_src emacs-lisp
-      (deftheme relaxed
-              "A light theme inspired by relaxed colors, created by Sebastian Lindtvedt")
+  (deftheme relaxed
+    "A light theme inspired by relaxed colors, created by Sebastian Lindtvedt")
 
-            (defgroup relaxed-palette nil
-              "Light relaxed color palette")
+  (defgroup relaxed-palette nil
+    "Light relaxed color palette")
 
-            (defcustom relaxed-foreground "#f2f2f2"
-              "Default foreground color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-foreground "#f2f2f2"
+    "Default foreground color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-background "#2e3440"
-              "Default background color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-background "#2e3440"
+    "Default background color"
+    :type 'color :group 'relaxed-palette)
 
-      (defcustom relaxed-background-highlight "57647b"
-        "Default background highlight color"
-        :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-background-highlight "57647b"
+    "Default background highlight color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-highlight "#ffffff"
-              "Default highlight color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-highlight "#ffffff"
+    "Default highlight color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-blue "#bbe0f2"
-              "Default blue color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-blue "#bbe0f2"
+    "Default blue color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-yellow "#f2eda1"
-              "Default yellow color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-yellow "#f2eda1"
+    "Default yellow color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-brightyellow "#FFFFEA"
-              "A bright yellow color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-brightyellow "#FFFFEA"
+    "A bright yellow color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-red "#ff5a5f"
-              "Default red color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-red "#ff5a5f"
+    "Default red color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-orange "#feab91"
-              "Default orange color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-orange "#feab91"
+    "Default orange color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-green "#b3e1d0"
-              "Default green color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-green "#b3e1d0"
+    "Default green color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-purple "#6b3fb8"
-              "Default purple color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-purple "#6b3fb8"
+    "Default purple color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-lightgrey "#c2cdd2"
-              "Default light grey color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-lightgrey "#c2cdd2"
+    "Default light grey color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-verylightgrey "#eceff1"
-              "Default very light grey color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-verylightgrey "#eceff1"
+    "Default very light grey color"
+    :type 'color :group 'relaxed-palette)
 
-            (defcustom relaxed-darkgrey "#232323"
-              "Default dark grey color"
-              :type 'color :group 'relaxed-palette)
+  (defcustom relaxed-darkgrey "#232323"
+    "Default dark grey color"
+    :type 'color :group 'relaxed-palette)
 
-            (custom-theme-set-faces 'relaxed
-                                    `(default ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
-                                    `(cursor ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
-                                    `(mouse ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
-                                    `(scroll-bar ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
-                                    `(mode-line ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
-                                    `(font-lock-keyword-face ((t (:foreground ,relaxed-orange :weight bold))))
-                                    `(font-lock-variable-name-face ((t (:foreground ,relaxed-purple))))
-                                    `(font-lock-comment-face ((t (:foreground ,relaxed-darkgrey))))
-                                    `(org-block ((t (:background ,relaxed-background-highlight))))
-                                    `(org-block-begin-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
-                                    `(org-block-end-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
-                                    )
+  (custom-theme-set-faces 'relaxed
+                          `(default ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                          `(cursor ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
+                          `(mouse ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                          `(scroll-bar ((t (:foreground ,relaxed-foreground :background ,relaxed-background))))
+                          `(mode-line ((t (:foreground ,relaxed-background :background ,relaxed-foreground))))
+                          `(font-lock-keyword-face ((t (:foreground ,relaxed-orange :weight bold))))
+                          `(font-lock-variable-name-face ((t (:foreground ,relaxed-purple))))
+                          `(font-lock-comment-face ((t (:foreground ,relaxed-darkgrey))))
+                          `(org-block ((t (:background ,relaxed-background-highlight))))
+                          `(org-block-begin-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
+                          `(org-block-end-line ((t (:foreground ,relaxed-foreground :background ,relaxed-background-highlight))))
+                          )
 
-            (provide-theme 'relaxed)
+  (provide-theme 'relaxed)
 #+end_src
 ** Autumn
 :PROPERTIES:
