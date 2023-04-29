@@ -161,8 +161,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (use-package paren
     :straight nil
     :init
-    (setq show-paren-delay 0)
-    )
+    (setq show-paren-delay 0))
 #+end_src
 
 *** Ligatures
@@ -238,8 +237,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   (use-package consult
     :bind (
            ("C-x b" . consult-buffer)
-           ("C-s" . consult-line)
-           ))
+           ("C-s" . consult-line)))
 
   ;; Use `consult-completion-in-region' if Vertico is enabled.
   ;; Otherwise use the default `completion--in-region' function.
@@ -385,6 +383,7 @@ Setup some tree-sitter languages
     (lsp-mode . lsp-enable-which-key-integration)
     (tsx-ts-mode)
     (typescript-ts-mode)
+    (yaml-ts-mode)
     :commands lsp)
 #+end_src
 
@@ -425,8 +424,7 @@ Setup some tree-sitter languages
     :after lsp-mode
     :config
     (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
-
-
+  
 #+end_src
 
 wip swift flychecking
@@ -715,9 +713,7 @@ Some visual modifications and visual fill column mode
             ("c" "context" plain
              "#+filetags: :%^{%(org-roam-tag-completions)}:"
              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-             :unnarrowed t)
-            )
-          ))
+             :unnarrowed t))))
 #+end_src
 
 * Snippets
