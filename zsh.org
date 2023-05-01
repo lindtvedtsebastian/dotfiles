@@ -30,6 +30,8 @@ Prepend path to emacs to path
   PATH=$HOME/.local/bin:$PATH
 
 
+  # add local applications to path
+  PATH=$HOME/.local/share/applications:$PATH
 
   # prepend emacs to path
   PATH=$HOME/git/emacs/src:$PATH
