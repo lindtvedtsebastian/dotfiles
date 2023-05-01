@@ -7,41 +7,43 @@
 Prepend path to emacs to path
 
 #+BEGIN_SRC sh
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
-    export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+  export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-    export EDITOR="emacsclient"
-    export VISUAL="emacsclient"
+  export EDITOR="emacsclient"
+  export VISUAL="emacsclient"
 
-    export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # Zsh folder
-    export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
-    export HISTSIZE=10000 # Maximum events for internal history
-    export SAVEHIST=10000 # Maximum events in history file
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # Zsh folder
+  export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
+  export HISTSIZE=10000 # Maximum events for internal history
+  export SAVEHIST=10000 # Maximum events in history file
 
-    # gpg
-    GPG_TTY=$(tty)
-    export GPG_TTY
+  # gpg
+  GPG_TTY=$(tty)
+  export GPG_TTY
 
-    # Encodings
-    export LANG=en_US.UTF-8
+  # Encodings
+  export LANG=en_US.UTF-8
 
-    # add .local/bin to path
-    PATH=$HOME/.local/bin:$PATH
+  # add .local/bin to path
+  PATH=$HOME/.local/bin:$PATH
 
-    # prepend emacs to path
-    PATH=$HOME/git/emacs/src:$PATH
 
-    # Increase emacs lsp performance
-    export LSP_USE_PLISTS=true
 
-    # add kotlin language server to path
-    PATH=$HOME/git/kotlin-language-server/server/build/install/server/bin:$PATH
-    # add kotlin debug adapter to path
-    PATH=$HOME/git/kotlin-debug-adapter/adapter/build/install/adapter/bin:$PATH
+  # prepend emacs to path
+  PATH=$HOME/git/emacs/src:$PATH
 
-    # Add cargo to path
-    PATH=$HOME/.cargo/env:$PATH
+  # Increase emacs lsp performance
+  export LSP_USE_PLISTS=true
+
+  # add kotlin language server to path
+  PATH=$HOME/git/kotlin-language-server/server/build/install/server/bin:$PATH
+  # add kotlin debug adapter to path
+  PATH=$HOME/git/kotlin-debug-adapter/adapter/build/install/adapter/bin:$PATH
+
+  # Add cargo to path
+  PATH=$HOME/.cargo/env:$PATH
 #+END_SRC 
 
 * zprofile
