@@ -51,8 +51,8 @@
   separator = |
   separator-foreground = ${colors.disabled}
 
-  font-0 = iosevka;2
-  font-1 = iosevka:weight=bold;2
+  font-0 = Iosevka SS08;2
+  font-1 = Iosevka SS08:weight=bold;2
 
   modules-left = xworkspaces xwindow
   modules-center = music_player_previous music_player_meta music_player_next
