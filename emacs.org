@@ -946,7 +946,7 @@ React native functional component
   (custom-theme-set-faces
    'autumn
    '(cursor ((t (:background "#ffffff"))))
-   '(fixed-pitch ((t (:family "Iosevka" :foundry "nil" :width normal :height 140 :weight regular :slant normal))))
+   '(fixed-pitch ((t (:foundry "nil" :width normal :height 140 :weight regular :slant normal))))
    '(variable-pitch ((((type w32)) (:foundry "outline" :family "Arial")) (t (:family "Sans Serif"))))
    '(escape-glyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
    '(homoglyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "magenta")) (t (:foreground "brown"))))
@@ -996,7 +996,7 @@ React native functional component
    '(web-mode-html-tag-face ((t (:foreground "Aquamarine"))))
    '(magit-header-line ((t (:inherit (magit-section-heading)))))
    '(magit-section-heading ((t (:extend t :foreground "#dae9fd" :weight bold))))
-   '(default ((t (:inherit nil :extend nil :stipple nil :background "#1e2033" :foreground "#bdcadb" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight regular :height 140 :width normal :foundry "nil" :family "Iosevka")))))
+   '(default ((t (:inherit nil :extend nil :stipple nil :background "#1e2033" :foreground "#bdcadb" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight regular :height 140 :width normal :foundry "nil")))))
 
   (provide-theme 'autumn)
 
