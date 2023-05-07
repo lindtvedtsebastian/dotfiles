@@ -78,11 +78,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   ;; Setup visible bell
   (setq visible-bell t)
 
-  ;; Set the font
-  (set-face-attribute 'default nil :font "Iosevka Custom" :weight 'normal :width 'normal :height 140)
-
-  ;; Set the fixed-pitch font
-  (set-face-attribute 'fixed-pitch nil :font "Iosevka Custom")
 
   ;; Set line number mode to be relative
   (setq display-line-numbers-type 'relative)
@@ -195,6 +190,24 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 *** Diminish
 #+begin_src emacs-lisp
   (use-package diminish)
+#+end_src
+
+** Fonts
+*** General
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil :weight 'normal :width 'normal :height 140)
+#+end_src
+
+*** Linux
+#+begin_src emacs-lisp :tangle (if (eq system-type 'gnu/linux) "~/.emacs.d/init.el" "no")
+  (set-face-attribute 'default nil :font "Iosevka SS08")
+  (set-face-attribute 'fixed-pitch nil :font "Iosevka SS08")
+#+end_src
+
+*** MacOS / Darwin
+#+begin_src emacs-lisp :tangle (if (eq system-type 'darwin) "~/.emacs.d/init.el" "no")
+  (set-face-attribute 'default nil :font "Iosevka Custom")
+  (set-face-attribute 'fixed-pitch nil :font "Iosevka Custom")
 #+end_src
 
 ** Git
