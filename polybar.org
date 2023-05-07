@@ -56,7 +56,7 @@
 
   modules-left = xworkspaces xwindow
   modules-center = music_player_previous music_player_meta music_player_next
-  modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
+  modules-right = filesystem pulseaudio xkeyboard memory cpu gpu wlan eth date
 
   cursor-click = pointer
   cursor-scroll = ns-resize
@@ -131,17 +131,23 @@
 
   [module/memory]
   type = internal/memory
-  interval = 2
+  interval = 5
   format-prefix = "RAM "
   format-prefix-foreground = ${colors.primary}
   label = %percentage_used:2%%
 
   [module/cpu]
   type = internal/cpu
-  interval = 2
+  interval = 5
   format-prefix = "CPU "
   format-prefix-foreground = ${colors.primary}
   label = %percentage:2%%
+
+  [module/gpu]
+  type = custom/script
+  exec = ~/dotfiles/scripts/nvidia-gpu-utilization.sh
+  format-prefix = "GPU "
+  interval = 5
 
   [network-base]
   type = internal/network
