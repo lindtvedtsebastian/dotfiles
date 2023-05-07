@@ -402,7 +402,7 @@ Setup some tree-sitter languages
 #+end_src
 
 *** Swift
-#+begin_src emacs-lisp :tangle (when (eq system-type 'darwin) "~/.emacs.d/init.el")
+#+begin_src emacs-lisp :tangle (if (eq system-type 'darwin) "~/.emacs.d/init.el" "no")
   (defun xcode-build()
     (interactive)
     (shell-command-to-string
