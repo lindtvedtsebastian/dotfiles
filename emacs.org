@@ -111,6 +111,7 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
   ;; Customize TAB behaviour
   (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
 
   ;; Modify backup folder
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups/")))
