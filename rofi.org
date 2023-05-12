@@ -1,0 +1,10 @@
+#+title: Rofi config
+
+#+begin_src shell :tangle ~/.config/rofi/config.rasi :mkdirp t
+  @theme "/usr/share/rofi/themes/Paper.rasi"
+
+  configuration {
+      show-icons: true;
+      font: "Iosevka SS08 12";
+  }
+#+end_src
