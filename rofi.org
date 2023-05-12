@@ -1,10 +1,23 @@
+#+PROPERTY: header-args:rasi :tangle "~/.config/rofi/config.rasi" :mkdirp yes
 #+title: Rofi config
 
-#+begin_src shell :tangle ~/.config/rofi/config.rasi :mkdirp t
-  @theme "/usr/share/rofi/themes/Paper.rasi"
-
+* General config
+#+begin_src rasi
   configuration {
       show-icons: true;
       font: "Iosevka SS08 12";
   }
+#+end_src
+* Theme
+** Set theme
+#+begin_src rasi
+  @theme "/usr/share/rofi/themes/Paper.rasi"
+#+end_src
+** Override theme
+#+begin_src rasi
+
+  ,* {
+      spacing: 5;  
+  }
+
 #+end_src
