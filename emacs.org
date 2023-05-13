@@ -37,6 +37,16 @@
   (load-file "~/.emacs.d/env.el")
 #+end_src
 
+** EShell
+#+begin_src emacs-lisp
+    (use-package eshell
+      :straight nil
+      :config
+      (setq eshell-destroy-buffer-when-process-dies t)
+      (add-to-list 'eshell-visual-commands "pacman")
+      (add-to-list 'eshell-visual-commands "yarn")) 
+#+end_src
+
 ** Server
 Starts emacs server, allowing other programs/processes to send "things" to the existing emacs client
 #+begin_src emacs-lisp
