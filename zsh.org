@@ -45,6 +45,9 @@ Prepend path to emacs to path
 
   # Add cargo to path
   PATH=$HOME/.cargo/env:$PATH
+
+  # set WORKON dir
+  WORKON_HOME=$HOME/.pyenv/versions
 #+END_SRC 
 
 * zprofile
