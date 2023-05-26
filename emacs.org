@@ -39,12 +39,15 @@
 
 ** EShell
 #+begin_src emacs-lisp
-    (use-package eshell
-      :straight nil
-      :config
-      (setq eshell-destroy-buffer-when-process-dies t)
-      (add-to-list 'eshell-visual-commands "pacman")
-      (add-to-list 'eshell-visual-commands "yarn")) 
+     (use-package eshell
+       :straight nil
+       :config
+       (setq eshell-destroy-buffer-when-process-dies t)
+       (setq eshell-visual-commands '("pacman" "yarn" "vi" "vim"
+                                      "screen" "tmux" "top" "htop"
+                                      "less" "more" "lynx" "links"
+                                      "ncftp" "mutt" "pine" "tin" "trn" "elm"))) 
+
 #+end_src
 
 ** Server
@@ -430,6 +433,13 @@ Setup some tree-sitter languages
   (use-package graphql-mode)
 #+end_src
 
+*** Python
+#+begin_src emacs-lisp
+  (use-package pyvenv
+    :init
+    (setenv "WORKON_HOME" "~/.pyenv/versions"))
+#+end_src
+
 *** Swift
 #+begin_src emacs-lisp :tangle (if (eq system-type 'darwin) "~/.emacs.d/init.el" "no")
   (defun xcode-build()
@@ -453,7 +463,7 @@ Setup some tree-sitter languages
     :after lsp-mode
     :config
     (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
-  
+
 #+end_src
 
 wip swift flychecking
