@@ -435,9 +435,12 @@ Setup some tree-sitter languages
 
 *** Python
 #+begin_src emacs-lisp
-  (use-package pyvenv
-    :init
-    (setenv "WORKON_HOME" "~/.pyenv/versions"))
+    (use-package pyvenv
+      :init
+      (setenv "WORKON_HOME" "~/.pyenv/versions"))
+
+    (use-package poetry
+      :after pyvenv)
 #+end_src
 
 *** Swift
@@ -707,10 +710,13 @@ Some visual modifications and visual fill column mode
 #+begin_src emacs-lisp
   ;; PlantUML
   (setq org-plantuml-exec-mode 'plantuml)
+
+  
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((plantuml . t)
-     (sql . t)))
+     (sql . t)
+     (python . t)))
 #+end_src
 
 *** Org-tempo
