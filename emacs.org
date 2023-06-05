@@ -778,6 +778,11 @@ Some visual modifications and visual fill column mode
              :unnarrowed t))))
 #+end_src
 
+*** org-trello
+#+begin_src emacs-lisp
+(use-package org-trello)
+#+end_src
+
 * Snippets
 ** Kotlin-mode
 :PROPERTIES:
