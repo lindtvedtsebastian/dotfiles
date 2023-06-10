@@ -447,6 +447,15 @@ Setup some tree-sitter languages
 
   (use-package poetry
     :after pyvenv)
+
+  (if (executable-find "poetry")
+      (progn (shell-command "poetry config --list" "*poetry-config-list*")
+             (set-buffer "*poetry-config-list*")
+             (unless (re-search-forward "virtualenvs.in-project = true" nil t)
+               (shell-command "poetry config virtualenvs.in-project true"))
+             (delete-windows-on "*poetry-config-list*")
+             (kill-buffer "*poetry-config-list*"))
+    (message "'poetry' could not be found!"))
 #+end_src
 
 *** Swift
