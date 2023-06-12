@@ -31,8 +31,6 @@
   (use-package exec-path-from-shell
     :config (exec-path-from-shell-initialize))
 
-  (exec-path-from-shell-copy-env "LSP_USE_PLISTS")
-
   ;; load env variables
   (load-file "~/.emacs.d/env.el")
 #+end_src
@@ -400,6 +398,7 @@ Setup some tree-sitter languages
 #+begin_src emacs-lisp
   (use-package lsp-mode
     :init
+    (setq lsp-use-plists "true")
     (setq lsp-keymap-prefix "C-c l")
     (setq gc-cons-threshold (* 100 1024 1024)) ;; 100 mb
     (setq read-process-output-max (* 16 1024 1024)) ;; 16mb
