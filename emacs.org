@@ -430,6 +430,8 @@ Setup some tree-sitter languages
 
 *** Python
 #+begin_src emacs-lisp
+  (use-package lsp-pyright)
+
   (use-package python-ts-mode
     :straight nil
     :mode
