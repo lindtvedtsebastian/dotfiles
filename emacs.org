@@ -89,7 +89,6 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
   ;; Setup visible bell
   (setq visible-bell t)
 
-
   ;; Set line number mode to be relative
   (setq display-line-numbers-type 'relative)
 
@@ -340,14 +339,10 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 
 #+end_src
 
-** Projectile
+** Project
 #+begin_src emacs-lisp
-  (use-package projectile
-    :config
-    (add-to-list 'projectile-globally-ignored-directories "*node_modules") 
-    (add-to-list 'projectile-globally-ignored-directories "*build") 
-    (setq projectile-auto-discover nil)
-    (projectile-mode +1))
+  (use-package project
+    :straight nil)
 #+end_src
 
 ** ripgrep
@@ -606,15 +601,12 @@ wip swift flychecking
 *** Leader keys
 #+begin_src emacs-lisp
   (ls/leader-keys
-    ;; Projectile
-    "p" '(:ignore t :which-key "projectile")
-    "pr" '(projectile-run-project :which-key "run project")
-    "pR" '(projectile-replace :which-key "replace")
-    "pf" '(projectile-find-file :which-key "find file")
-    "pd" '(projectile-find-dir :which-key "find dir")
-    "pF" '(projectile-find-file-other-window :which-key "find file new window")
-    "pg" '(projectile-grep :which-key "grep")
-    "ps" '(projectile-switch-project :which-key "switch project")
+    ;; Project
+    "p" '(:ignore t :which-key "project")
+    "pf" '(project-find-file :which-key "find file")
+    "pd" '(project-find-dir :which-key "find dir")
+    "pF" '(project-find-regexp :which-key "find regexp")
+    "ps" '(project-switch-project :which-key "switch project")
 
     ;; Org
     "o" '(:ignore t :which-key "org")
