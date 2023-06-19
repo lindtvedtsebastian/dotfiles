@@ -615,6 +615,7 @@ wip swift flychecking
     "pd" '(project-find-dir :which-key "find dir")
     "pF" '(project-find-regexp :which-key "find regexp")
     "ps" '(project-switch-project :which-key "switch project")
+    "pg" '(magit-project-status :which-key "magit")
 
     ;; Org
     "o" '(:ignore t :which-key "org")
