@@ -617,6 +617,7 @@ wip swift flychecking
     "ps" '(project-switch-project :which-key "switch project")
     "pg" '(magit-project-status :which-key "magit")
     "pe" '(project-eshell :which-key "eshell")
+    "pk" '(project-kill-buffers :which-key "kill buffers")
 
     ;; Org
     "o" '(:ignore t :which-key "org")
