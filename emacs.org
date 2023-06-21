@@ -552,6 +552,17 @@ wip swift flychecking
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 
+*** Rust
+#+begin_src emacs-lisp
+  (use-package rust-ts-mode
+    :straight nil
+    :mode
+    "\\.rs\\'")
+
+  (use-package flycheck-rust
+        :after (:all flycheck rust-ts-mode))
+#+end_src
+
 ** Keybindings
 *** E(vi)l mode
 #+begin_src emacs-lisp
