@@ -282,7 +282,8 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 #+begin_src emacs-lisp
   (use-package orderless
     :custom
-    (completion-styles '(orderless basic))
+    (completion-styles '(orderless partial-completion basic))
+    (completion-category-defaults nil)
     (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 
@@ -294,11 +295,23 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
     (corfu-auto t)
     (corfu-auto-prefix 2)
     (corfu-auto-delay 0)
+    (corfu-separator ?\s)
+    (corfu-quit-no-match 'separator)
     :init
     (global-corfu-mode))
 #+end_src
 
 *** Kind-icon
+#+begin_src emacs-lisp
+  (use-package kind-icon
+    :after corfu
+    :custom
+    (kind-icon-default-face 'corfu-default)
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+#+end_src
+
+
 *** Which-key
 #+begin_src emacs-lisp
   (use-package which-key
@@ -406,9 +419,14 @@ Setup some tree-sitter languages
     (setq lsp-idle-delay 0)
     (setq lsp-eslint-lint-task-enable t)
     (setq lsp-eslint-provide-lint-task t)
+    (setq lsp-completion-provider :none) ;; Do not need a completions provider since we have Corfu
+    (defun ls/lsp-mode-setup-completion ()
+      (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+            '(orderless)))
     ;; This is hardcoded, bad and error prone.. Do something to make this work better
     (setq lsp-clients-typescript-plugins (vector '(:name "typescript-plugin-css-modules" :location "/opt/homebrew/lib/node_modules/")))
     :hook
+    (lsp-mode . ls/lsp-mode-setup-completion)
     (lsp-mode . lsp-enable-which-key-integration)
     (tsx-ts-mode)
     (typescript-ts-mode)
@@ -543,14 +561,6 @@ wip swift flychecking
 #+end_src
 
 
-#+begin_src emacs-lisp
-  (use-package kind-icon
-    :after corfu
-    :custom
-    (kind-icon-default-face 'corfu-default)
-    :config
-    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-#+end_src
 
 *** Rust
 #+begin_src emacs-lisp
