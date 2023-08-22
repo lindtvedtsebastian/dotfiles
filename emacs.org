@@ -430,6 +430,16 @@ Setup some tree-sitter languages
     :commands lsp)
 #+end_src
 
+*** lsp-ui
+#+begin_src emacs-lisp
+    (use-package lsp-ui
+      :config
+      (setq lsp-ui-doc-show-with-mouse nil)
+      (setq lsp-ui-doc-show-with-cursor t)
+      (setq lsp-ui-doc-position 'at-point)
+      (setq lsp-ui-sideline-show-hover t))
+#+end_src
+
 *** Typescript 
 #+begin_src emacs-lisp
   (use-package typescript-ts-mode
