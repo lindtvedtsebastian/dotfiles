@@ -425,6 +425,7 @@ Setup some tree-sitter languages
     (yaml-ts-mode)
     (python-ts-mode)
     (rust-ts-mode)
+    (dockerfile-ts-mode)
     :config
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.cache\\'")
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\Pods\\'")
@@ -547,6 +548,14 @@ wip swift flychecking
     :straight nil
     :mode
     "\\.ya?ml\\'")
+#+end_src
+
+*** Dockerfile
+#+begin_src emacs-lisp
+  (use-package dockerfile-ts-mode
+    :straight nil
+    :mode
+    "\\Dockerfile\\'")
 #+end_src
 
 *** Apheleia
