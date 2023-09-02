@@ -25,7 +25,14 @@
   (setq straight-use-package-by-default t)
   (setq package-enable-at-startup nil)
 #+end_src
-
+** Emacs
+#+begin_src emacs-lisp
+(global-auto-revert-mode)
+#+end_src
+** Windows
+#+begin_src emacs-lisp
+(setq ns-pop-up-frames nil)
+#+end_src
 ** Path
 #+begin_src emacs-lisp
   (use-package exec-path-from-shell
