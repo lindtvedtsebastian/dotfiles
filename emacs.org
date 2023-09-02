@@ -205,10 +205,8 @@ Starts emacs server, allowing other programs/processes to send "things" to the e
 ** Fonts
 *** General
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil :weight 'normal :width 'normal :height 140)
-  (set-face-attribute 'default nil :font "Iosevka SS08")
-  (set-face-attribute 'fixed-pitch nil :font "Iosevka SS08")
-  (setq default-frame-alist '((font . "Iosevka SS08")))
+  (set-face-attribute 'default nil :font "Iosevka SS08" :weight 'normal :width 'normal :height 140)
+  (set-face-attribute 'fixed-pitch nil :font "Iosevka SS08" :weight 'normal :width 'normal :height 140)
 #+end_src
 
 ** Git
@@ -573,8 +571,6 @@ wip swift flychecking
     :config
     (yas-global-mode t))
 #+end_src
-
-
 
 *** Rust
 #+begin_src emacs-lisp
