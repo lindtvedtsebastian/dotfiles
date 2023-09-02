@@ -44,14 +44,14 @@
 
 ** EShell
 #+begin_src emacs-lisp
-     (use-package eshell
-       :straight nil
-       :config
-       (setq eshell-destroy-buffer-when-process-dies t)
-       (setq eshell-visual-commands '("pacman" "yarn" "vi" "vim"
-                                      "screen" "tmux" "top" "htop"
-                                      "less" "more" "lynx" "links"
-                                      "ncftp" "mutt" "pine" "tin" "trn" "elm"))) 
+  (use-package eshell
+    :straight nil
+    :config
+    (setq eshell-destroy-buffer-when-process-dies t)
+    (setq eshell-visual-commands '("pacman" "yarn" "vi" "vim"
+                                   "screen" "tmux" "top" "htop"
+                                   "less" "more" "lynx" "links"
+                                   "ncftp" "mutt" "pine" "tin" "trn" "elm"))) 
 #+end_src
 
 ** Server
