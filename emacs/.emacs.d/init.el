@@ -1,6 +1,7 @@
 ;;; init.el --- -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Initialization file for Emacs
+;;; commentary:
+;;; initialization file for Emacs
+;;; code:
 
 (setq straight-repository-branch "develop")
 (setq straight-check-for-modifications nil)
@@ -50,5 +51,23 @@
 
 ;; Install gdscript-mode from repository
 (straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
+
+
+;; Function for loading directories recursively
+(defun load-directory (directory)
+  "Recursively load all .el files in a DIRECTORY."
+  (dolist (file (directory-files-and-attributes directory nil nil nil))
+    (let* ((path (car file))
+           (fullpath (concat directory "/" path))
+           (isdir (car (cdr file)))
+           (ignore-dir (or (string= path ".") (string= path ".."))))
+      (cond
+       ((and (eq isdir t) (not ignore-dir))
+        (load-directory fullpath))
+       ((and (eq isdir nil) (string= (file-name-extension path) "el"))
+        (load (file-name-sans-extension fullpath)))))))
+
+;; Load all .el files from ~/.emacs.d/src recursively
+(load-directory "~/.emacs.d/src")
 
 ;;; init.el ends here
