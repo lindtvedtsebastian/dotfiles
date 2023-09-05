@@ -1,6 +1,6 @@
-;;; package --- emacs configuration
-;;; commentary:
-;;; code:
+;;; init.el --- -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Initialization file for Emacs
 
 (setq straight-repository-branch "develop")
 (setq straight-check-for-modifications nil)
