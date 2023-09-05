@@ -1,0 +1,54 @@
+;;; package --- emacs configuration
+;;; commentary:
+;;; code:
+
+(setq straight-repository-branch "develop")
+(setq straight-check-for-modifications nil)
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+
+;; List of packages to install
+(setq package-list
+      '(orderless            ; Completion style for regexp in any order
+        vertico              ; VERTical Interactive COmpletion
+        marginalia           ; Completion annotations
+        consult              ; Consulting completion-read
+        embark               ; Act on minibuffer completions
+        embark-consult       ; Consult integration for embark
+        corfu                ; Completion Overlay Region FUnction
+        cape                 ; Completion at point extensions
+        kind-icon            ; Completion kind icons
+        magit                ; Git client
+        which-key            ; Keybinding information
+        exec-path-from-shell ; Env variables from the shell
+        ligature             ; Ligatures
+        diminish             ; Ability to diminish minor modes in modeline
+        yasnippet            ; Yet Another Snippet library
+        evil                 ; Extensible VI Layer
+        evil-collection      ; Collection of Evil bindings for parts of Emacs not covered by evil
+        evil-nerd-commenter  ; Comment/uncomment lines efficiently
+        org-roam             ; Plain-text personal knowledge management system
+        org-roam-ui          ; UI for org-roam
+        graphql-mode         ; Major mode for graphql files
+        swift-mode))         ; Major mode for swift files
+        
+;; Install all packages that are not yet installed
+(dolist (package package-list)
+  (straight-use-package package))
+
+;; Install gdscript-mode from repository
+(straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
+
+;;; init.el ends here
