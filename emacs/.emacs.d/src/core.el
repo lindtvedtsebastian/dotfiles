@@ -58,4 +58,7 @@
 (setq kept-new-versions 5)         ; Number of new version to keep
 (setq delete-by-moving-to-trash t) ; Delete files to system trash can
 
+;; Dired
+(put 'dired-find-alternate-file 'disabled nil) ; Allow re-using dired buffers
+
 ;;; core.el ends here
