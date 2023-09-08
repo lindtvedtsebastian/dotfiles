@@ -3,8 +3,8 @@
 ;;; initialization file for Emacs
 ;;; code:
 
-(setq straight-repository-branch "develop")
-(setq straight-check-for-modifications nil)
+(defvar straight-repository-branch "develop")
+(defvar straight-check-for-modifications nil)
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -21,7 +21,7 @@
 
 
 ;; List of packages to install
-(setq package-list
+(defvar package-list
       '(orderless            ; Completion style for regexp in any order
         vertico              ; VERTical Interactive COmpletion
         marginalia           ; Completion annotations
@@ -45,6 +45,8 @@
         graphql-mode         ; Major mode for graphql files
         swift-mode))         ; Major mode for swift files
         
+(require 'straight) ; Make flymake happy
+
 ;; Install all packages that are not yet installed
 (dolist (package package-list)
   (straight-use-package package))
