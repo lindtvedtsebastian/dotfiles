@@ -4,3 +4,4 @@ org-persist
 straight
 transient
 auto-save-list
+.cache
