@@ -14,7 +14,11 @@
 ;; Eglot
 (require 'eglot)
 (setq eglot-events-buffer-size 0) ; Disable event buffer
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure) ; TSX files
+
+;; Typescript / TSX
+(require 'typescript-ts-mode)
+(add-hook 'tsx-ts-mode-hook 'eglot-ensure)		; Automatically start eglot in tsx-ts-mode
+(add-hook 'typescript-ts-mode-hook 'eglot-ensure)	; Automatiaclly start eglot in typescript-ts-mode
 
 ;; Treesit
 (require 'treesit)
