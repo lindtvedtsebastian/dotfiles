@@ -26,6 +26,6 @@
 (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)	; Set kind-icon as default margin formatter
 
 (require 'which-key)
-(which-key-mode)
 (setq which-key-idle-delay 0) ; Do not wait to display which key buffer
+(which-key-mode)
 ;;; completion.el ends here
