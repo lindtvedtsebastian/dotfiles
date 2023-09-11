@@ -15,4 +15,4 @@ export LSP_USE_PLISTS=true
 export LANG=en_US.UTF-8
 
 # add cargo to path
-export PATH=$PATH:$HOME/.cargo.bin
+export PATH=$PATH:$HOME/.cargo/bin
