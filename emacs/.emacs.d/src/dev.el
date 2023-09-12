@@ -48,5 +48,5 @@
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
 (require 'apheleia)
-(apheleia-global-mode)
+(apheleia-global-mode t)
 ;;; dev.el ends here

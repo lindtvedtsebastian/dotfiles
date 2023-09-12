@@ -14,18 +14,22 @@
 (setq native-comp-async-report-warnings-errors nil)
 
 ;; General UI configurations
-(tool-bar-mode -1)				; Disable the toolbar
-(set-fringe-mode 10)				; Set fringe size
-(electric-pair-mode)				; Automatically pair characters
-(scroll-bar-mode -1)				; Disable visible scrollbar
-(column-number-mode)				; Enable column numbers in the modeline
-(global-display-line-numbers-mode)		; Show line numbers
+(setq inhibit-startup-message t)             ; Hide startup message
+(setq inhibit-startup-screen t)              ; Hide startup screen
+(setq visible-bell t)                        ; Setup visible bell
+(setq mouse-wheel-progressive-speed nil)     ; Disable scroll acceleration
+(defvar display-line-numbers-type 'relative) ; Set line number mode to be relative
 
-(setq inhibit-startup-message t)		; Hide startup message
-(setq inhibit-startup-screen t)			; Hide startup screen
-(setq visible-bell t)				; Setup visible bell
-(setq mouse-wheel-progressive-speed nil)	; Disable scroll acceleration
-(defvar display-line-numbers-type 'relative)	; Set line number mode to be relative
+(tool-bar-mode -1)                           ; Disable the toolbar
+(set-fringe-mode 10)                         ; Set fringe size
+(electric-pair-mode)                         ; Automatically pair characters
+(scroll-bar-mode -1)                         ; Disable visible scrollbar
+(column-number-mode)                         ; Enable column numbers in the modeline
+(global-display-line-numbers-mode)           ; Show line numbers
+
+;; Customize TAB behaviour
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 ;; Encoding
 (set-language-environment "UTF-8")
