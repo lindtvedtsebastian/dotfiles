@@ -14,18 +14,18 @@
 (setq native-comp-async-report-warnings-errors nil)
 
 ;; General UI configurations
-(tool-bar-mode -1)                         ; Disable the toolbar
-(set-fringe-mode 10)                       ; Set fringe size
-(electric-pair-mode)                       ; Automatically pair characters
-(scroll-bar-mode -1)                       ; Disable visible scrollbar
-(column-number-mode)                       ; Enable column numbers in the modeline
-(global-display-line-numbers-mode)         ; Show line numbers
+(tool-bar-mode -1)				; Disable the toolbar
+(set-fringe-mode 10)				; Set fringe size
+(electric-pair-mode)				; Automatically pair characters
+(scroll-bar-mode -1)				; Disable visible scrollbar
+(column-number-mode)				; Enable column numbers in the modeline
+(global-display-line-numbers-mode)		; Show line numbers
 
-(setq inhibit-startup-message t)           ; Hide startup message
-(setq inhibit-startup-screen t)            ; Hide startup screen
-(setq visible-bell t)                      ; Setup visible bell
-(setq display-line-numbers-type 'relative) ; Set line number mode to be relative
-(setq mouse-wheel-progressive-speed nil)   ; Disable scroll acceleration
+(setq inhibit-startup-message t)		; Hide startup message
+(setq inhibit-startup-screen t)			; Hide startup screen
+(setq visible-bell t)				; Setup visible bell
+(setq mouse-wheel-progressive-speed nil)	; Disable scroll acceleration
+(defvar display-line-numbers-type 'relative)	; Set line number mode to be relative
 
 ;; Encoding
 (set-language-environment "UTF-8")
@@ -48,7 +48,7 @@
 
 ;; General backup configs
 (setq backup-directory-alist
-      '(("." . (concat user-emacs-directory "backups/")))) ; Backup directory
+      `(("." . ,(concat user-emacs-directory "backups/")))) ; Backup directory
 (setq make-backup-files t)         ; Backup of a file the first time it is saved
 (setq vc-make-backup-files t)      ; No backup of files under version control
 (setq backup-by-copying t)         ; Do not use symlinks for backup
