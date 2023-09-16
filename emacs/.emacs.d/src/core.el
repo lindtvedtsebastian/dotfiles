@@ -10,7 +10,7 @@
 (server-start)              ; Start emacs server
 
 ;; Don't report native comp errors
-(setq comp-async-report-warnings-errors nil)
+(require 'comp)
 (setq native-comp-async-report-warnings-errors nil)
 
 ;; General UI configurations
