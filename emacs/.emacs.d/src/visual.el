@@ -3,7 +3,9 @@
 ;; visual Emacs configurations
 ;;; code:
 
-(setq show-paren-delay 0) ; No delay before highlighting parenthesis
+(setq split-width-threshold 0) ; Reduce required width for splitting horizontally
+
+(setq show-paren-delay 0)      ; No delay before highlighting parenthesis
 
 (set-face-attribute 'default nil :font "Iosevka SS08" :weight 'normal :width 'normal :height 140)
 
