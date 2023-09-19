@@ -6,6 +6,7 @@
 (global-auto-revert-mode)   ; Revert any file that changes on disk
 
 (setq ns-pop-up-frames nil) ; File open requests opens in existing frame
+(setq pop-up-windows nil)   ; Don't open buffers in new windows
 
 (server-start)              ; Start emacs server
 
