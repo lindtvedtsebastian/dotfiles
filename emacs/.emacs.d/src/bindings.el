@@ -62,4 +62,9 @@
 (define-key leader-keys/org (kbd "t") '("add tag" . org-roam-tag-add))
 (define-key leader-keys/org (kbd "r") '("add ref" . org-roam-ref-add))
 
+;; Eglot
+(defvar leader-keys/eglot)
+(define-prefix-command 'leader-keys/eglot)
+(define-key leader-keys (kbd "e") '("eglot" . leader-keys/eglot))
+(define-key leader-keys/eglot (kbd "q") '("quickfix" . eglot-code-action-quickfix))
 ;;; bindings.el ends here
