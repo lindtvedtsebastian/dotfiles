@@ -20,6 +20,12 @@
 (add-hook 'tsx-ts-mode-hook 'eglot-ensure)		; Automatically start eglot in tsx-ts-mode
 (add-hook 'typescript-ts-mode-hook 'eglot-ensure)	; Automatiaclly start eglot in typescript-ts-mode
 
+
+(defun connect-eglot (_interactive)
+  '("localhost" 6005))
+
+(advice-add 'gdscript-eglot-contact :override #'connect-eglot)
+
 ;; Treesit
 (require 'treesit)
 (setq treesit-language-source-alist
