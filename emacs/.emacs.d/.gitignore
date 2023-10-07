@@ -9,3 +9,5 @@ auto-save-list
 tree-sitter
 projects
 org-roam.db
+.org-id-locations
+bookmarks
