@@ -33,14 +33,14 @@
 				(project-eshell "Eshell")))
 
 ;; Leader keys
-(defvar leader-keys)				; Define new empty variable 'leader-keys'
-(define-prefix-command 'leader-keys)		; Create new keymap
+(defvar leader-keys)                         ; Define new empty variable 'leader-keys'
+(define-prefix-command 'leader-keys)         ; Create new keymap
 
-(global-set-key (kbd "C-SPC") 'leader-keys)	; Define global keybinding
+(global-set-key (kbd "C-SPC") 'leader-keys)  ; Define global keybinding
 
 ;; Project keys
-(defvar leader-keys/project)			; Define new empty variable for 'project' keys
-(define-prefix-command 'leader-keys/project)	; Create new keymap for project
+(defvar leader-keys/project)                 ; Define new empty variable for 'project' keys
+(define-prefix-command 'leader-keys/project) ; Create new keymap for project
 (define-key leader-keys (kbd "p") '("project" . leader-keys/project))
 (define-key leader-keys/project (kbd "f") '("find file" . project-find-file))
 (define-key leader-keys/project (kbd "d") '("find dir" . project-find-dir))
@@ -52,7 +52,7 @@
 
 ;; Org
 (require 'org-roam)
-(defvar leader-keys/org)			; Define new empty variable for 'org' keys
+(defvar leader-keys/org)                     ; Define new empty variable for 'org' keys
 (define-prefix-command 'leader-keys/org)
 (define-key leader-keys (kbd "o") '("org" . leader-keys/org))
 (define-key leader-keys/org (kbd "a") '("agenda" . org-agenda))
