@@ -5,20 +5,21 @@
 
 ;; Ensure flymake can read load-path in elisp
 (setq elisp-flymake-byte-compile-load-path load-path)
-(add-hook 'prog-mode-hook 'flymake-mode) ; Start flymake in all prog mode buffers
+(add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffers
 
 ;; Magit
 (require 'magit)
-(setq magit-process-finish-apply-ansi-colors t) ; Apply colors in Magit process
+(setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
+(setq transient-default-level 6)                  ; Show more transient commands
 
 ;; Eglot
 (require 'eglot)
-(setq eglot-events-buffer-size 0) ; Disable event buffer
+(setq eglot-events-buffer-size 0)                 ; Disable event buffer
 
 ;; Typescript / TSX
 (require 'typescript-ts-mode)
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure)		; Automatically start eglot in tsx-ts-mode
-(add-hook 'typescript-ts-mode-hook 'eglot-ensure)	; Automatiaclly start eglot in typescript-ts-mode
+(add-hook 'tsx-ts-mode-hook 'eglot-ensure)        ; Automatically start eglot in tsx-ts-mode
+(add-hook 'typescript-ts-mode-hook 'eglot-ensure) ; Automatiaclly start eglot in typescript-ts-mode
 
 
 (defun connect-eglot (_interactive)
