@@ -3,12 +3,12 @@
 ;;; core Emacs configurations
 ;;; code:
 
-(global-auto-revert-mode)   ; Revert any file that changes on disk
+(global-auto-revert-mode)                    ; Revert any file that changes on disk
 
-(setq ns-pop-up-frames nil) ; File open requests opens in existing frame
-(setq pop-up-windows nil)   ; Don't open buffers in new windows
+(setq ns-pop-up-frames nil)                  ; File open requests opens in existing frame
+(setq pop-up-windows nil)                    ; Don't open buffers in new windows
 
-(server-start)              ; Start emacs server
+(server-start)                               ; Start emacs server
 
 ;; Don't report native comp errors
 (require 'comp)
@@ -54,14 +54,14 @@
 ;; General backup configs
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups/")))) ; Backup directory
-(setq make-backup-files t)         ; Backup of a file the first time it is saved
-(setq vc-make-backup-files t)      ; No backup of files under version control
-(setq backup-by-copying t)         ; Do not use symlinks for backup
-(setq version-control t)           ; Use version control numbers for backup files
-(setq delete-old-versions t)       ; Clean up excess backup files
-(setq kept-old-versions 5)         ; Number of old versions to keep
-(setq kept-new-versions 5)         ; Number of new version to keep
-(setq delete-by-moving-to-trash t) ; Delete files to system trash can
+(setq make-backup-files t)                                  ; Backup of a file the first time it is saved
+(setq vc-make-backup-files t)                               ; No backup of files under version control
+(setq backup-by-copying t)                                  ; Do not use symlinks for backup
+(setq version-control t)                                    ; Use version control numbers for backup files
+(setq delete-old-versions t)                                ; Clean up excess backup files
+(setq kept-old-versions 5)                                  ; Number of old versions to keep
+(setq kept-new-versions 5)                                  ; Number of new version to keep
+(setq delete-by-moving-to-trash t)                          ; Delete files to system trash can
 
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil) ; Allow re-using dired buffers
