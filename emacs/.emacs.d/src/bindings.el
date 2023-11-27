@@ -15,6 +15,7 @@
 (evil-mode)                       ; Enable evil mode
 (evilnc-default-hotkeys)          ; Setup evil nerd commenter hotkeys
 
+(require 'scroll-on-drag)
 (global-set-key (kbd "<down-mouse-2>") 'scroll-on-drag) ; Scroll on middle mouse button
 
 ;; Vertico
