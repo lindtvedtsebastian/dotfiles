@@ -3,6 +3,8 @@
 ;;; initialization file for Emacs
 ;;; code:
 
+(defvar sl/load-times `(("emacs" . ,(current-time))) "Different timestamps to be collected during initialization.")
+
 (defvar straight-repository-branch "develop")
 (defvar straight-check-for-modifications nil)
 
@@ -56,7 +58,6 @@
 ;; Install gdscript-mode from repository
 (straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
 
-
 ;; Function for loading directories recursively
 (defun load-directory (directory)
   "Recursively load all .el files in a DIRECTORY."
@@ -69,9 +70,18 @@
        ((and (eq isdir t) (not ignore-dir))
         (load-directory fullpath))
        ((and (eq isdir nil) (string= (file-name-extension path) "el"))
-        (load (file-name-sans-extension fullpath)))))))
+        (load (file-name-sans-extension fullpath))
+        (add-to-list 'sl/load-times `(,(file-name-base fullpath) . ,(current-time))
+	))))))
 
 ;; Load all .el files from ~/.emacs.d/src recursively
 (load-directory "~/.emacs.d/src")
+
+
+;; Report startup times
+(dolist (section sl/load-times)
+  (message "%-20s %.2fs"
+           (car section)
+           (float-time (time-subtract (current-time) (cadr section)))))
 
 ;;; init.el ends here
