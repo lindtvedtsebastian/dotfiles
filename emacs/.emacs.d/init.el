@@ -42,6 +42,7 @@
         evil-nerd-commenter  ; Comment/uncomment lines efficiently
         org-roam             ; Plain-text personal knowledge management system
         org-roam-ui          ; UI for org-roam
+        scroll-on-drag       ; Interactive scrolling
 	    apheleia             ; Formatting all the things
         graphql-mode         ; Major mode for graphql files
         swift-mode))         ; Major mode for swift files

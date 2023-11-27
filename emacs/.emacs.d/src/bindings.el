@@ -9,11 +9,13 @@
 (require 'evil-collection)
 (require 'evil-nerd-commenter)
 
-(setq evil-want-fine-undo t)		; Fine granular undo-redo
-(evil-set-undo-system 'undo-redo)	; Use built-in undo-redo system
-(evil-collection-init)			; Initialize evil collection
-(evil-mode)				; Enable evil mode
-(evilnc-default-hotkeys)		; Setup evil nerd commenter hotkeys
+(setq evil-want-fine-undo t)      ; Fine granular undo-redo
+(evil-set-undo-system 'undo-redo) ; Use built-in undo-redo system
+(evil-collection-init)            ; Initialize evil collection
+(evil-mode)                       ; Enable evil mode
+(evilnc-default-hotkeys)          ; Setup evil nerd commenter hotkeys
+
+(global-set-key (kbd "<down-mouse-2>") 'scroll-on-drag) ; Scroll on middle mouse button
 
 ;; Vertico
 (require 'vertico)
