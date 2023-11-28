@@ -70,18 +70,22 @@
        ((and (eq isdir t) (not ignore-dir))
         (load-directory fullpath))
        ((and (eq isdir nil) (string= (file-name-extension path) "el"))
-        (load (file-name-sans-extension fullpath))
-        (add-to-list 'sl/load-times `(,(file-name-base fullpath) . ,(current-time))
-	))))))
+        (add-to-list 'sl/load-times `(,(file-name-base fullpath) . ,(current-time)))
+        (load (file-name-sans-extension fullpath)))))))
 
 ;; Load all .el files from ~/.emacs.d/src recursively
 (load-directory "~/.emacs.d/src")
 
-
 ;; Report startup times
-(dolist (section sl/load-times)
-  (message "%-20s %.2fs"
-           (car section)
-           (float-time (time-subtract (current-time) (cadr section)))))
-
+(let ((total 0)
+      (prev (current-time)))
+  (message "\n%-20s %s\n" "SECTION" "TIME")
+  (dolist (section sl/load-times)
+    (message "%-20s %.2fs"
+             (car section)
+             (float-time (time-subtract prev (cdr section))))
+    (setq total (+ total (float-time (time-subtract prev (cdr section)))))
+    (setq prev (cdr section)))
+  (message "\n%-20s %.2fs\n" "total" total))
+    
 ;;; init.el ends here
