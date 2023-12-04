@@ -35,6 +35,9 @@
 				(magit-project-status "Magit" "g")
 				(project-eshell "Eshell")))
 
+(require 'consult)
+(advice-add #'project-find-regexp :override #'consult-ripgrep)
+
 ;; Leader keys
 (defvar leader-keys)                         ; Define new empty variable 'leader-keys'
 (define-prefix-command 'leader-keys)         ; Create new keymap
