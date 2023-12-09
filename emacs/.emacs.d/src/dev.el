@@ -23,6 +23,7 @@
 
 
 (defun connect-eglot (_interactive)
+  "Dumb override for godot lsp connect."
   '("localhost" 6005))
 
 (advice-add 'gdscript-eglot-contact :override #'connect-eglot)
@@ -54,6 +55,6 @@
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
-(require 'apheleia)
+(require 'apheleia-core)
 (apheleia-global-mode t)
 ;;; dev.el ends here
