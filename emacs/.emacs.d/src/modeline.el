@@ -9,9 +9,6 @@
 (require 'svg)
 (require 'svg-lib)
 
-(defvar mode-line-svg '(:eval (propertize ":3" 'display (svg-lib-tag (emacs-uptime) nil :foreground "white" :background "#673AB7" :alignment 1))))
-(put 'mode-line-svg 'risky-local-variable t)
-
 (defvar-local sl/mode-line-vc '(:eval (list
                                        (propertize ":3" 'display
                                                    (svg-lib-icon "git-branch" nil :collection "octicons"
