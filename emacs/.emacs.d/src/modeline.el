@@ -17,9 +17,6 @@
                                        (propertize (sl/mode-line--vc-branch-or-rev) 'face 'keyword))))
   (put 'sl/mode-line-vc 'risky-local-variable t)
 
-(kill-local-variable 'mode-line-format)
-(force-mode-line-update)
-
 (setq-default mode-line-format `("%e" sl/mode-line-vc " " mode-line-buffer-identification))
 
 (require 'vc-git)
