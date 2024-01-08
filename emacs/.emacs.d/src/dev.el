@@ -55,6 +55,6 @@
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
-(require 'apheleia-core)
+(require 'apheleia)
 (apheleia-global-mode t)
 ;;; dev.el ends here
