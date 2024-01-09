@@ -7,6 +7,6 @@
 
 (setq show-paren-delay 0)      ; No delay before highlighting parenthesis
 
-(set-face-attribute 'default nil :font "Iosevka SS08" :weight 'normal :width 'normal :height 140)
+(set-face-attribute 'default nil :font "Iosevka" :weight 'normal :width 'normal :height 140)
 
 ;;; visual.el ends here
