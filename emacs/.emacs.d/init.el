@@ -24,32 +24,32 @@
 
 ;; List of packages to install
 (defvar package-list
-      '(orderless            ; Completion style for regexp in any order
-        vertico              ; VERTical Interactive COmpletion
-        marginalia           ; Completion annotations
-        consult              ; Consulting completion-read
-        embark               ; Act on minibuffer completions
-        embark-consult       ; Consult integration for embark
-        corfu                ; Completion Overlay Region FUnction
-        cape                 ; Completion at point extensions
-        kind-icon            ; Completion kind icons
-        magit                ; Git client
-        which-key            ; Keybinding information
-        exec-path-from-shell ; Env variables from the shell
-        ligature             ; Ligatures
-        diminish             ; Ability to diminish minor modes in modeline
-        yasnippet            ; Yet Another Snippet library
-        evil                 ; Extensible VI Layer
-        evil-collection      ; Collection of Evil bindings for parts of Emacs not covered by evil
-        evil-nerd-commenter  ; Comment/uncomment lines efficiently
-        org-roam             ; Plain-text personal knowledge management system
-        org-roam-ui          ; UI for org-roam
-        scroll-on-drag       ; Interactive scrolling
-	    apheleia             ; Formatting all the things
-        tree-sitter-langs    ; Grammar bundle for tree-sitter
-        graphql-mode         ; Major mode for graphql files
-        swift-mode))         ; Major mode for swift files
-        
+  '(orderless            ; Completion style for regexp in any order
+    vertico              ; VERTical Interactive COmpletion
+    marginalia           ; Completion annotations
+    consult              ; Consulting completion-read
+    embark               ; Act on minibuffer completions
+    embark-consult       ; Consult integration for embark
+    corfu                ; Completion Overlay Region FUnction
+    cape                 ; Completion at point extensions
+    kind-icon            ; Completion kind icons
+    magit                ; Git client
+    which-key            ; Keybinding information
+    exec-path-from-shell ; Env variables from the shell
+    ligature             ; Ligatures
+    diminish             ; Ability to diminish minor modes in modeline
+    yasnippet            ; Yet Another Snippet library
+    evil                 ; Extensible VI Layer
+    evil-collection      ; Collection of Evil bindings for parts of Emacs not covered by evil
+    evil-nerd-commenter  ; Comment/uncomment lines efficiently
+    org-roam             ; Plain-text personal knowledge management system
+    org-roam-ui          ; UI for org-roam
+    scroll-on-drag       ; Interactive scrolling
+	apheleia             ; Formatting all the things
+    graphql-mode         ; Major mode for graphql files
+    swift-mode))         ; Major mode for swift files
+
+
 (require 'straight) ; Make flymake happy
 
 ;; Install all packages that are not yet installed
@@ -88,5 +88,5 @@
     (setq total (+ total (float-time (time-subtract prev (cdr section)))))
     (setq prev (cdr section)))
   (message "\n%-20s %.2fs\n" "total" total))
-    
+
 ;;; init.el ends here
