@@ -47,6 +47,7 @@
     scroll-on-drag       ; Interactive scrolling
 	apheleia             ; Formatting all the things
     graphql-mode         ; Major mode for graphql files
+    direnv               ; Direnv integration
     swift-mode))         ; Major mode for swift files
 
 
