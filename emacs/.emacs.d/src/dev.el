@@ -16,6 +16,11 @@
 (require 'eglot)
 (setq eglot-events-buffer-size 0)                 ; Disable event buffer
 
+;; Nix
+(add-to-list 'eglot-server-programs '(nix-ts-mode . ("nil")))
+(add-hook 'nix-ts-mode-hook 'eglot-ensure)
+(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
+
 ;; Typescript / TSX
 (require 'typescript-ts-mode)
 (add-hook 'tsx-ts-mode-hook 'eglot-ensure)        ; Automatically start eglot in tsx-ts-mode
@@ -53,6 +58,7 @@
         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))
         (c-sharp . ("https://github.com/tree-sitter/tree-sitter-c-sharp"))
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
+        (nix . ("https://github.com/nix-community/tree-sitter-nix"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
 (require 'apheleia)
