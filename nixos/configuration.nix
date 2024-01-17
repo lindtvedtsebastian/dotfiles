@@ -73,6 +73,7 @@
     _1password-gui
     orca-slicer
     freecad
+    inkscape
     gimp
     via
     obs-studio
