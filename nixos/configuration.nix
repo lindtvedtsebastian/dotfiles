@@ -74,6 +74,7 @@
     orca-slicer
     freecad
     inkscape
+    blender
     gimp
     via
     obs-studio
