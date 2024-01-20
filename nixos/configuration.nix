@@ -100,6 +100,7 @@
 
   fonts.packages = with pkgs; [
     iosevka
+    inter
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
