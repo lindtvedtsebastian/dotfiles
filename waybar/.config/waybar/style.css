@@ -1,0 +1,10 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-family: Inter;
+}
+
+window#waybar {
+    background: transparent;
+}
