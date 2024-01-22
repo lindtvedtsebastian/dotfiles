@@ -8,3 +8,66 @@
 window#waybar {
     background: transparent;
 }
+
+#workspaces {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#network {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#wireplumber {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#cpu {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#memory {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#temperature {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#clock {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#tray {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding: 5px;
+}
