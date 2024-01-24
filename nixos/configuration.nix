@@ -70,7 +70,6 @@
     kitty
     rofi-wayland
     liquidctl
-    _1password-gui
     orca-slicer
     freecad
     inkscape
@@ -96,6 +95,12 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = ["sl"];
+  };
+  
   services.lorri.enable = true;
 
   fonts.packages = with pkgs; [
