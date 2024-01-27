@@ -1,5 +1,14 @@
 {
   "layer": "top",
   "modules-left": ["hyprland/workspaces"],
-  "modules-right": ["network","wireplumber","cpu","memory","temperature","clock","tray"]
+  "modules-right": ["network","wireplumber","disk","memory","cpu","temperature","clock","tray"],
+
+
+  "network": {
+    "format-wifi": "{ipaddr}"
+  },
+
+  "disk": {
+    "format": "{free}"
+  }
 }

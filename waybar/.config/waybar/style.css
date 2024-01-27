@@ -33,7 +33,7 @@ window#waybar {
     padding-right: 5px;
 }
 
-#cpu {
+#memory {
     border-radius: 5px;
     border: 3px solid black;
     margin: 5px;
@@ -41,7 +41,15 @@ window#waybar {
     padding-right: 5px;
 }
 
-#memory {
+#disk {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#cpu {
     border-radius: 5px;
     border: 3px solid black;
     margin: 5px;
