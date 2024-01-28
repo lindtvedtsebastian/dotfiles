@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["hyprland/workspaces", "wlr/taskbar"],
   "modules-right": ["network","wireplumber","disk","memory","cpu","temperature","clock","tray"],
 
 

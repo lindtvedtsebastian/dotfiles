@@ -17,6 +17,14 @@ window#waybar {
     padding-right: 5px;
 }
 
+#taskbar {
+    border-radius: 5px;
+    border: 3px solid black;
+    margin: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 #network {
     border-radius: 5px;
     border: 3px solid black;
