@@ -88,6 +88,8 @@
     gnupg
     nixpkgs-fmt
     neofetch
+    grim
+    slurp
   ];
 
 
