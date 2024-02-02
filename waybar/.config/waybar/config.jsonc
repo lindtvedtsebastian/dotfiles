@@ -10,5 +10,9 @@
 
   "disk": {
     "format": "{free}"
-  }
+  },
+
+  "tray": {
+    "spacing": 4
+  } 
 }
