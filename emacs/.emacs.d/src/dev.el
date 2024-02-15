@@ -63,4 +63,5 @@
 
 (require 'apheleia)
 (apheleia-global-mode t)
+(setq apheleia-formatters-respect-indent-level nil)
 ;;; dev.el ends here
