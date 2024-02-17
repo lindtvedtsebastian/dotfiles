@@ -98,11 +98,13 @@
     xwayland.enable = true;
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["sl"];
+    polkitPolicyOwners = [ "sl" ];
   };
-  
+
   services.lorri.enable = true;
 
   systemd.user.services.lorri.serviceConfig = {
@@ -116,8 +118,22 @@
     quicksand
   ];
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
+  services.syncthing = {
+    enable = true;
+    user = "sl";
+    group = "users";
+    dataDir = "/home/sl/st";
+    configDir = "/home/sl/.config/syncthing";
+    overrideDevices = true; # overrides any devices added or deleted through the web interface
+    overrideFolders = true; # overrides any folders added or deleted through the web interface
+    settings = {
+      folders = {
+        "st" = {
+          path = "/home/sl/st";
+        };
+      };
+    };
+  };
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
