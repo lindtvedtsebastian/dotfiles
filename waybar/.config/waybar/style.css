@@ -15,6 +15,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+    background: white;
 }
 
 #taskbar {
@@ -23,6 +24,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #network {
@@ -31,6 +33,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #wireplumber {
@@ -39,6 +42,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #memory {
@@ -47,6 +51,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #disk {
@@ -55,6 +60,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #cpu {
@@ -63,6 +69,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #temperature {
@@ -71,6 +78,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #clock {
@@ -79,6 +87,7 @@ window#waybar {
     margin: 5px;
     padding-left: 5px;
     padding-right: 5px;
+	background: white;
 }
 
 #tray {
