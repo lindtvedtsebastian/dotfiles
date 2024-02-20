@@ -90,6 +90,7 @@
     neofetch
     grim
     slurp
+    unzip
   ];
 
 
