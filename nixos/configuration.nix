@@ -109,6 +109,7 @@
     iosevka
     inter
     quicksand
+    helvetica-neue-lt-std
   ];
 
   services.syncthing = {
