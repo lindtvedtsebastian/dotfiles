@@ -78,7 +78,6 @@
     via
     obs-studio
     direnv
-    nodePackages.typescript-language-server
     tree-sitter
     psmisc
     nil
