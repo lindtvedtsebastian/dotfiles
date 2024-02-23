@@ -105,13 +105,6 @@
     polkitPolicyOwners = [ "sl" ];
   };
 
-  services.lorri.enable = true;
-
-  systemd.user.services.lorri.serviceConfig = {
-    ProtectSystem = pkgs.lib.mkForce "full";
-    ProtectHome = pkgs.lib.mkForce false;
-  };
-
   fonts.packages = with pkgs; [
     iosevka
     inter
