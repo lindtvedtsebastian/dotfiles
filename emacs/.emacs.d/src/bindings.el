@@ -30,10 +30,10 @@
 ;; Project
 (require 'project)
 (setq project-switch-commands '((project-find-file "Find file")
-				(project-find-regexp "Find regexp" "F")
-				(project-find-dir "Find directory")
-				(magit-project-status "Magit" "g")
-				(project-eshell "Eshell")))
+				                (project-find-regexp "Find regexp" "F")
+				                (project-find-dir "Find directory")
+				                (magit-project-status "Magit" "g")
+				                (project-eshell "Eshell")))
 
 (require 'consult)
 (advice-add #'project-find-regexp :override #'consult-ripgrep)
@@ -58,15 +58,20 @@
 
 ;; Org
 (require 'org-roam)
+
 (defvar leader-keys/org)                     ; Define new empty variable for 'org' keys
 (define-prefix-command 'leader-keys/org)
 (define-key leader-keys (kbd "o") '("org" . leader-keys/org))
 (define-key leader-keys/org (kbd "a") '("agenda" . org-agenda))
-(define-key leader-keys/org (kbd "c") '("capture" . org-capture))
 (define-key leader-keys/org (kbd "f") '("find node" . org-roam-node-find))
 (define-key leader-keys/org (kbd "i") '("insert node" . org-roam-node-insert))
 (define-key leader-keys/org (kbd "t") '("add tag" . org-roam-tag-add))
 (define-key leader-keys/org (kbd "r") '("add ref" . org-roam-ref-add))
+
+(defvar leader-keys/org-capture)
+(define-prefix-command 'leader-keys/org-capture)
+(define-key leader-keys/org (kbd "c") '("capture" . leader-keys/org-capture))
+(define-key leader-keys/org-capture (kbd "i") '("inbox" . sl/org-roam-capture-inbox))
 
 ;; Eglot
 (defvar leader-keys/eglot)
