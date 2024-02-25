@@ -67,6 +67,7 @@
 (define-key leader-keys/org (kbd "i") '("insert node" . org-roam-node-insert))
 (define-key leader-keys/org (kbd "t") '("add tag" . org-roam-tag-add))
 (define-key leader-keys/org (kbd "r") '("add ref" . org-roam-ref-add))
+(define-key leader-keys/org (kbd "p") '("find project" . sl/org-roam-find-project))
 
 (defvar leader-keys/org-capture)
 (define-prefix-command 'leader-keys/org-capture)

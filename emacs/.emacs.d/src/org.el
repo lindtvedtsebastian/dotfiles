@@ -36,9 +36,27 @@
   (interactive)
   (setq org-agenda-files (sl/org-roam-list-notes-by-tag "project")))
 
-;; Refresh the agenda list the first time this file loads
-(sl/org-roam-refresh-project-agenda-list)
+(defun sl/org-roam-project-finalize-hook ()
+  "Update variable `org-agenda-files' with project if the capture was not aborted."
+  (remove-hook 'org-capture-after-finalize-hook #'sl/org-roam-project-finalize-hook)
+  (unless org-note-abort
+    (with-current-buffer (org-capture-get :buffer)
+      (add-to-list 'org-agenda-files (buffer-file-name)))))
 
-(org-roam-db-autosync-mode)
+(defun sl/org-roam-find-project ()
+  (interactive)
+  (add-hook 'org-capture-after-finalize-hook #'sl/org-roam-project-finalize-hook)
+  (org-roam-node-find
+   nil
+   nil
+   (sl/org-roam-filter-by-tag "project")
+   nil
+   :templates
+   '(("p" "project" plain "\n* Tasks\n\n%?* Archive\n\n"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: project")
+      :unnarrowed t))))
+
+(sl/org-roam-refresh-project-agenda-list)  ; Refresh the agenda list the first time this file loads
+(org-roam-db-autosync-mode)                ; Automatically sync org-roam db on changes
 
 ;;; org.el ends here
