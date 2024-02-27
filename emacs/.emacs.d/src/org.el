@@ -5,6 +5,10 @@
 
 (require 'org)
 (setq org-directory "~/st/org")
+(setq org-log-done 'time)
+
+(require 'org-refile)
+(setq org-refile-targets '((org-agenda-files . (:level . 1))))
 
 (require 'org-roam)
 
@@ -52,8 +56,8 @@
    (sl/org-roam-filter-by-tag "project")
    nil
    :templates
-   '(("p" "project" plain "\n* Tasks\n\n%?* Archive\n\n"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: project")
+   '(("p" "project" plain "* Tasks\n\n%?* Archive\n\n"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}\n#+filetags: project\n\n")
       :unnarrowed t))))
 
 (sl/org-roam-refresh-project-agenda-list)  ; Refresh the agenda list the first time this file loads
