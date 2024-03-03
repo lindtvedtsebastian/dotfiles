@@ -48,6 +48,7 @@
       (add-to-list 'org-agenda-files (buffer-file-name)))))
 
 (defun sl/org-roam-find-project ()
+  "Find or create a new org-roam project."
   (interactive)
   (add-hook 'org-capture-after-finalize-hook #'sl/org-roam-project-finalize-hook)
   (org-roam-node-find
