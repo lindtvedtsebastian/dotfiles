@@ -97,7 +97,21 @@
     enable = true;
     xwayland.enable = true;
   };
+  
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "sl" = import ./home.nix;
+    };
+  };
+  
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs._1password-gui = {
