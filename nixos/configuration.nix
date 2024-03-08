@@ -2,13 +2,14 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ pkgs, inputs, ... }:
+
 
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -90,6 +91,7 @@
     grim
     slurp
     unzip
+    wl-clipboard
   ];
 
 
