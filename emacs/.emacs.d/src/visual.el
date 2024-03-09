@@ -9,4 +9,6 @@
 
 (set-face-attribute 'default nil :font "Iosevka" :weight 'normal :width 'normal :height 140)
 
+(set-frame-parameter nil 'alpha-background 80)
+
 ;;; visual.el ends here
