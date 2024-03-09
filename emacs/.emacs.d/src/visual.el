@@ -11,4 +11,6 @@
 
 (set-frame-parameter nil 'alpha-background 80)
 
+(setq dired-listing-switches "-lah")
+
 ;;; visual.el ends here
