@@ -14,6 +14,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
@@ -27,7 +29,15 @@
   time.timeZone = "Europe/Oslo";
 
   hardware = {
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+        amdvlk
+      ];
+    };
   };
 
   # Enable CUPS to print documents.
@@ -74,7 +84,7 @@
     orca-slicer
     freecad
     inkscape
-    blender
+    blender-hip
     gimp
     via
     obs-studio
@@ -92,8 +102,14 @@
     slurp
     unzip
     wl-clipboard
+    lshw
+    clinfo
+    rocmPackages.rocminfo
   ];
 
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
 
   programs.hyprland = {
     enable = true;
