@@ -57,7 +57,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    emacs29
+    (emacs.override { withPgtk = true;})
     git
     firefox
     chromium
