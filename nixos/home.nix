@@ -1,9 +1,9 @@
-{config, pkgs, ...}:
+{ inputs, pkgs, ... }:
 
 {
   home.username = "sl";
   home.homeDirectory = "/home/sl";
-  home.stateVersion = "23.11"; 
+  home.stateVersion = "23.11";
 
   home.sessionVariables = {
     EDITOR = "emacs";
@@ -18,6 +18,11 @@
   };
 
   gtk = {
+    enable = true;
+  };
+
+  imports = [ inputs.ags.homeManagerModules.default ];
+  programs.ags = {
     enable = true;
   };
 }

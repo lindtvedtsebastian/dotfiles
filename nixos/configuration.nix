@@ -67,7 +67,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    (emacs.override { withPgtk = true;})
+    (emacs.override { withPgtk = true; })
     git
     firefox
     chromium
@@ -115,7 +115,7 @@
     enable = true;
     xwayland.enable = true;
   };
-  
+
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -129,7 +129,7 @@
       "sl" = import ./home.nix;
     };
   };
-  
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs._1password-gui = {
