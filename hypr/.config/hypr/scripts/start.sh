@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-1password --silent &
+ags &
 
 swww init &
 
 nm-applet --indicator &
 
-waybar &
-
 dunst & 
+
+1password --silent &
