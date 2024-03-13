@@ -25,6 +25,14 @@
 (require 'typescript-ts-mode)
 (add-hook 'tsx-ts-mode-hook 'eglot-ensure)        ; Automatically start eglot in tsx-ts-mode
 (add-hook 'typescript-ts-mode-hook 'eglot-ensure) ; Automatiaclly start eglot in typescript-ts-mode
+(add-hook 'js-ts-mode-hook ' eglot-ensure)        ; Automatically start eglot in js-ts-mode
+(add-hook 'js-jsx-mode-hook 'eglot-ensure)        ; Automatically start eglot in js-jsx
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
+
+
+(setq js-indent-level 2)
 
 ;; Rust
 (add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
