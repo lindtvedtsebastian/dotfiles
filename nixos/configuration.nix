@@ -151,6 +151,7 @@
     inter
     quicksand
     helvetica-neue-lt-std
+    dm-sans
   ];
 
   services.syncthing = {
