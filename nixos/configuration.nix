@@ -113,7 +113,6 @@
     lshw
     clinfo
     rocmPackages.rocminfo
-    pywal
   ];
 
   systemd.tmpfiles.rules = [
