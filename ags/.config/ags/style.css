@@ -1,0 +1,28 @@
+window {
+  font-family: "Deep Mind Sans";
+  font-size: 16px;
+}
+
+.bar {
+  background: transparent;
+  color: black;
+}
+
+button {
+  background: none;
+  background-image: none;
+}
+
+.circle {
+  background-color: #eeeeee;
+  min-width: 2em;
+  min-height: 2em;
+}
+
+.box {
+  background: white;
+  font-weight: 500;
+  border-radius: 0.5em;
+  padding: 3px;
+  margin: 3px;
+}

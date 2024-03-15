@@ -11,6 +11,8 @@ const SystemTrayItem = (item) =>
 
 const SystemTray = Widget.Box({
   children: systemTray.bind("items").as((i) => i.map(SystemTrayItem)),
+  spacing: 4,
+  margin: 4,
 });
 
 export { SystemTray };
