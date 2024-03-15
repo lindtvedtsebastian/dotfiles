@@ -63,7 +63,7 @@ const Cpu = Widget.Box({
     Widget.CircularProgress({
       className: "circle",
       startAt: 0.75,
-      value: ram.bind(),
+      value: cpu.bind(),
       child: Widget.Icon({
         icon: "cpu-symbolic",
         css: "color:#eeeeee;",
