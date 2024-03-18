@@ -113,6 +113,7 @@
     lshw
     clinfo
     rocmPackages.rocminfo
+    spotify
   ];
 
   systemd.tmpfiles.rules = [
