@@ -140,9 +140,13 @@
     overrideDevices = true; # overrides any devices added or deleted through the web interface
     overrideFolders = true; # overrides any folders added or deleted through the web interface
     settings = {
+      devices = {
+        "sll" = {id = "BMXYPPC-3RQLZGD-H5AXDXK-KXKIZQJ-TV2XGUG-OBWHW2M-KEIKMGQ-BPO4CA5"; };
+      };
       folders = {
         "st" = {
           path = "/home/sl/st";
+          devices = ["sll"];
         };
       };
     };
