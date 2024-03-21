@@ -29,7 +29,14 @@
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            ./nixos/configuration.nix
+            ./nixos/hosts/desktop/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./nixos/hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };

@@ -1,29 +1,13 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { pkgs, inputs, ... }:
-
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiInstallAsRemovable = true;
-
-  networking.hostName = "slp"; # Define your hostname.
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
@@ -33,15 +17,11 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-        amdvlk
-      ];
     };
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+
+  networking.networkmanager.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -61,6 +41,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
+
 
   programs.zsh.enable = true;
 
@@ -112,12 +93,8 @@
     wl-clipboard
     lshw
     clinfo
-    rocmPackages.rocminfo
     spotify
-  ];
-
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    ffmpeg
   ];
 
   programs.hyprland = {
@@ -135,7 +112,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "sl" = import ./home.nix;
+      "sl" = import ../home.nix;
     };
   };
 
@@ -170,23 +147,6 @@
       };
     };
   };
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+
 
 }
-
