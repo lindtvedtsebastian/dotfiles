@@ -142,11 +142,12 @@
     settings = {
       devices = {
         "sll" = {id = "BMXYPPC-3RQLZGD-H5AXDXK-KXKIZQJ-TV2XGUG-OBWHW2M-KEIKMGQ-BPO4CA5"; };
+        "slp" = { id = "N52DELU-B54YMUO-PA5EQZE-BQWRCT6-PI6OUI2-IMBNEFR-T6DWFNX-SNOUEAA"; };
       };
       folders = {
         "st" = {
           path = "/home/sl/st";
-          devices = ["sll"];
+          devices = ["sll" "slp"];
         };
       };
     };
