@@ -9,12 +9,13 @@
 (require 'svg)
 (require 'svg-lib)
 
-(defvar-local sl/mode-line-vc '(:eval (list
+(defvar-local sl/mode-line-vc '(:eval (when (vc-backend (buffer-file-name)) (list
                                        (propertize ":3" 'display
                                                    (svg-lib-icon "git-branch" nil :collection "octicons"
                                                                  :stroke 0 :scale 1 :padding 0 :foreground "black" :background "gray90"))
                                        " "
-                                       (propertize (sl/mode-line--vc-branch-or-rev) 'face 'keyword))))
+                                       (propertize (sl/mode-line--vc-branch-or-rev) 'face 'magit-branch-local)))))
+
   (put 'sl/mode-line-vc 'risky-local-variable t)
 
 (setq-default mode-line-format `("%e" sl/mode-line-vc " " mode-line-buffer-identification))
@@ -28,7 +29,6 @@
          (rev (vc-working-revision file backend)))
     (when (eq backend 'Git) (or (vc-git--symbolic-ref file)
                                 (substring rev 0 7)))))
-
 
 
 ;;; modeline.el ends here
