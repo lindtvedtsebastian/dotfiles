@@ -36,7 +36,7 @@
 
 ;; Rust
 (add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-(add-hook 'rust-ts-mode 'eglot-ensure)
+(add-hook 'rust-ts-mode-hook 'eglot-ensure)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 
 (defun connect-eglot (_interactive)
