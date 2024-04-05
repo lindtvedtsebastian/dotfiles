@@ -2,7 +2,7 @@
 
 ags &
 
-swww init &
+swww-daemon -f xrgb &
 
 nm-applet --indicator &
 
