@@ -95,6 +95,7 @@
     clinfo
     spotify
     ffmpeg
+    htop
   ];
 
   programs.hyprland = {
