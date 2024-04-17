@@ -96,6 +96,8 @@
     spotify
     ffmpeg
     htop
+    minikube
+    kubernetes-helm
   ];
 
   programs.hyprland = {
