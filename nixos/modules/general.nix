@@ -98,6 +98,7 @@
     htop
     minikube
     kubernetes-helm
+    kubectl
   ];
 
   programs.hyprland = {
