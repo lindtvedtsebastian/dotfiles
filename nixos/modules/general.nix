@@ -99,6 +99,7 @@
     minikube
     kubernetes-helm
     kubectl
+    calibre
   ];
 
   programs.hyprland = {
