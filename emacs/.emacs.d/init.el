@@ -48,6 +48,8 @@
 	apheleia             ; Formatting all the things
     graphql-mode         ; Major mode for graphql files
     direnv               ; Direnv integration
+    auctex               ; Env for LaTeX
+    pdf-tools            ; PDF utilities
     nix-ts-mode          ; Major mode for nix files
     swift-mode))         ; Major mode for swift files
 

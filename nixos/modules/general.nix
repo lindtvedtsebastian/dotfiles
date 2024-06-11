@@ -100,6 +100,9 @@
     kubernetes-helm
     kubectl
     calibre
+    texlab
+    tectonic
+    texlive
   ];
 
   programs.hyprland = {
