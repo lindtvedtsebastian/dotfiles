@@ -34,6 +34,8 @@
 (setq js-indent-level 2)
 
 ;; YAML
+(add-hook 'yaml-ts-mode-hook 'eglot-ensure)       ; Automatically start eglot in yaml-ts-mode
+
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
 
@@ -76,7 +78,7 @@
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
-(require 'apheleia)
+(require 'apheleia-core)
 (apheleia-global-mode t)
-(setq apheleia-formatters-respect-indent-level nil)
+(defvar apheleia-formatters-respect-indent-level nil)
 ;;; dev.el ends here
