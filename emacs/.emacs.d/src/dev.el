@@ -31,8 +31,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
 
-(setq js-indent-level 2)
-
 ;; YAML
 (add-hook 'yaml-ts-mode-hook 'eglot-ensure)       ; Automatically start eglot in yaml-ts-mode
 
@@ -52,6 +50,7 @@
 
 ;; Treesit
 (require 'treesit)
+(setq treesit-font-lock-level 4)
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
         (c . ("https://github.com/tree-sitter/tree-sitter-c"))
@@ -78,7 +77,7 @@
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
-(require 'apheleia-core)
+(require 'apheleia)
 (apheleia-global-mode t)
-(defvar apheleia-formatters-respect-indent-level nil)
+(setq apheleia-formatters-respect-indent-level nil)
 ;;; dev.el ends here
