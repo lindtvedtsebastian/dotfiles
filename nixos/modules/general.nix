@@ -101,8 +101,7 @@
     kubectl
     calibre
     texlab
-    tectonic
-    texlive
+    texliveFull
   ];
 
   programs.hyprland = {
