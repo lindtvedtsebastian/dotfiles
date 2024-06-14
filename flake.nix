@@ -10,9 +10,11 @@
     };
 
     ags.url = "github:Aylur/ags";
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, emacs-overlay,... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -21,13 +23,13 @@
         config = {
           allowUnfree = true;
         };
+        overlays = [emacs-overlay.overlays.default];
       };
-
     in
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; inherit pkgs; };
           modules = [
             ./nixos/hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default

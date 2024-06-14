@@ -53,10 +53,8 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-    (emacs.override { withPgtk = true; })
+    (emacsGit.override { withPgtk = true; })
     git
     firefox
     chromium
