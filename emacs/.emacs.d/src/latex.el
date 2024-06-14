@@ -1,33 +1,14 @@
 ;;; latex.el --- -*- lexical-binding: t -*-
-;;; commentary:
+;;; Commentary:
 ;; 
-;;; code: 
-
-(require 'latex)
-
 ;;; Code:
 
-(setq TeX-engine-alist '((default
-                          "Tectonic"
-                          "tectonic -X compile -f plain %T"
-                          "tectonic -X watch"
-                          nil)))
+(require 'latex)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
 
-(setq LaTeX-command-style '(("" "%(latex)")))
-(setq TeX-check-TeX nil)
-(setq TeX-process-asynchronous t)
-(setq TeX-engine 'default)
+(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+(setq TeX-source-correlate-start-server t)
 
-(let ((tex-list (assoc "TeX" TeX-command-list))
-      (latex-list (assoc "LaTeX" TeX-command-list)))
-  (setf (cadr tex-list) "%(tex)"
-        (cadr latex-list) "%l"))
-
-(add-hook 'after-change-major-mode-hook
-          (lambda ()
-            (when-let ((project (project-current))
-                       (proot (project-root project)))
-              (when (file-exists-p (expand-file-name "Tectonic.toml" proot))
-                (setq-local TeX-output-dir (expand-file-name "build/index" proot))))))
-
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 ;;; latex.el ends here
