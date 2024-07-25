@@ -4,7 +4,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   hardware = {
-    opengl = {
+    graphics = {
       extraPackages = with pkgs; [
         rocmPackages.clr.icd
         amdvlk

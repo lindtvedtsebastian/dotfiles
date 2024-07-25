@@ -12,19 +12,10 @@
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-  };
-
+  hardware.graphics.enable = true;
 
   networking.networkmanager.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
   security.rtkit.enable = true;
 
   services.pipewire = {
