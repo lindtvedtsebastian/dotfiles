@@ -26,7 +26,6 @@
 (electric-pair-mode)                         ; Automatically pair characters
 (scroll-bar-mode -1)                         ; Disable visible scrollbar
 (column-number-mode)                         ; Enable column numbers in the modeline
-(global-display-line-numbers-mode)           ; Show line numbers
 
 ;; Customize TAB behaviour
 (setq-default tab-width 4)

@@ -3,6 +3,9 @@
 ;; dev Emacs configurations
 ;;; code:
 
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 ;; Ensure flymake can read load-path in elisp
 (setq elisp-flymake-byte-compile-load-path load-path)
 (add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffers
