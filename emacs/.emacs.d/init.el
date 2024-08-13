@@ -30,6 +30,9 @@
     consult              ; Consulting completion-read
     embark               ; Act on minibuffer completions
     embark-consult       ; Consult integration for embark
+    lsp-mode             ; Language server client
+    lsp-ui               ; Language server client ui
+    flycheck             ; Code linting
     corfu                ; Completion Overlay Region FUnction
     cape                 ; Completion at point extensions
     kind-icon            ; Completion kind icons
@@ -62,6 +65,9 @@
 
 ;; Install gdscript-mode from repository
 (straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
+
+;; Install lsp-tailwindcss from repository
+(straight-use-package '(lsp-tailwindcss :type git :host github :repo "merrickluo/lsp-tailwindcss"))
 
 ;; Function for loading directories recursively
 (defun load-directory (directory)
