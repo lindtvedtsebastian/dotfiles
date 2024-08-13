@@ -7,7 +7,9 @@
 
 (exec-path-from-shell-initialize)
 
-(require 'direnv)
-(direnv-mode)
+(when (eq 'system-type "gnu/linux")
+  ((require 'direnv)
+   (direnv-mode)))
+
 
 ;;; env.el ends here
