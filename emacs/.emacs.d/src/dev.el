@@ -7,7 +7,6 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (require 'yasnippet)
-
 (require 'lsp-mode)
 (require 'lsp-completion)
 
@@ -66,26 +65,18 @@
 (setq lsp-use-plists t)
 
 (require 'flycheck)
+(setq flycheck-emacs-lisp-load-path load-path)
 (global-flycheck-mode)
 
 (defvar lsp-tailwindcss-add-on-mode t)
 (require 'lsp-tailwindcss)
-
-;; Ensure flymake can read load-path in elisp
-(setq elisp-flymake-byte-compile-load-path load-path)
-(add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffers
 
 ;; Magit
 (require 'magit)
 (setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
 (setq transient-default-level 6)                  ; Show more transient commands
 
-;; Eglot
-(require 'eglot)
-(setq eglot-events-buffer-size 0)                 ; Disable event buffer
-
 ;; Nix
-(add-to-list 'eglot-server-programs '(nix-ts-mode . ("nil")))
 (add-hook 'nix-ts-mode-hook 'lsp-deferred)
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
 
@@ -106,7 +97,6 @@
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
 
 ;; Rust
-(add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
 (add-hook 'rust-ts-mode-hook 'lsp-deferred)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 
