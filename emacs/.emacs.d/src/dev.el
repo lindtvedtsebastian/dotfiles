@@ -31,7 +31,7 @@
 (setq lsp-enable-dap-auto-configure t)
 (setq lsp-enable-file-watchers nil)
 (setq lsp-enable-folding t)
-(setq lsp-enable-imenu t)
+(setq lsp-enable-imenu nil)
 (setq lsp-enable-indentation t)
 (setq lsp-enable-links nil)
 (setq lsp-enable-on-type-formatting t)
@@ -43,6 +43,8 @@
 (setq lsp-ui-sideline-show-hover nil)
 (setq lsp-ui-sideline-diagnostic-max-lines 20)
 (setq lsp-ui-doc-use-childframe t)
+(setq lsp-ui-doc-show-with-mouse nil)
+(setq lsp-ui-doc-show-with-cursor t)
 
 (setq lsp-enable-snippet t)
 (setq lsp-completion-show-kind t)
@@ -70,6 +72,7 @@
 
 (defvar lsp-tailwindcss-add-on-mode t)
 (require 'lsp-tailwindcss)
+(setq lsp-tailwindcss-server-version "0.12.6")
 
 ;; Magit
 (require 'magit)
