@@ -9,9 +9,6 @@ export HISTFILE="$ZDOTDIR/.zhistory" # zsh history
 export HISTSIZE=10000 # maximum events for internal history
 export SAVEHIST=10000 # maximum events in history file
 
-# increase lsp performance in emacs
-export LSP_USE_PLISTS=true
-
 # encoding
 export LANG=en_US.UTF-8
 

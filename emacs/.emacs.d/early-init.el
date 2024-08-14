@@ -7,6 +7,8 @@
 (setq gc-cons-threshold most-positive-fixnum) ;; Set garbage collection threshold to bignum during init
 (setq inhibit-default-init t)                 ;; Inhibit default init from loading
 
+(setenv "LSP_USE_PLISTS" "true")
+
 ;; Add hook to reset garbage collection threshold after initialization is finished
 (add-hook 'after-init-hook
           #'(lambda () (setq gc-cons-threshold (* 32 1024 1024)))) ;; 32mb
