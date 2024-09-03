@@ -14,6 +14,7 @@
 (evil-collection-init)            ; Initialize evil collection
 (evil-mode)                       ; Enable evil mode
 (evilnc-default-hotkeys)          ; Setup evil nerd commenter hotkeys
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 
 (require 'scroll-on-drag)
 (global-set-key (kbd "<down-mouse-2>") 'scroll-on-drag) ; Scroll on middle mouse button
