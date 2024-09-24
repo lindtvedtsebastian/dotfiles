@@ -114,6 +114,7 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "sl" ];
