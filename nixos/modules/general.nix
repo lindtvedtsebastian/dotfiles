@@ -44,6 +44,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    boost
     (emacs-git.override { withPgtk = true; })
     git
     firefox
