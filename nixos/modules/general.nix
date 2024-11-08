@@ -33,6 +33,7 @@
     shell = pkgs.zsh;
   };
 
+
   programs.zsh.enable = true;
 
   virtualisation.docker = {
@@ -94,10 +95,6 @@
     libreoffice
   ];
 
-  services.udev.packages = with pkgs; [
-    via
-  ];
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -132,5 +129,28 @@
     helvetica-neue-lt-std
     dm-sans
   ];
+
+  services.syncthing = {
+    enable = true;
+    user = "sl";
+    group = "users";
+    dataDir = "/home/sl/st";
+    configDir = "/home/sl/.config/syncthing";
+    overrideDevices = true; # overrides any devices added or deleted through the web interface
+    overrideFolders = true; # overrides any folders added or deleted through the web interface
+    settings = {
+      devices = {
+        "sll" = {id = "BMXYPPC-3RQLZGD-H5AXDXK-KXKIZQJ-TV2XGUG-OBWHW2M-KEIKMGQ-BPO4CA5"; };
+        "slp" = { id = "N52DELU-B54YMUO-PA5EQZE-BQWRCT6-PI6OUI2-IMBNEFR-T6DWFNX-SNOUEAA"; };
+      };
+      folders = {
+        "st" = {
+          path = "/home/sl/st";
+          devices = ["sll" "slp"];
+        };
+      };
+    };
+  };
+
 
 }
