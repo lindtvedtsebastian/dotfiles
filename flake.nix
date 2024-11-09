@@ -2,7 +2,7 @@
   description = "nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,7 +14,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = { self, nixpkgs, emacs-overlay,... }@inputs:
+  outputs = { self, nixpkgs, emacs-overlay, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,7 +23,9 @@
         config = {
           allowUnfree = true;
         };
-        overlays = [emacs-overlay.overlays.default];
+        overlays = [
+          emacs-overlay.overlays.default
+        ];
       };
     in
     {
