@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../modules/general.nix
     ../../modules/amd.nix
+    ../../modules/hyprland.nix
     inputs.home-manager.nixosModules.default
   ];
 

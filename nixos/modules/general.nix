@@ -33,7 +33,6 @@
     shell = pkgs.zsh;
   };
 
-
   programs.zsh.enable = true;
 
   virtualisation.docker = {
@@ -45,7 +44,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    boost
     (emacs-git.override { withPgtk = true; })
     git
     firefox
@@ -53,12 +51,8 @@
     vim
     stow
     wget
-    waybar
-    dunst
-    libnotify
-    swww
+
     kitty
-    rofi-wayland
     liquidctl
     orca-slicer
     freecad
@@ -77,10 +71,8 @@
     gnupg
     nixpkgs-fmt
     neofetch
-    grim
-    slurp
+
     unzip
-    wl-clipboard
     lshw
     clinfo
     spotify
@@ -95,16 +87,8 @@
     libreoffice
   ];
 
-  programs.hyprland = {
+  programs.steam = {
     enable = true;
-    xwayland.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
   };
 
   home-manager = {
