@@ -81,4 +81,7 @@
 (require 'apheleia)
 (apheleia-global-mode t)
 (setq apheleia-formatters-respect-indent-level nil)
+
+(add-to-list 'apheleia-formatters '(nixpkgs-fmt "nixpkgs-fmt"))
+(add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt))
 ;;; dev.el ends here
