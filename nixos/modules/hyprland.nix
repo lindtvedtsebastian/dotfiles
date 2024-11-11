@@ -8,6 +8,8 @@
     slurp
     wl-clipboard
     rofi-wayland
+    hypridle
+    hyprlock
   ];
 
   programs.hyprland = {
@@ -15,11 +17,12 @@
     xwayland.enable = true;
   };
 
+  security.pam.services.hyprlock = { };
+
   xdg.portal = {
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
   };
-  
 }

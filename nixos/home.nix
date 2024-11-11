@@ -28,4 +28,5 @@
       libdbusmenu-gtk3
     ];
   };
+
 }

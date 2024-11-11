@@ -51,7 +51,6 @@
     vim
     stow
     wget
-
     kitty
     liquidctl
     orca-slicer
@@ -71,7 +70,6 @@
     gnupg
     nixpkgs-fmt
     neofetch
-
     unzip
     lshw
     clinfo
