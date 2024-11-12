@@ -10,6 +10,7 @@
     rofi-wayland
     hypridle
     hyprlock
+    hyprls
   ];
 
   programs.hyprland = {
