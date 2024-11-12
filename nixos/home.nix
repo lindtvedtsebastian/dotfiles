@@ -26,6 +26,7 @@
     enable = true;
     extraPackages = with pkgs; [
       libdbusmenu-gtk3
+      inputs.ags.packages.${pkgs.system}.hyprland
     ];
   };
 

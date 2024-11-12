@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/v2";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
