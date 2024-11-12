@@ -83,6 +83,7 @@
     texlab
     texliveFull
     libreoffice
+    nautilus
   ];
 
   programs.steam = {
