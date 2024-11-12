@@ -1,5 +1,6 @@
 import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 import { Variable } from "astal"
+import Nix from "./Nix"
 
 const time = Variable("").poll(1000, "date")
 
@@ -13,6 +14,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
             | Astal.WindowAnchor.RIGHT}
         application={App}>
         <centerbox>
+          <Nix/>
             <button
                 onClicked="echo hello"
                 halign={Gtk.Align.CENTER} >

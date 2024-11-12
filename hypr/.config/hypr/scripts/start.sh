@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ags &
+ags run &
 
 swww-daemon -f xrgb &
 
