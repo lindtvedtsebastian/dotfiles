@@ -6,9 +6,7 @@
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; Ensure flymake can read load-path in elisp
-(setq elisp-flymake-byte-compile-load-path load-path)
-(add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffers
+
 
 ;; Magit
 (require 'magit)
@@ -79,10 +77,20 @@
         (qmljs . ("~/dotfiles/dependencies/tree-sitter-qml"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
+;; QML
+(add-to-list 'load-path "~/dotfiles/dependencies/qml-ts-mode")
+(require 'qml-ts-mode)
+(add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-ts-mode))
+(add-to-list 'eglot-server-programs '(qml-ts-mode . ("qmlls" "-E")))
+
 (require 'apheleia)
 (apheleia-global-mode t)
 (setq apheleia-formatters-respect-indent-level nil)
 
 (add-to-list 'apheleia-formatters '(nixpkgs-fmt "nixpkgs-fmt"))
 (add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt))
+
+;; Ensure flymake can read from load-path
+(setq elisp-flymake-byte-compile-load-path load-path)
+(add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffer
 ;;; dev.el ends here
