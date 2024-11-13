@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, system, inputs, ... }:
 {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -43,48 +43,52 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    (emacs-git.override { withPgtk = true; })
-    git
-    firefox
-    chromium
-    vim
-    stow
-    wget
-    kitty
-    liquidctl
-    orca-slicer
-    freecad
-    inkscape
-    blender-hip
-    gimp
-    via
-    obs-studio
-    direnv
-    tree-sitter
-    psmisc
-    nil
-    slack
-    discord
-    ripgrep
-    gnupg
-    nixpkgs-fmt
-    neofetch
-    unzip
-    lshw
-    clinfo
-    spotify
-    ffmpeg
-    htop
-    minikube
-    kubernetes-helm
-    kubectl
-    calibre
-    texlab
-    texliveFull
-    libreoffice
-    nautilus
+  environment.systemPackages = [
+    (pkgs.emacs-git.override {
+      withPgtk = true;
+    })
+    pkgs.git
+    pkgs.firefox
+    pkgs.chromium
+    pkgs.vim
+    pkgs.stow
+    pkgs.wget
+    pkgs.kitty
+    pkgs.liquidctl
+    pkgs.orca-slicer
+    pkgs.freecad
+    pkgs.inkscape
+    pkgs.blender-hip
+    pkgs.gimp
+    pkgs.via
+    pkgs.obs-studio
+    pkgs.direnv
+    pkgs.tree-sitter
+    pkgs.psmisc
+    pkgs.nil
+    pkgs.slack
+    pkgs.discord
+    pkgs.ripgrep
+    pkgs.gnupg
+    pkgs.nixpkgs-fmt
+    pkgs.neofetch
+    pkgs.unzip
+    pkgs.lshw
+    pkgs.clinfo
+    pkgs.spotify
+    pkgs.ffmpeg
+    pkgs.htop
+    pkgs.minikube
+    pkgs.kubernetes-helm
+    pkgs.kubectl
+    pkgs.calibre
+    pkgs.texlab
+    pkgs.texliveFull
+    pkgs.libreoffice
+    pkgs.nautilus
+    inputs.quickshell.packages.${system}.default
   ];
+
 
   programs.steam = {
     enable = true;

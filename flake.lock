@@ -1,49 +1,8 @@
 {
   "nodes": {
-    "ags": {
-      "inputs": {
-        "astal": "astal",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1731376632,
-        "narHash": "sha256-u5rT4bHvMK/bUxqGrBxWHcM039N1MvkOrnyxSklZzTw=",
-        "owner": "Aylur",
-        "repo": "ags",
-        "rev": "5ec5640756bfb936c5d869d9070d6ec0bea06d13",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Aylur",
-        "ref": "v2",
-        "repo": "ags",
-        "type": "github"
-      }
-    },
-    "astal": {
-      "inputs": {
-        "nixpkgs": [
-          "ags",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731372391,
-        "narHash": "sha256-lLq8dmsprt0Z6Ck/5DewQc2kx6jAmV0s+IQWCoZNj90=",
-        "owner": "aylur",
-        "repo": "astal",
-        "rev": "2a9bb96f056f25c95b330984cfe7ac484db6c9c6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aylur",
-        "repo": "astal",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
@@ -80,17 +39,35 @@
         "type": "github"
       }
     },
+    "nix-qml-support": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1730724501,
+        "narHash": "sha256-zvNdomPM86fUf0iAwJV1RQC8yAqDCKbCDJKIs4iIPy0=",
+        "ref": "refs/heads/master",
+        "rev": "8f897ffb4a1575252c536c63db8be72f22b6a494",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/nix-qml-support"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/nix-qml-support"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1731139594,
-        "narHash": "sha256-IigrKK3vYRpUu+HEjPL/phrfh7Ox881er1UEsZvw9Q4=",
-        "owner": "nixos",
+        "lastModified": 1730785428,
+        "narHash": "sha256-Zwl8YgTVJTEum+L+0zVAWvXAGbWAuXHax3KzuejaDyo=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "76612b17c0ce71689921ca12d9ffdc9c23ce40b2",
+        "rev": "4aa36568d413aca0ea84a1684d2d46f55dbabad7",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -114,18 +91,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1730785428,
-        "narHash": "sha256-Zwl8YgTVJTEum+L+0zVAWvXAGbWAuXHax3KzuejaDyo=",
+        "lastModified": 1730531603,
+        "narHash": "sha256-Dqg6si5CqIzm87sp57j5nTaeBbWhHFaVyG7V6L8k3lY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4aa36568d413aca0ea84a1684d2d46f55dbabad7",
+        "rev": "7ffd9ae656aec493492b44d0ddfb28e79a1ea25d",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "id": "nixpkgs",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "indirect"
       }
     },
     "nixpkgs_3": {
@@ -144,12 +120,33 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731414942,
+        "narHash": "sha256-aG+bwhYc0OrsrHDuS5Ah/YKdJVw1fsJZTlvkk7SzyOU=",
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "rev": "0dd19d4a181378df5f61de9b5f54b3f2bba96e8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "ags": "ags",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_3"
+        "nix-qml-support": "nix-qml-support",
+        "nixpkgs": "nixpkgs_3",
+        "quickshell": "quickshell"
       }
     }
   },

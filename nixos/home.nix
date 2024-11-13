@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "sl";
@@ -19,15 +19,6 @@
 
   gtk = {
     enable = true;
-  };
-
-  imports = [ inputs.ags.homeManagerModules.default ];
-  programs.ags = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libdbusmenu-gtk3
-      inputs.ags.packages.${pkgs.system}.hyprland
-    ];
   };
 
 }

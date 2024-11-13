@@ -9,12 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags.url = "github:Aylur/ags/v2";
+    quickshell =
+      {
+        url = "github:quickshell-mirror/quickshell";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+    nix-qml-support = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/nix-qml-support";
+    };
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = { self, nixpkgs, emacs-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, emacs-overlay, quickshell, nix-qml-support, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,7 +39,7 @@
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; inherit pkgs; };
+          specialArgs = { inherit inputs; inherit pkgs; inherit system; };
           modules = [
             ./nixos/hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
