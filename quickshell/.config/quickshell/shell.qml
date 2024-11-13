@@ -7,6 +7,8 @@ import Quickshell.Widgets
 
 ShellRoot {
     PanelWindow {
+
+    id: root
         color: "#262730"
         anchors {
             top: true
@@ -36,6 +38,10 @@ ShellRoot {
                     source: "root:assets/nix.svg"
                 }
             }
+        }
+
+        Hyprland {
+           bar: root
         }
 
         Text {
