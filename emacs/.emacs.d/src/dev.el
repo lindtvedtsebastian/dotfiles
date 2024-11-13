@@ -82,6 +82,7 @@
 (require 'qml-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-ts-mode))
 (add-to-list 'eglot-server-programs '(qml-ts-mode . ("qmlls" "-E")))
+(add-hook 'qml-ts-mode-hook 'eglot-ensure)
 
 (require 'apheleia)
 (apheleia-global-mode t)

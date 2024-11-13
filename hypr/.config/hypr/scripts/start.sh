@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+quickshell & 
+
 swww-daemon -f xrgb &
 
 nm-applet --indicator &
