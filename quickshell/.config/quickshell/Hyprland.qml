@@ -6,7 +6,7 @@ MouseArea {
     id: root
     required property var bar
     property int wsCount: 10
-    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(bar.screen)
+    readonly property HyprlandMonitor monitor: Hyprland.focusedMonitor
     property int currentIndex: 0
     property int existsCount: 0
 
@@ -26,7 +26,7 @@ MouseArea {
                 property int wsIndex: 1 + index
                 property HyprlandWorkspace workspace: null
                 property bool exists: workspace != null
-                property bool active: (monitor?.activeWorkspace ?? false) && monitor.activeWorkspace == workspace
+                property bool active: monitor.activeWorkspace == workspace && workspace.monitor == monitor
 
                 onActiveChanged: {
                     if (active) {
@@ -80,6 +80,8 @@ MouseArea {
             root.workspaceAdded(workspace);
         }
     }
+
+
 
     Component.onCompleted: {
         Hyprland.workspaces.values.forEach(workspace => {
