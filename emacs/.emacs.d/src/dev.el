@@ -76,6 +76,7 @@
         (c-sharp . ("https://github.com/tree-sitter/tree-sitter-c-sharp"))
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))
+        (qmljs . ("~/dotfiles/dependencies/tree-sitter-qml"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
 (require 'apheleia)

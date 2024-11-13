@@ -3,6 +3,8 @@
 *~
 .#*
 \#*#
+*.o
+*.so
 
 /Cargo.lock
 /build/
