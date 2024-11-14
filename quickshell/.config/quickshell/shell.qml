@@ -40,9 +40,7 @@ ShellRoot {
                 }
             }
 
-            Hyprland {
-                bar: root
-            }
+            Hyprland {}
 
             Text {
                 id: clock
