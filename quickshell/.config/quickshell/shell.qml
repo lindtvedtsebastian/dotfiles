@@ -41,9 +41,10 @@ ShellRoot {
             }
 
             Hyprland {}
-
+}
             Text {
                 id: clock
+                anchors.centerIn: parent
                 font.family: "inter"
                 color: "#fafafa"
 
@@ -68,6 +69,6 @@ ShellRoot {
                     onTriggered: dateProc.running = true
                 }
             }
-        }
+        
     }
 }

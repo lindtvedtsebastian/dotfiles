@@ -10,11 +10,12 @@ MouseArea {
     signal workspaceAdded(workspace: HyprlandWorkspace)
 
     width: row.implicitWidth + 10
-    height: 50
+    height: 30
 
     Row {
         id: row
-        spacing: 4
+        spacing: 8
+        anchors.centerIn: parent
         Repeater {
             model: wsCount
             MouseArea {
@@ -45,7 +46,7 @@ MouseArea {
                     }
                 }
 
-                width: 12 + 0.12 * animActive
+                width: 12 + 0.18 * animActive
                 height: 12
 
                 Rectangle {
