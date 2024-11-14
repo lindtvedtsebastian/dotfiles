@@ -7,8 +7,6 @@ MouseArea {
     required property var bar
     property int wsCount: 10
     readonly property HyprlandMonitor monitor: Hyprland.focusedMonitor
-    property int currentIndex: 0
-    property int existsCount: 0
 
     signal workspaceAdded(workspace: HyprlandWorkspace)
 
@@ -20,26 +18,15 @@ MouseArea {
         spacing: 4
         Repeater {
             model: wsCount
-            delegate: MouseArea {
+            MouseArea {
                 id: wsItem
+                hoverEnabled: true
+
                 required property int index
                 property int wsIndex: 1 + index
                 property HyprlandWorkspace workspace: null
                 property bool exists: workspace != null
-                property bool active: monitor.activeWorkspace == workspace && workspace.monitor == monitor
-
-                onActiveChanged: {
-                    if (active) {
-                        root.currentIndex = wsIndex;
-                    }
-                    // Start the width animation each time active changes
-                    widthAnimation.to = active ? 24 : 12;
-                    widthAnimation.running = true;
-                }
-
-                onExistsChanged: {
-                    root.existsCount += exists ? 1 : -1;
-                }
+                property bool active: monitor.activeWorkspace == workspace
 
                 onPressed: Hyprland.dispatch(`workspace ${wsIndex}`)
 
@@ -52,8 +39,10 @@ MouseArea {
                     }
                 }
 
-                hoverEnabled: true
-                width: 12
+                property real animActive: active ? 100 : 0
+                Behavior on animActive { NumberAnimation {duration: 100} }
+
+                width: 12 + 0.12 * animActive
                 height: 12
 
                 Rectangle {
@@ -63,13 +52,6 @@ MouseArea {
                     color: exists ? (parent.containsMouse ? "#f7f7a3" : "#f79199") : (parent.containsMouse ? "#f7f7a3" : "#fafafa")
                 }
 
-                // Define NumberAnimation outside of property bindings to run manually
-                NumberAnimation {
-                    id: widthAnimation
-                    target: wsItem
-                    property: "width"
-                    duration: 200
-                }
             }
         }
     }
