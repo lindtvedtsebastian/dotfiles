@@ -6,8 +6,6 @@
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-
-
 ;; Magit
 (require 'magit)
 (setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
@@ -75,6 +73,7 @@
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))
         (qmljs . ("~/dotfiles/dependencies/tree-sitter-qml"))
+        (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
 ;; QML

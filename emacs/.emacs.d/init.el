@@ -51,7 +51,8 @@
     auctex               ; Env for LaTeX
     pdf-tools            ; PDF utilities
     nix-ts-mode          ; Major mode for nix files
-    swift-mode))         ; Major mode for swift files
+    swift-mode           ; Major mode for swift files
+    web-mode))           ; Major mode for template based files
 
 
 (require 'straight) ; Make flymake happy
