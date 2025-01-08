@@ -6,44 +6,42 @@
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+(require 'lsp-mode)
+(require 'lsp-completion)
+(require 'lsp-icons)
+(require 'lsp-headerline)
+
+(setq lsp-keymap-prefix "C-c l")
+(setq lsp-completion-provider :none)
+(setq lsp-log-io nil)
+(setq lsp-keep-workspace-alive nil)
+(setq lsp-idle-delay 0)
+(setq lsp-enable-xref t)
+(setq lsp-enable-imenu t)
+(setq lsp-enable-file-watchers t)
+(setq lsp-file-watch-threshold 10000)
+(setq lsp-eldoc-enable-hover t)
+(setq lsp-enable-folding t)
+(setq lsp-enable-indentation nil)
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-enable-suggest-server-download t)
+(setq lsp-enable-symbol-highlighting t)
+(setq lsp-enable-text-document-color t)
+(setq lsp-completion-enable t)
+(setq lsp-completion-enable-additional-text-edit t)
+(setq lsp-enable-snippet t)
+(setq lsp-completion-show-kind t)
+(setq lsp-headerline-breadcrumb-enable t)
+(setq lsp-headerline-breadcrumb-icons-enable t)
+(setq lsp-headerline-breadcrumb-enable-symbol-numbers nil)
+(setq lsp-headerline-breadcrumb-enable-diagnostics nil)
+(setq lsp-semantic-tokens-enable t)
+(setq lsp-use-plists t)
+
 ;; Magit
 (require 'magit)
 (setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
 (setq transient-default-level 6)                  ; Show more transient commands
-
-(require 'eglot)
-
-;; Nix
-(add-to-list 'eglot-server-programs '(nix-ts-mode . ("nil")))
-(add-hook 'nix-ts-mode-hook 'eglot-ensure)
-(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode))
-
-;; Typescript / TSX
-(require 'typescript-ts-mode)
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure)        ; Automatically start eglot in tsx-ts-mode
-(add-hook 'typescript-ts-mode-hook 'eglot-ensure) ; Automatiaclly start eglot in typescript-ts-mode
-(add-hook 'js-ts-mode-hook ' eglot-ensure)        ; Automatically start eglot in js-ts-mode
-(add-hook 'js-jsx-mode-hook 'eglot-ensure)        ; Automatically start eglot in js-jsx
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
-
-;; YAML
-(add-hook 'yaml-ts-mode-hook 'eglot-ensure)       ; Automatically start eglot in yaml-ts-mode
-
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
-
-;; Rust
-(add-to-list 'eglot-server-programs '((rust-ts-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-(add-hook 'rust-ts-mode-hook 'eglot-ensure)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-
-(defun connect-eglot (_interactive)
-  "Dumb override for godot lsp connect."
-  '("localhost" 6005))
-
-(advice-add 'gdscript-eglot-contact :override #'connect-eglot)
 
 ;; Treesit
 (require 'treesit)
@@ -80,8 +78,6 @@
 (add-to-list 'load-path "~/dotfiles/dependencies/qml-ts-mode")
 (require 'qml-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-ts-mode))
-(add-to-list 'eglot-server-programs '(qml-ts-mode . ("qmlls" "-E")))
-(add-hook 'qml-ts-mode-hook 'eglot-ensure)
 
 (require 'apheleia)
 (apheleia-global-mode t)
@@ -90,7 +86,46 @@
 (add-to-list 'apheleia-formatters '(nixpkgs-fmt "nixpkgs-fmt"))
 (add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt))
 
-;; Ensure flymake can read from load-path
-(setq elisp-flymake-byte-compile-load-path load-path)
-(add-hook 'prog-mode-hook 'flymake-mode)          ; Start flymake in all prog mode buffer
+(require 'web-mode)
+(add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
+(setq web-mode-script-padding 2)
+(setq web-mode-code-indent-offset 2)
+
+(require 'flycheck)
+(setq flycheck-emacs-lisp-load-path load-path)
+(global-flycheck-mode)
+
+(require 'yasnippet)
+(yas-global-mode)
+
+(defun lsp-booster--advice-json-parse (old-fn &rest args)
+  "Try to parse bytecode instead of json."
+  (or
+   (when (equal (following-char) ?#)
+     (let ((bytecode (read (current-buffer))))
+       (when (byte-code-function-p bytecode)
+         (funcall bytecode))))
+   (apply old-fn args)))
+(advice-add (if (progn (require 'json)
+                       (fboundp 'json-parse-buffer))
+                'json-parse-buffer
+              'json-read)
+            :around
+            #'lsp-booster--advice-json-parse)
+
+(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+  "Prepend emacs-lsp-booster command to lsp CMD."
+  (let ((orig-result (funcall old-fn cmd test?)))
+    (if (and (not test?)                             ;; for check lsp-server-present?
+             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
+             lsp-use-plists
+             (not (functionp 'json-rpc-connection))  ;; native json-rpc
+             (executable-find "emacs-lsp-booster"))
+        (progn
+          (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+            (setcar orig-result command-from-exec-path))
+          (message "Using emacs-lsp-booster for %s!" orig-result)
+          (cons "emacs-lsp-booster" orig-result))
+      orig-result)))
+(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 ;;; dev.el ends here

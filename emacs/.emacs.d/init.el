@@ -52,6 +52,9 @@
     pdf-tools            ; PDF utilities
     nix-ts-mode          ; Major mode for nix files
     swift-mode           ; Major mode for swift files
+    lsp-mode             ; Language Server Protocl
+    yasnippet            ; Templating system
+    flycheck             ; Linting
     web-mode))           ; Major mode for template based files
 
 
