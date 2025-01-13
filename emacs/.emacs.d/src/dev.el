@@ -37,6 +37,7 @@
 (setq lsp-headerline-breadcrumb-enable-diagnostics nil)
 (setq lsp-semantic-tokens-enable nil)
 (setq lsp-use-plists t)
+(setq lsp-eldoc-render-all t)
 
 ;; Magit
 (require 'magit)
