@@ -25,8 +25,8 @@
 (setq lsp-enable-indentation nil)
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-enable-suggest-server-download t)
-(setq lsp-enable-symbol-highlighting t)
-(setq lsp-enable-text-document-color t)
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-enable-text-document-color nil)
 (setq lsp-completion-enable t)
 (setq lsp-completion-enable-additional-text-edit t)
 (setq lsp-enable-snippet t)
@@ -35,7 +35,7 @@
 (setq lsp-headerline-breadcrumb-icons-enable t)
 (setq lsp-headerline-breadcrumb-enable-symbol-numbers nil)
 (setq lsp-headerline-breadcrumb-enable-diagnostics nil)
-(setq lsp-semantic-tokens-enable t)
+(setq lsp-semantic-tokens-enable nil)
 (setq lsp-use-plists t)
 
 ;; Magit
