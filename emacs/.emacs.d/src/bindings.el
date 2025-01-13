@@ -80,4 +80,9 @@
 (define-prefix-command 'leader-keys/eglot)
 (define-key leader-keys (kbd "e") '("eglot" . leader-keys/eglot))
 (define-key leader-keys/eglot (kbd "q") '("quickfix" . eglot-code-action-quickfix))
+
+(defvar leader-keys/lsp)
+(define-prefix-command 'leader-keys/lsp)
+(define-key leader-keys (kbd "l") '("lsp-mode" . leader-keys/lsp))
+(define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
 ;;; bindings.el ends here
