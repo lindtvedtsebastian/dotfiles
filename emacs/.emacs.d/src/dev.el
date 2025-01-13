@@ -38,6 +38,14 @@
 (setq lsp-semantic-tokens-enable nil)
 (setq lsp-use-plists t)
 (setq lsp-eldoc-render-all t)
+(setq lsp-inlay-hint-enable t)
+
+
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-hook 'rust-ts-mode-hook 'lsp)
+
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+(add-hook 'web-mode-hook 'lsp)
 
 ;; Magit
 (require 'magit)
