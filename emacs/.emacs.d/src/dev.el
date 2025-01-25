@@ -40,6 +40,12 @@
 (setq lsp-eldoc-render-all t)
 (setq lsp-inlay-hint-enable t)
 
+(require 'lsp-completion)
+(defun corfu-lsp-setup ()
+  "Configure lsp-mode for proper corfu/orderless use."
+  (setq-local completion-styles '(orderless)
+              completion-category-defaults nil))
+(add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
 
 (require 'flycheck)
 (defun flycheck-eldoc (callback &rest _ignored)
@@ -135,6 +141,9 @@
 
 (require 'yasnippet)
 (yas-global-mode)
+
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
