@@ -134,6 +134,11 @@
 (add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
 (setq web-mode-script-padding 2)
 (setq web-mode-code-indent-offset 2)
+(add-hook 'web-mode-hook 'lsp)
+
+(require 'typescript-ts-mode)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-hook 'typescript-ts-mode-hook 'lsp)
 
 (require 'flycheck)
 (setq flycheck-emacs-lisp-load-path load-path)
