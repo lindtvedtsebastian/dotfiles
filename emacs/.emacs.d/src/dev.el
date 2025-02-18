@@ -118,7 +118,6 @@
         (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
-;; QML
 (add-to-list 'load-path "~/dotfiles/dependencies/qml-ts-mode")
 (require 'qml-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-ts-mode))
