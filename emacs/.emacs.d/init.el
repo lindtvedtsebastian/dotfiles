@@ -55,6 +55,7 @@
     lsp-mode             ; Language Server Protocl
     yasnippet            ; Templating system
     flycheck             ; Linting
+    rainbow-mode         ; Colorize color names
     web-mode))           ; Major mode for template based files
 
 
