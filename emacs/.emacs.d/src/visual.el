@@ -13,4 +13,5 @@
 
 (setq dired-listing-switches "-lah")
 
+(load-theme 'nimbus)
 ;;; visual.el ends here
