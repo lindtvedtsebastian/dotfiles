@@ -16,6 +16,9 @@
 (evilnc-default-hotkeys)          ; Setup evil nerd commenter hotkeys
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 
+;; set lsp-find-references to 'g r' in evil-normal-state always, should find a better way..
+(define-key evil-normal-state-map (kbd "g r") 'lsp-find-references)
+
 (require 'scroll-on-drag)
 (global-set-key (kbd "<down-mouse-2>") 'scroll-on-drag) ; Scroll on middle mouse button
 
