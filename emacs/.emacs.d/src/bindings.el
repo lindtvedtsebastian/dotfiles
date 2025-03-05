@@ -94,4 +94,5 @@
 (define-prefix-command 'leader-keys/lsp)
 (define-key leader-keys (kbd "l") '("lsp-mode" . leader-keys/lsp))
 (define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
+(define-key leader-keys/lsp (kbd "f") '("format buffer" . lsp-format-buffer))
 ;;; bindings.el ends here
