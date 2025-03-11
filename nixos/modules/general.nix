@@ -86,6 +86,9 @@
     pkgs.texliveFull
     pkgs.libreoffice
     pkgs.nautilus
+    pkgs.vlc
+    pkgs.fontforge
+    pkgs.godot_4
     inputs.quickshell.packages.${system}.default
   ];
 
