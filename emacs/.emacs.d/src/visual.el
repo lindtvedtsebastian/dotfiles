@@ -13,5 +13,8 @@
 
 (setq dired-listing-switches "-lah")
 
+(require 'colorful-mode)
+(global-colorful-mode)
+
 (load-theme 'nimbus)
 ;;; visual.el ends here
