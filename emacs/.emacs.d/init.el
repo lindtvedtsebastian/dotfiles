@@ -55,7 +55,8 @@
     lsp-mode             ; Language Server Protocl
     yasnippet            ; Templating system
     flycheck             ; Linting
-    colorful-mode         ; Colorize color names
+    colorful-mode        ; Colorize color names
+    lsp-pyright          ; Python LSP client
     web-mode))           ; Major mode for template based files
 
 
