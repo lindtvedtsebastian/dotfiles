@@ -82,10 +82,10 @@
   (setq lsp-rust-target-dir "target/analyzer"))
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-hook 'rust-ts-mode-hook 'lsp)
+(add-hook 'rust-ts-mode-hook #'lsp)
 
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
-(add-hook 'web-mode-hook 'lsp)
+(add-hook 'web-mode-hook #'lsp)
 
 ;; Magit
 (require 'magit)
@@ -138,11 +138,11 @@
 (add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
 (setq web-mode-script-padding 2)
 (setq web-mode-code-indent-offset 2)
-(add-hook 'web-mode-hook 'lsp)
+(add-hook 'web-mode-hook #'lsp)
 
 (require 'typescript-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-(add-hook 'typescript-ts-mode-hook 'lsp)
+(add-hook 'typescript-ts-mode-hook #'lsp)
 
 (require 'flycheck)
 (setq flycheck-emacs-lisp-load-path load-path)
@@ -151,8 +151,8 @@
 (require 'yasnippet)
 (yas-global-mode)
 
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
+(add-hook 'c-mode-hook #'lsp)
+(add-hook 'c++-mode-hook #'lsp)
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
