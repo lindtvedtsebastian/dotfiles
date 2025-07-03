@@ -143,6 +143,14 @@
 (require 'typescript-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-hook 'typescript-ts-mode-hook #'lsp)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-hook 'tsx-ts-mode-hook #'lsp)
+
+(require 'lsp-eslint)
+(setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
+
+(require 'json-ts-mode)
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 
 (require 'flycheck)
 (setq flycheck-emacs-lisp-load-path load-path)
