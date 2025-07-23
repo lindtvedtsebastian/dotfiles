@@ -94,7 +94,7 @@
           (message "Project marked as INACTIVE."))
       (org-toggle-tag "active" 'on)
       (message "Project marked as ACTIVE.")))
-  (sl/org-roam-refresh-project-agenda-list))
+  (sl/org-roam-refresh-agenda-list))
 
 (defun sl/load-capture-template (template-name)
   "Load capture template from ~/.emacs.d/templates/TEMPLATE-NAME.org."
@@ -104,7 +104,7 @@
         (insert-file-contents template-file)
         (buffer-string)))))
 
-(sl/org-roam-refresh-project-agenda-list)  ; Refresh the agenda list the first time this file loads
-(org-roam-db-autosync-mode)                ; Automatically sync org-roam db on changes
+(sl/org-roam-refresh-agenda-list)  ; Refresh the agenda list the first time this file loads
+(org-roam-db-autosync-mode)        ; Automatically sync org-roam db on changes
 
 ;;; org.el ends here
