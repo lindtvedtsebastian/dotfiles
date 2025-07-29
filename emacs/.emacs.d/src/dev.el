@@ -69,7 +69,7 @@
 
 (defun flycheck-prefer-eldoc ()
   "Add flycheck-eldoc to eldoc doc functions and disabled default flycheck."
-  (add-hook 'eldoc-documentation-functions #'flycheck-eldoc nil t)
+  (add-hook 'eldoc-documentation-functions #'flycheck-eldoc -100 t)
   (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
   (setq flycheck-display-errors-function nil)
   (setq flycheck-help-echo-function nil))
