@@ -79,7 +79,7 @@
   (org-roam-node-find
    nil
    nil
-   (sl/org-roam-filter-by-tags '("project"))
+   (sl/org-roam-list-notes-by-tag "project")
    nil
    :templates
    (sl/load-capture-template "project")))
@@ -104,7 +104,12 @@
         (insert-file-contents template-file)
         (buffer-string)))))
 
+
+(require 'citar)
+(setq citar-bibliography '("~/db/zotero/references.bib"))
+
 (sl/org-roam-refresh-agenda-list)  ; Refresh the agenda list the first time this file loads
 (org-roam-db-autosync-mode)        ; Automatically sync org-roam db on changes
+
 
 ;;; org.el ends here
