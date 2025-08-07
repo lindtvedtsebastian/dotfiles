@@ -47,6 +47,20 @@
               completion-category-defaults nil))
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
 
+(require 'cape)
+(defun sl/friendly-lsp-completion-at-point ()
+  "Wraps lsp-completion-at-point in cape-capf-super to make it friendly."
+  (setq-local completion-at-point-functions
+              (list (cape-capf-super
+                     'lsp-completion-at-point
+                     :with
+                     'cape-keyword
+                     'cape-abbrev
+                     'cape-file)
+                    )))
+
+(add-hook 'lsp-completion-mode-hook #'sl/friendly-lsp-completion-at-point)
+
 (require 'flycheck)
 (defun flycheck-eldoc (callback &rest _ignored)
   "Print flycheck messages at point by calling CALLBACK."
@@ -150,6 +164,7 @@
 (require 'lsp-eslint)
 (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
 
+
 (require 'json-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 
@@ -162,6 +177,20 @@
 
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'c++-mode-hook #'lsp)
+
+(require 'lsp-sqls)
+(setq lsp-sqls-workspace-config-path nil)
+
+(defvar cape-sql-keywords
+  '("SERIAL" "PRIMARY KEY" "NOT NULL" "UNIQUE" "DEFAULT"
+    "CHECK" "REFERENCES" "INT" "BIGINT" "TEXT" "BOOLEAN"
+    "CREATE" "TABLE" "INSERT" "UPDATE" "DELETE" "VALUES"
+    "JOIN" "ON DELETE" "ON UPDATE")
+  "List of common ANSI SQL keywords for completion.")
+
+(require 'cape-keyword)
+(add-to-list 'cape-keyword-list (cons 'sql-mode cape-sql-keywords))
+
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
