@@ -57,6 +57,7 @@
     flycheck             ; Linting
     colorful-mode        ; Colorize color names
     lsp-pyright          ; Python LSP client
+    lsp-sourcekit        ; Swift LSP client
     citar                ; Citation completion frontend
     web-mode))           ; Major mode for template based files
 
