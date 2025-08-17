@@ -80,9 +80,7 @@
    nil
    nil
    (sl/org-roam-list-notes-by-tag "project")
-   nil
-   :templates
-   (sl/load-capture-template "project")))
+   nil))
 
 (defun sl/toggle-project-active ()
   "Toggle the :active: tag on the current project note."
@@ -96,20 +94,10 @@
       (message "Project marked as ACTIVE.")))
   (sl/org-roam-refresh-agenda-list))
 
-(defun sl/load-capture-template (template-name)
-  "Load capture template from ~/.emacs.d/templates/TEMPLATE-NAME.org."
-  (let ((template-file (expand-file-name (concat template-name ".org") "~/.emacs.d/templates/")))
-    (when (file-exists-p template-file)
-      (with-temp-buffer
-        (insert-file-contents template-file)
-        (buffer-string)))))
-
-
 (require 'citar)
 (setq citar-bibliography '("~/db/zotero/references.bib"))
 
 (sl/org-roam-refresh-agenda-list)  ; Refresh the agenda list the first time this file loads
 (org-roam-db-autosync-mode)        ; Automatically sync org-roam db on changes
-
 
 ;;; org.el ends here
