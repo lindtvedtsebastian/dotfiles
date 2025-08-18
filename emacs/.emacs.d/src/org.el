@@ -34,18 +34,11 @@
     (let ((tags (org-roam-node-tags node)))
       (seq-every-p (lambda (tag) (member tag tags)) tag-list))))
 
-(defun sl/org-roam-list-notes-by-tag (tag-name)
-  "Iterate over all org-roam nodes, return a list of all nodes containing TAG-NAME."
-  (mapcar #'org-roam-node-file
-          (seq-filter
-           (sl/org-roam-filter-by-tag tag-name)
-           (org-roam-node-list))))
-
 (defun sl/org-roam-list-active-projects ()
-  "Return list of files with project and active tags."
+  "Return list of files with a project tag."
   (mapcar #'org-roam-node-file
           (seq-filter
-           (sl/org-roam-filter-by-tags '("project" "active"))
+           (sl/org-roam-filter-by-tag "project")
            (org-roam-node-list))))
 
 (defun sl/org-roam-refresh-agenda-list ()
@@ -79,20 +72,8 @@
   (org-roam-node-find
    nil
    nil
-   (sl/org-roam-list-notes-by-tag "project")
+   (sl/org-roam-filter-by-tag "project")
    nil))
-
-(defun sl/toggle-project-active ()
-  "Toggle the :active: tag on the current project note."
-  (interactive)
-  (let ((tags (org-get-tags)))
-    (if (member "active" tags)
-        (progn
-          (org-toggle-tag "active" 'off)
-          (message "Project marked as INACTIVE."))
-      (org-toggle-tag "active" 'on)
-      (message "Project marked as ACTIVE.")))
-  (sl/org-roam-refresh-agenda-list))
 
 (require 'citar)
 (setq citar-bibliography '("~/db/zotero/references.bib"))
