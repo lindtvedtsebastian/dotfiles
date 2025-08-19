@@ -53,7 +53,7 @@
                                                      (month (string-to-number (match-string 2 file-date)))
                                                      (day (string-to-number (match-string 3 file-date)))
                                                      (file-time (encode-time 0 0 0 day month year)))
-                                                (<= (abs (time-to-days (time-subtract (current-time) file-time))) days-back)))))
+                                                (<= (time-to-number-of-days (time-subtract (current-time) file-time)) days-back)))))
                                      (directory-files dailies-dir t "\\.org$")))
          (projects (sl/org-roam-list-active-projects)))
     (setq org-agenda-files (append recent-dailies projects))))
