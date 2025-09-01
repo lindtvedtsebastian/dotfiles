@@ -59,6 +59,7 @@
     lsp-pyright          ; Python LSP client
     lsp-sourcekit        ; Swift LSP client
     citar                ; Citation completion frontend
+    docstr               ; A document string minor mode
     web-mode))           ; Major mode for template based files
 
 

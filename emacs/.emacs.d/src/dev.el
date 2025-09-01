@@ -181,6 +181,10 @@
 (require 'lsp-sqls)
 (setq lsp-sqls-workspace-config-path nil)
 
+(require 'docstr)
+(setq docstr-key-support t)
+(global-docstr-mode)
+
 (defvar cape-sql-keywords
   '("SERIAL" "PRIMARY KEY" "NOT NULL" "UNIQUE" "DEFAULT"
     "CHECK" "REFERENCES" "INT" "BIGINT" "TEXT" "BOOLEAN"
