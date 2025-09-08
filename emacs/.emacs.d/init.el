@@ -59,6 +59,7 @@
     lsp-pyright          ; Python LSP client
     lsp-sourcekit        ; Swift LSP client
     citar                ; Citation completion frontend
+    citar-org-roam       ; Tighter integration between citar and org-roam
     docstr               ; A document string minor mode
     web-mode))           ; Major mode for template based files
 
