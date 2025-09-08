@@ -3,6 +3,9 @@
 ;; dev Emacs configurations
 ;;; code:
 
+(setq read-process-output-max (* 1024 1024))
+(setq process-adaptive-read-buffering nil)
+
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
