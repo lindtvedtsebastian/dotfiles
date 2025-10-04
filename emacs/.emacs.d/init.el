@@ -58,6 +58,7 @@
     colorful-mode        ; Colorize color names
     lsp-pyright          ; Python LSP client
     lsp-sourcekit        ; Swift LSP client
+    lsp-java             ; Java LSP client
     citar                ; Citation completion frontend
     citar-org-roam       ; Tighter integration between citar and org-roam
     docstr               ; A document string minor mode

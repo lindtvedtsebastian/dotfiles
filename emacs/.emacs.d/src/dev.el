@@ -104,6 +104,10 @@
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
 (add-hook 'web-mode-hook #'lsp)
 
+(require 'lsp-java)
+(add-hook 'java-ts-mode-hook #'lsp)
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
+
 ;; Magit
 (require 'magit)
 (setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
@@ -120,6 +124,7 @@
         (go . ("https://github.com/tree-sitter/tree-sitter-go"))
         (gomod . ("https://github.com/camdencheek/tree-sitter-go-mod"))
         (html . ("https://github.com/tree-sitter/tree-sitter-html"))
+        (java . ("https://github.com/tree-sitter/tree-sitter-java"))
         (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
         (json . ("https://github.com/tree-sitter/tree-sitter-json"))
         (lua . ("https://github.com/Azganoth/tree-sitter-lua"))
