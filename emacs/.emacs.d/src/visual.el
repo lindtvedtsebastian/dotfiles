@@ -7,7 +7,7 @@
 
 (setq show-paren-delay 0)      ; No delay before highlighting parenthesis
 
-(set-face-attribute 'default nil :font "Iosevka" :weight 'normal :width 'normal :height 140)
+(set-face-attribute 'default nil :font "Iosevka" :weight 'normal :width 'normal :height 120)
 
 (set-frame-parameter nil 'alpha-background 80)
 
