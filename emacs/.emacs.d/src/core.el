@@ -5,20 +5,19 @@
 
 (global-auto-revert-mode)                    ; Revert any file that changes on disk
 
-(setq ns-pop-up-frames nil)                  ; File open requests opens in existing frame
+(when (boundp 'ns-pop-up-frames)
+  (setq ns-pop-up-frames nil))               ; File open requests opens in existing frame
 (setq pop-up-windows nil)                    ; Don't open buffers in new windows
 
-(server-start)                               ; Start emacs server
-
-;; Don't report native comp errors
-(require 'comp)
-(setq native-comp-async-report-warnings-errors nil)
+(require 'server)
+(unless (server-running-p)
+  (server-start))                            ; Start emacs server
 
 ;; General UI configurations
 (setq inhibit-startup-message t)             ; Hide startup message
 (setq inhibit-startup-screen t)              ; Hide startup screen
 (setq visible-bell t)                        ; Setup visible bell
-(setq mouse-wheel-progressive-speed nil)     ; Disable scroll acceleration
+(setq mouse-wheel-progressive-speed t)       ; Disable scroll acceleration
 (defvar display-line-numbers-type 'relative) ; Set line number mode to be relative
 
 (tool-bar-mode -1)                           ; Disable the toolbar
