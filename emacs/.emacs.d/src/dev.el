@@ -136,6 +136,7 @@
         (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src"))
         (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
         (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
+        (typst . ("https://github.com/uben0/tree-sitter-typst"))
         (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
         (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
         (zig . ("https://github.com/GrayJack/tree-sitter-zig"))
@@ -145,6 +146,14 @@
         (qmljs . ("~/dotfiles/dependencies/tree-sitter-qml"))
         (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
+
+
+(require 'typst-ts-mode)
+(add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
+(lsp-register-client (make-lsp-client
+                      :new-connection (lsp-stdio-connection "tinymist")
+                      :activation-fn (lsp-activate-on "typst")
+                      :server-id 'tinymist))
 
 (add-to-list 'load-path "~/dotfiles/dependencies/qml-ts-mode")
 (require 'qml-ts-mode)

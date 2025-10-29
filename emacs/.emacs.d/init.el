@@ -38,7 +38,6 @@
     exec-path-from-shell ; Env variables from the shell
     ligature             ; Ligatures
     diminish             ; Ability to diminish minor modes in modeline
-    yasnippet            ; Yet Another Snippet library
     evil                 ; Extensible VI Layer
     evil-collection      ; Collection of Evil bindings for parts of Emacs not covered by evil
     evil-nerd-commenter  ; Comment/uncomment lines efficiently
@@ -73,6 +72,9 @@
 
 ;; Install gdscript-mode from repository
 (straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
+
+;; Install typst-ts-mode from repository
+(straight-use-package '(typst-ts-mode :type git :host codeberg :repo "meow_king/typst-ts-mode"))
 
 ;; Function for loading directories recursively
 (defun load-directory (directory)

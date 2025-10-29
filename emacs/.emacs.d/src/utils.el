@@ -1,4 +1,4 @@
-;;; utils.el --- utility
+;;; utils.el --- -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; 
