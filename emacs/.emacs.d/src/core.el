@@ -26,6 +26,10 @@
 (scroll-bar-mode -1)                         ; Disable visible scrollbar
 (column-number-mode)                         ; Enable column numbers in the modeline
 
+;; Remove jsonrpc event hook for performance increase...
+(require 'jsonrpc)
+(setq jsonrpc-event-hook nil)
+
 ;; Customize TAB behaviour
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)

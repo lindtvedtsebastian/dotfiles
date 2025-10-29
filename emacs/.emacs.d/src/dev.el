@@ -110,8 +110,8 @@
 
 ;; Magit
 (require 'magit)
-(setq magit-process-finish-apply-ansi-colors t)   ; Apply colors in Magit process
-(setq transient-default-level 6)                  ; Show more transient commands
+(setq magit-process-apply-ansi-colors t) ; Apply colors in Magit process
+(setq transient-default-level 7)         ; Show more transient commands
 
 ;; Treesit
 (require 'treesit)
@@ -172,7 +172,6 @@
 (require 'lsp-eslint)
 (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
 
-
 (require 'json-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 
@@ -185,6 +184,9 @@
 
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'c++-mode-hook #'lsp)
+
+(require 'lsp-clangd)
+(add-to-list 'lsp-clients-clangd-args "--log=error")
 
 (require 'lsp-sqls)
 (setq lsp-sqls-workspace-config-path nil)
