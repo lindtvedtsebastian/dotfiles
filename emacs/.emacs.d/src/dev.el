@@ -178,6 +178,13 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (add-hook 'tsx-ts-mode-hook #'lsp)
 
+(require 'js)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-jsx-mode))
+(add-hook 'js-ts-mode-hook #'lsp)
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
+(add-hook 'js-jsx-mode-hook #'lsp)
+
 (require 'lsp-eslint)
 (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
 
