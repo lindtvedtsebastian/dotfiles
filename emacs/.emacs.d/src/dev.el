@@ -18,11 +18,11 @@
 (setq lsp-completion-provider :none)
 (setq lsp-log-io nil)
 (setq lsp-keep-workspace-alive nil)
-(setq lsp-idle-delay 0)
+(setq lsp-idle-delay 0.5)
 (setq lsp-enable-xref t)
 (setq lsp-enable-imenu t)
 (setq lsp-enable-file-watchers t)
-(setq lsp-file-watch-threshold 10000)
+(setq lsp-file-watch-threshold 1000)
 (setq lsp-eldoc-enable-hover t)
 (setq lsp-enable-folding t)
 (setq lsp-enable-indentation nil)
@@ -99,13 +99,13 @@
   (setq lsp-rust-target-dir "target/analyzer"))
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-hook 'rust-ts-mode-hook #'lsp)
+(add-hook 'rust-ts-mode-hook #'lsp-deferred)
 
 (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
-(add-hook 'web-mode-hook #'lsp)
+(add-hook 'web-mode-hook #'lsp-deferred)
 
 (require 'lsp-java)
-(add-hook 'java-ts-mode-hook #'lsp)
+(add-hook 'java-ts-mode-hook #'lsp-deferred)
 (add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
 
 ;; Magit
@@ -170,20 +170,20 @@
 (add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
 (setq web-mode-script-padding 2)
 (setq web-mode-code-indent-offset 2)
-(add-hook 'web-mode-hook #'lsp)
+(add-hook 'web-mode-hook #'lsp-deferred)
 
 (require 'typescript-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-(add-hook 'typescript-ts-mode-hook #'lsp)
+(add-hook 'typescript-ts-mode-hook #'lsp-deferred)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
-(add-hook 'tsx-ts-mode-hook #'lsp)
+(add-hook 'tsx-ts-mode-hook #'lsp-deferred)
 
 (require 'js)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-jsx-mode))
-(add-hook 'js-ts-mode-hook #'lsp)
+(add-hook 'js-ts-mode-hook #'lsp-deferred)
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
-(add-hook 'js-jsx-mode-hook #'lsp)
+(add-hook 'js-jsx-mode-hook #'lsp-deferred)
 
 (require 'lsp-eslint)
 (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
@@ -198,8 +198,8 @@
 (require 'yasnippet)
 (yas-global-mode)
 
-(add-hook 'c-mode-hook #'lsp)
-(add-hook 'c++-mode-hook #'lsp)
+(add-hook 'c-mode-hook #'lsp-deferred)
+(add-hook 'c++-mode-hook #'lsp-deferred)
 
 (require 'lsp-clangd)
 (add-to-list 'lsp-clients-clangd-args "--log=error")
