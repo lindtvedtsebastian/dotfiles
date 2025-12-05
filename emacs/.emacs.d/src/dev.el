@@ -95,8 +95,7 @@
 
 (require 'lsp-rust)
 (when (eq system-type 'darwin)
-  (setq lsp-rust-analyzer-cargo-extra-env ["MACOSX_DEPLOYMENT_TARGET=10.13"])
-  (setq lsp-rust-target-dir "target/analyzer"))
+  (setq lsp-rust-analyzer-cargo-target-dir "target/analyzer"))
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-hook 'rust-ts-mode-hook #'lsp-deferred)
