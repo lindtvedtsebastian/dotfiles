@@ -95,7 +95,9 @@
 
 (require 'lsp-rust)
 (when (eq system-type 'darwin)
-  (setq lsp-rust-analyzer-cargo-target-dir "target/analyzer"))
+  (setq lsp-rust-analyzer-cargo-target-dir t))
+
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
 (add-hook 'rust-ts-mode-hook #'lsp-deferred)
