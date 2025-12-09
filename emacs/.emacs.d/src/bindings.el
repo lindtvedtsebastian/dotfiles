@@ -66,7 +66,7 @@
 (define-key leader-keys/project (kbd "e") '("eshell" . project-eshell))
 (define-key leader-keys/project (kbd "k") '("kill buffers" . project-kill-buffers))
 
-;; Org
+;; org
 (require 'org-roam)
 
 (defvar leader-keys/org)                     ; Define new empty variable for 'org' keys
@@ -84,15 +84,25 @@
 (define-key leader-keys/org (kbd "c") '("capture" . leader-keys/org-capture))
 (define-key leader-keys/org-capture (kbd "i") '("inbox" . sl/org-roam-capture-inbox))
 
-;; Eglot
+;; eglot
 (defvar leader-keys/eglot)
 (define-prefix-command 'leader-keys/eglot)
 (define-key leader-keys (kbd "e") '("eglot" . leader-keys/eglot))
 (define-key leader-keys/eglot (kbd "q") '("quickfix" . eglot-code-action-quickfix))
 
+;; lsp-mode
 (defvar leader-keys/lsp)
 (define-prefix-command 'leader-keys/lsp)
 (define-key leader-keys (kbd "l") '("lsp-mode" . leader-keys/lsp))
 (define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
 (define-key leader-keys/lsp (kbd "f") '("format buffer" . lsp-format-buffer))
+
+;; flycheck
+(defvar leader-keys/flycheck)
+(define-prefix-command 'leader-keys/flycheck)
+(define-key leader-keys (kbd "c") '("flycheck" . leader-keys/flycheck))
+(define-key leader-keys/flycheck (kbd "n") '("next error" . flycheck-next-error))
+(define-key leader-keys/flycheck (kbd "p") '("prev error" . flycheck-previous-error))
+(define-key leader-keys/flycheck (kbd "l") '("list errors" . flycheck-list-errors))
 ;;; bindings.el ends here
+
