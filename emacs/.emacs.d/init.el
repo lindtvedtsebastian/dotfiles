@@ -61,6 +61,7 @@
     citar                ; Citation completion frontend
     citar-org-roam       ; Tighter integration between citar and org-roam
     docstr               ; A document string minor mode
+    flyover              ; Overlay display for flycheck/flymake
     web-mode))           ; Major mode for template based files
 
 

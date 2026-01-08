@@ -93,6 +93,10 @@
 
 (add-hook 'flycheck-mode-hook 'flycheck-prefer-eldoc)
 
+(require 'flyover)
+(setq flyover-error-icon "✘")
+(add-hook 'flycheck-mode-hook 'flyover-mode)
+
 (require 'lsp-rust)
 (when (eq system-type 'darwin)
   (setq lsp-rust-analyzer-cargo-target-dir t))
