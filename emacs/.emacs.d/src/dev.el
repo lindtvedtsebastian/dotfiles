@@ -93,9 +93,13 @@
 
 (add-hook 'flycheck-mode-hook 'flycheck-prefer-eldoc)
 
+(defvar flyover-base-height 1)
 (require 'flyover)
 (setq flyover-error-icon "✘")
 (add-hook 'flycheck-mode-hook 'flyover-mode)
+(setq flyover-wrap-messages t)
+(setq flyover-max-line-length 200)
+(set-face-attribute 'flyover-marker nil :foreground "#f1f5f9")
 
 (require 'lsp-rust)
 (when (eq system-type 'darwin)

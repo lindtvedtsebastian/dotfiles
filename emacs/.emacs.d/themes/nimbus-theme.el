@@ -58,6 +58,8 @@
 	                    `(magit-diff-file-heading ((t . (:foreground ,nimbus/fg-neutral :weight bold))))
 	                    `(magit-tag ((t . (:foreground ,nimbus/fg-default))))
 	                    `(magit-head ((t . (:foreground ,nimbus/fg-neutral))))
+	                    `(error ((t . (:foreground ,nimbus/error))))
+	                    `(warning ((t . (:foreground ,nimbus/warning))))
                         )
 
 (provide-theme 'nimbus)
