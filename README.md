@@ -25,7 +25,7 @@ brew install stow
 
 # Clone and install
 git clone <repo> ~/dotfiles && cd ~/dotfiles
-./install.sh
+stow emacs zsh
 ```
 
 ### NixOS
@@ -35,13 +35,11 @@ git clone <repo> ~/dotfiles && cd ~/dotfiles
 git clone <repo> ~/dotfiles && cd ~/dotfiles
 
 # Stow user configs
-./install.sh
+stow emacs zsh hypr quickshell
 
 # Apply system configuration
 sudo nixos-rebuild switch --flake .#desktop
 ```
-
-The install script auto-detects your OS and installs the appropriate packages (macOS gets `emacs` and `zsh`; Linux also gets `hypr` and `quickshell`).
 
 ## Packages
 
@@ -137,10 +135,6 @@ stow emacs zsh
 
 # Remove symlinks
 stow -D emacs
-
-# Or use the scripts
-./install.sh      # Install all (OS-aware)
-./uninstall.sh    # Remove all (OS-aware)
 ```
 
 ## Platform Matrix
