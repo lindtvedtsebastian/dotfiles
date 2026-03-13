@@ -104,5 +104,13 @@
 (define-key leader-keys/flycheck (kbd "n") '("next error" . flycheck-next-error))
 (define-key leader-keys/flycheck (kbd "p") '("prev error" . flycheck-previous-error))
 (define-key leader-keys/flycheck (kbd "l") '("list errors" . flycheck-list-errors))
-;;; bindings.el ends here
 
+;; treesit-fold
+(defvar leader-keys/treesit-fold)
+(define-prefix-command 'leader-keys/treesit-fold)
+(define-key leader-keys (kbd "f") '("fold" . leader-keys/treesit-fold))
+(define-key leader-keys/treesit-fold (kbd "o") '("open" . treesit-fold-open))
+(define-key leader-keys/treesit-fold (kbd "O") '("open all" . treesit-fold-open-all))
+(define-key leader-keys/treesit-fold (kbd "c") '("close" . treesit-fold-close))
+(define-key leader-keys/treesit-fold (kbd "C") '("close" . treesit-fold-close-all))
+;;; bindings.el ends here

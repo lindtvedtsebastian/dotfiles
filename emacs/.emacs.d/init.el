@@ -62,6 +62,7 @@
     citar-org-roam       ; Tighter integration between citar and org-roam
     docstr               ; A document string minor mode
     flyover              ; Overlay display for flycheck/flymake
+    treesit-fold         ; Code folding using treesit
     web-mode))           ; Major mode for template based files
 
 

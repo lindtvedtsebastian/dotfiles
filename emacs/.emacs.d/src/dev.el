@@ -156,6 +156,9 @@
         (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
+(require 'treesit-fold)
+(global-treesit-fold-mode)
+(global-treesit-fold-indicators-mode)
 
 (require 'typst-ts-mode)
 (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
