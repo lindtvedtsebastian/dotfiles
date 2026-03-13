@@ -17,7 +17,8 @@
 (setq inhibit-startup-message t)             ; Hide startup message
 (setq inhibit-startup-screen t)              ; Hide startup screen
 (setq visible-bell t)                        ; Setup visible bell
-(setq mouse-wheel-progressive-speed t)       ; Disable scroll acceleration
+(setq mouse-wheel-progressive-speed t)        ; Accelerate scroll speed with rapid scrolling
+(setq mouse-wheel-scroll-amount '(2 ((shift) . hscroll) ((control) . text-scale)))
 (defvar display-line-numbers-type 'relative) ; Set line number mode to be relative
 
 (tool-bar-mode -1)                           ; Disable the toolbar

@@ -31,7 +31,6 @@
 (define-key read--expression-map (kbd "C-j") nil)
 (global-set-key (kbd "C-j") 'corfu-next)
 (global-set-key (kbd "C-k") 'corfu-previous)
-(define-key global-map (kbd "C-k") nil)
 
 ;; Consult
 (global-set-key (kbd "C-x b") 'consult-buffer)
