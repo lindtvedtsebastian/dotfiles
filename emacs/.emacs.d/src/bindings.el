@@ -92,6 +92,11 @@
 ;; Recent files
 (define-key leader-keys (kbd "r") '("recent files" . consult-recent-file))
 
+;; Avy
+(require 'avy)
+(define-key leader-keys (kbd "j") '("jump char" . avy-goto-char-timer))
+(define-key leader-keys (kbd "J") '("jump line" . avy-goto-line))
+
 ;; flycheck
 (defvar leader-keys/flycheck)
 (define-prefix-command 'leader-keys/flycheck)

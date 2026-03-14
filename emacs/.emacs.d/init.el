@@ -57,7 +57,8 @@
     docstr               ; A document string minor mode
     flyover              ; Overlay display for flycheck/flymake
     treesit-fold         ; Code folding using treesit
-    web-mode))           ; Major mode for template based files
+    web-mode             ; Major mode for template based files
+    avy))                ; Visual jump navigation
 
 
 (require 'straight) ; Make flymake happy
