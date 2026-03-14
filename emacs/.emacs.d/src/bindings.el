@@ -72,6 +72,9 @@
 (define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
 (define-key leader-keys/lsp (kbd "f") '("format buffer" . lsp-format-buffer))
 
+;; Recent files
+(define-key leader-keys (kbd "r") '("recent files" . consult-recent-file))
+
 ;; flycheck
 (defvar leader-keys/flycheck)
 (define-prefix-command 'leader-keys/flycheck)

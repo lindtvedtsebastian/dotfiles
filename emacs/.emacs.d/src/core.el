@@ -64,6 +64,17 @@
 (setq kept-new-versions 5)                                  ; Number of new version to keep
 (setq delete-by-moving-to-trash t)                          ; Delete files to system trash can
 
+;; Session persistence
+(require 'savehist)
+(setq savehist-file (concat user-emacs-directory "savehist"))
+(setq savehist-additional-variables '(search-ring regexp-search-ring))
+(savehist-mode)
+
+(require 'recentf)
+(setq recentf-max-saved-items 200)
+(setq recentf-auto-cleanup 'never)
+(recentf-mode)
+
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil) ; Allow re-using dired buffers
 
