@@ -72,6 +72,14 @@
 (define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
 (define-key leader-keys/lsp (kbd "f") '("format buffer" . lsp-format-buffer))
 
+;; Embark
+(require 'embark)
+(require 'embark-consult)
+(define-key leader-keys (kbd ".") '("embark act" . embark-act))
+(define-key leader-keys (kbd ";") '("embark dwim" . embark-dwim))
+(define-key minibuffer-local-map (kbd "C-c C-o") 'embark-export)
+(define-key minibuffer-local-map (kbd "C-c C-l") 'embark-collect)
+
 ;; Recent files
 (define-key leader-keys (kbd "r") '("recent files" . consult-recent-file))
 
