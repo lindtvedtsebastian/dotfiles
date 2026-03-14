@@ -41,25 +41,19 @@
     evil                 ; Extensible VI Layer
     evil-collection      ; Collection of Evil bindings for parts of Emacs not covered by evil
     evil-nerd-commenter  ; Comment/uncomment lines efficiently
-    org-roam             ; Plain-text personal knowledge management system
-    org-roam-ui          ; UI for org-roam
     scroll-on-drag       ; Interactive scrolling
 	apheleia             ; Formatting all the things
     graphql-mode         ; Major mode for graphql files
     direnv               ; Direnv integration
-    auctex               ; Env for LaTeX
-    pdf-tools            ; PDF utilities
     nix-ts-mode          ; Major mode for nix files
     swift-mode           ; Major mode for swift files
-    lsp-mode             ; Language Server Protocl
+    lsp-mode             ; Language Server Protocol
     yasnippet            ; Templating system
     flycheck             ; Linting
     colorful-mode        ; Colorize color names
     lsp-pyright          ; Python LSP client
     lsp-sourcekit        ; Swift LSP client
     lsp-java             ; Java LSP client
-    citar                ; Citation completion frontend
-    citar-org-roam       ; Tighter integration between citar and org-roam
     docstr               ; A document string minor mode
     flyover              ; Overlay display for flycheck/flymake
     treesit-fold         ; Code folding using treesit
@@ -71,9 +65,6 @@
 ;; Install all packages that are not yet installed
 (dolist (package package-list)
   (straight-use-package package))
-
-;; Install gdscript-mode from repository
-(straight-use-package '(gdscript-mode :type git :host github :repo "godotengine/emacs-gdscript-mode"))
 
 ;; Install typst-ts-mode from repository
 (straight-use-package '(typst-ts-mode :type git :host codeberg :repo "meow_king/typst-ts-mode"))

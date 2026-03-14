@@ -65,30 +65,6 @@
 (define-key leader-keys/project (kbd "e") '("eshell" . project-eshell))
 (define-key leader-keys/project (kbd "k") '("kill buffers" . project-kill-buffers))
 
-;; org
-(require 'org-roam)
-
-(defvar leader-keys/org)                     ; Define new empty variable for 'org' keys
-(define-prefix-command 'leader-keys/org)
-(define-key leader-keys (kbd "o") '("org" . leader-keys/org))
-(define-key leader-keys/org (kbd "a") '("agenda" . org-agenda))
-(define-key leader-keys/org (kbd "f") '("find node" . org-roam-node-find))
-(define-key leader-keys/org (kbd "i") '("insert node" . org-roam-node-insert))
-(define-key leader-keys/org (kbd "t") '("add tag" . org-roam-tag-add))
-(define-key leader-keys/org (kbd "r") '("add ref" . org-roam-ref-add))
-(define-key leader-keys/org (kbd "p") '("find project" . sl/org-roam-find-project))
-
-(defvar leader-keys/org-capture)
-(define-prefix-command 'leader-keys/org-capture)
-(define-key leader-keys/org (kbd "c") '("capture" . leader-keys/org-capture))
-(define-key leader-keys/org-capture (kbd "i") '("inbox" . sl/org-roam-capture-inbox))
-
-;; eglot
-(defvar leader-keys/eglot)
-(define-prefix-command 'leader-keys/eglot)
-(define-key leader-keys (kbd "e") '("eglot" . leader-keys/eglot))
-(define-key leader-keys/eglot (kbd "q") '("quickfix" . eglot-code-action-quickfix))
-
 ;; lsp-mode
 (defvar leader-keys/lsp)
 (define-prefix-command 'leader-keys/lsp)
