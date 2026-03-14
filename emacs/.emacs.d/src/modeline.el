@@ -9,7 +9,7 @@
 (require 'svg)
 (require 'svg-lib)
 
-(defvar-local sl/mode-line-vc '(:eval (when-let ((file (buffer-file-name)))
+(defvar-local sl/mode-line-vc '(:eval (when-let* ((file (buffer-file-name)))
                                        (when (vc-backend file)
                                          (list
                                           (propertize ":3" 'display
@@ -26,7 +26,7 @@
 
 (defun sl/mode-line--vc-branch-or-rev ()
   "The current git branch or revision."
-  (when-let ((file (buffer-file-name))
+  (when-let* ((file (buffer-file-name))
              (backend (vc-backend file))
              (rev (vc-working-revision file backend)))
     (when (eq backend 'Git) (or (vc-git--symbolic-ref file)

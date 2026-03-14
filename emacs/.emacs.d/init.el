@@ -93,6 +93,9 @@
         (add-to-list 'sl/load-times `(,(file-name-base fullpath) . ,(current-time)))
         (load (file-name-sans-extension fullpath)))))))
 
+;; Add src to load-path for require/provide between config files
+(add-to-list 'load-path (concat user-emacs-directory "src") t)
+
 ;; Load all .el files from ~/.emacs.d/src recursively
 (load-directory (concat user-emacs-directory "src"))
 
