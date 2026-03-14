@@ -151,7 +151,6 @@
         (c-sharp . ("https://github.com/tree-sitter/tree-sitter-c-sharp"))
         (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
         (nix . ("https://github.com/nix-community/tree-sitter-nix"))
-        (qmljs . ("~/dotfiles/dependencies/tree-sitter-qml"))
         (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
@@ -166,9 +165,6 @@
                       :activation-fn (lsp-activate-on "typst")
                       :server-id 'tinymist))
 
-(add-to-list 'load-path "~/dotfiles/dependencies/qml-ts-mode")
-(require 'qml-ts-mode)
-(add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-ts-mode))
 
 (require 'apheleia)
 (apheleia-global-mode t)
