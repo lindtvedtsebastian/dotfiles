@@ -43,7 +43,6 @@
 (setq lsp-eldoc-render-all t)
 (setq lsp-inlay-hint-enable t)
 
-(require 'lsp-completion)
 (defun corfu-lsp-setup ()
   "Configure lsp-mode for proper corfu/orderless use."
   (setq-local completion-styles '(orderless)
@@ -182,7 +181,6 @@
 (add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
 (setq web-mode-script-padding 2)
 (setq web-mode-code-indent-offset 2)
-(add-hook 'web-mode-hook #'lsp-deferred)
 
 (require 'typescript-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
@@ -203,7 +201,6 @@
 (require 'json-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 
-(require 'flycheck)
 (setq flycheck-emacs-lisp-load-path load-path)
 (global-flycheck-mode)
 

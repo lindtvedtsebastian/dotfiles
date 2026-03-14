@@ -3,7 +3,7 @@
 ;; visual Emacs configurations
 ;;; code:
 
-(setq split-width-threshold 0) ; Reduce required width for splitting horizontally
+(setq split-width-threshold 80) ; Prefer side-by-side splits, allow vertical on narrow frames
 
 (setq show-paren-delay 0)      ; No delay before highlighting parenthesis
 

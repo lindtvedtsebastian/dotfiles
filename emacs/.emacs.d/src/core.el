@@ -18,8 +18,8 @@
 (setq inhibit-startup-screen t)              ; Hide startup screen
 (setq visible-bell t)                        ; Setup visible bell
 (setq mouse-wheel-progressive-speed t)        ; Accelerate scroll speed with rapid scrolling
-(setq mouse-wheel-scroll-amount '(2 ((shift) . hscroll) ((control) . text-scale)))
-(defvar display-line-numbers-type 'relative) ; Set line number mode to be relative
+(setq mouse-wheel-scroll-amount '(2 ((control) . text-scale)))
+(setq display-line-numbers-type 'relative)   ; Set line number mode to be relative
 
 (tool-bar-mode -1)                           ; Disable the toolbar
 (set-fringe-mode 10)                         ; Set fringe size
@@ -58,7 +58,7 @@
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups/")))) ; Backup directory
 (setq make-backup-files t)                                  ; Backup of a file the first time it is saved
-(setq vc-make-backup-files t)                               ; No backup of files under version control
+(setq vc-make-backup-files t)                               ; Also backup files under version control
 (setq backup-by-copying t)                                  ; Do not use symlinks for backup
 (setq version-control t)                                    ; Use version control numbers for backup files
 (setq delete-old-versions t)                                ; Clean up excess backup files
