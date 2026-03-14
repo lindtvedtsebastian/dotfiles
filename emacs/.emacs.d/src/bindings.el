@@ -68,9 +68,18 @@
 ;; lsp-mode
 (defvar leader-keys/lsp)
 (define-prefix-command 'leader-keys/lsp)
-(define-key leader-keys (kbd "l") '("lsp-mode" . leader-keys/lsp))
+(define-key leader-keys (kbd "l") '("lsp" . leader-keys/lsp))
 (define-key leader-keys/lsp (kbd "a") '("code action" . lsp-execute-code-action))
 (define-key leader-keys/lsp (kbd "f") '("format buffer" . lsp-format-buffer))
+(define-key leader-keys/lsp (kbd "r") '("rename" . lsp-rename))
+(define-key leader-keys/lsp (kbd "d") '("find definition" . lsp-find-definition))
+(define-key leader-keys/lsp (kbd "R") '("find references" . lsp-find-references))
+(define-key leader-keys/lsp (kbd "i") '("find implementation" . lsp-find-implementation))
+(define-key leader-keys/lsp (kbd "t") '("find type def" . lsp-find-type-definition))
+(define-key leader-keys/lsp (kbd "h") '("describe thing" . lsp-describe-thing-at-point))
+(define-key leader-keys/lsp (kbd "o") '("organize imports" . lsp-organize-imports))
+(define-key leader-keys/lsp (kbd "s") '("symbols" . consult-imenu))
+(define-key leader-keys/lsp (kbd "q") '("restart" . lsp-workspace-restart))
 
 ;; Embark
 (require 'embark)
@@ -90,6 +99,32 @@
 (define-key leader-keys/flycheck (kbd "n") '("next error" . flycheck-next-error))
 (define-key leader-keys/flycheck (kbd "p") '("prev error" . flycheck-previous-error))
 (define-key leader-keys/flycheck (kbd "l") '("list errors" . flycheck-list-errors))
+
+;; Buffer
+(defvar leader-keys/buffer)
+(define-prefix-command 'leader-keys/buffer)
+(define-key leader-keys (kbd "b") '("buffer" . leader-keys/buffer))
+(define-key leader-keys/buffer (kbd "b") '("switch" . consult-buffer))
+(define-key leader-keys/buffer (kbd "k") '("kill" . kill-current-buffer))
+(define-key leader-keys/buffer (kbd "s") '("scratch" . scratch-buffer))
+(define-key leader-keys/buffer (kbd "m") '("messages" . (lambda () (interactive) (switch-to-buffer "*Messages*"))))
+(define-key leader-keys/buffer (kbd "n") '("next" . next-buffer))
+(define-key leader-keys/buffer (kbd "p") '("prev" . previous-buffer))
+(define-key leader-keys/buffer (kbd "r") '("revert" . revert-buffer-quick))
+
+;; Window
+(defvar leader-keys/window)
+(define-prefix-command 'leader-keys/window)
+(define-key leader-keys (kbd "w") '("window" . leader-keys/window))
+(define-key leader-keys/window (kbd "v") '("split right" . split-window-right))
+(define-key leader-keys/window (kbd "s") '("split below" . split-window-below))
+(define-key leader-keys/window (kbd "d") '("delete" . delete-window))
+(define-key leader-keys/window (kbd "D") '("delete others" . delete-other-windows))
+(define-key leader-keys/window (kbd "=") '("balance" . balance-windows))
+(define-key leader-keys/window (kbd "h") '("move left" . windmove-left))
+(define-key leader-keys/window (kbd "j") '("move down" . windmove-down))
+(define-key leader-keys/window (kbd "k") '("move up" . windmove-up))
+(define-key leader-keys/window (kbd "l") '("move right" . windmove-right))
 
 ;; treesit-fold
 (defvar leader-keys/treesit-fold)

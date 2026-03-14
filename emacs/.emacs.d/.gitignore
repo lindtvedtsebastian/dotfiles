@@ -11,6 +11,8 @@ projects
 org-roam.db
 .org-id-locations
 bookmarks
+recentf.eld
+savehist
 .dap-breakpoints
 custom.el
 eclipse.jdt.ls
