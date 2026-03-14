@@ -64,7 +64,6 @@
 (define-key leader-keys/project (kbd "g") '("magit" . magit-project-status))
 (define-key leader-keys/project (kbd "e") '("eshell" . project-eshell))
 (define-key leader-keys/project (kbd "k") '("kill buffers" . project-kill-buffers))
-
 ;; lsp-mode
 (defvar leader-keys/lsp)
 (define-prefix-command 'leader-keys/lsp)

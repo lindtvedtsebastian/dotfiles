@@ -16,5 +16,24 @@
 (require 'colorful-mode)
 (global-colorful-mode)
 
+;; Ligatures
+(require 'ligature)
+(ligature-set-ligatures 'prog-mode '("==" "!=" ">=" "<=" "&&" "||"
+                                      "->" "=>" "::" "<-" ".."
+                                      ">>=" "<<=" "<=>" "=/="
+                                      "++" "--" "**" "//" "/*" "*/"))
+(global-ligature-mode)
+
+;; Pulse on jump
+(require 'pulse)
+(setq pulse-delay 0.04)
+(setq pulse-iterations 6)
+(dolist (cmd '(evil-scroll-up evil-scroll-down
+               evil-scroll-page-up evil-scroll-page-down
+               evil-goto-line evil-goto-first-line
+               recenter-top-bottom other-window
+               windmove-left windmove-right windmove-up windmove-down))
+  (advice-add cmd :after (lambda (&rest _) (pulse-momentary-highlight-one-line (point)))))
+
 (load-theme 'nimbus)
 ;;; visual.el ends here
