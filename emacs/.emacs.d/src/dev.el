@@ -3,11 +3,15 @@
 ;; dev Emacs configurations
 ;;; code:
 
+;;; ----- Editor Basics -----
+
 (setq read-process-output-max (* 1024 1024))
 (setq process-adaptive-read-buffering nil)
 
 (add-hook 'text-mode-hook 'display-line-numbers-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;;; ----- LSP -----
 
 (require 'lsp-mode)
 (require 'lsp-completion)
@@ -43,12 +47,14 @@
 (setq lsp-eldoc-render-all t)
 (setq lsp-inlay-hint-enable t)
 
+;; Corfu integration
 (defun corfu-lsp-setup ()
   "Configure lsp-mode for proper corfu/orderless use."
   (setq-local completion-styles '(orderless)
               completion-category-defaults nil))
 (add-hook 'lsp-completion-mode-hook #'corfu-lsp-setup)
 
+;; Cape integration
 (require 'cape)
 (defun sl/friendly-lsp-completion-at-point ()
   "Wraps lsp-completion-at-point in cape-capf-super to make it friendly."
@@ -58,12 +64,46 @@
                      :with
                      'cape-keyword
                      'cape-abbrev
-                     'cape-file)
-                    )))
-
+                     'cape-file))))
 (add-hook 'lsp-completion-mode-hook #'sl/friendly-lsp-completion-at-point)
 
+;; LSP booster
+(defun lsp-booster--advice-json-parse (old-fn &rest args)
+  "Try to parse bytecode instead of json."
+  (or
+   (when (equal (following-char) ?#)
+     (let ((bytecode (read (current-buffer))))
+       (when (byte-code-function-p bytecode)
+         (funcall bytecode))))
+   (apply old-fn args)))
+(advice-add (if (progn (require 'json)
+                       (fboundp 'json-parse-buffer))
+                'json-parse-buffer
+              'json-read)
+            :around
+            #'lsp-booster--advice-json-parse)
+
+(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
+  "Prepend emacs-lsp-booster command to lsp CMD."
+  (let ((orig-result (funcall old-fn cmd test?)))
+    (if (and (not test?)
+             (not (file-remote-p default-directory))
+             lsp-use-plists
+             (not (functionp 'json-rpc-connection))
+             (executable-find "emacs-lsp-booster"))
+        (progn
+          (when-let ((command-from-exec-path (executable-find (car orig-result))))
+            (setcar orig-result command-from-exec-path))
+          (message "Using emacs-lsp-booster for %s!" orig-result)
+          (cons "emacs-lsp-booster" orig-result))
+      orig-result)))
+(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+
+;;; ----- Flycheck + Flyover -----
+
 (require 'flycheck)
+(setq flycheck-emacs-lisp-load-path load-path)
+
 (defun flycheck-eldoc (callback &rest _ignored)
   "Print flycheck messages at point by calling CALLBACK."
   (when-let ((flycheck-errors (and flycheck-mode (flycheck-overlay-errors-at (point)))))
@@ -89,38 +129,18 @@
   (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
   (setq flycheck-display-errors-function nil)
   (setq flycheck-help-echo-function nil))
-
 (add-hook 'flycheck-mode-hook 'flycheck-prefer-eldoc)
 
 (defvar flyover-base-height 1)
 (require 'flyover)
 (setq flyover-error-icon "✘")
-(add-hook 'flycheck-mode-hook 'flyover-mode)
 (setq flyover-wrap-messages t)
 (setq flyover-max-line-length 200)
 (set-face-attribute 'flyover-marker nil :foreground "#f1f5f9")
+(add-hook 'flycheck-mode-hook 'flyover-mode)
 
-(require 'lsp-rust)
-(setq lsp-rust-analyzer-cargo-target-dir t)
+;;; ----- Treesit -----
 
-(setq lsp-rust-analyzer-cargo-watch-command "clippy")
-
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-hook 'rust-ts-mode-hook #'lsp-deferred)
-
-(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
-(add-hook 'web-mode-hook #'lsp-deferred)
-
-(require 'lsp-java)
-(add-hook 'java-ts-mode-hook #'lsp-deferred)
-(add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
-
-;; Magit
-(require 'magit)
-(setq magit-process-apply-ansi-colors t) ; Apply colors in Magit process
-(setq transient-default-level 7)         ; Show more transient commands
-
-;; Treesit
 (require 'treesit)
 (setq treesit-font-lock-level 4)
 (setq treesit-language-source-alist
@@ -154,66 +174,56 @@
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
 
 (require 'treesit-fold)
-(global-treesit-fold-mode)
-(global-treesit-fold-indicators-mode)
 
-(require 'typst-ts-mode)
-(add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
-(lsp-register-client (make-lsp-client
-                      :new-connection (lsp-stdio-connection "tinymist")
-                      :activation-fn (lsp-activate-on "typst")
-                      :server-id 'tinymist))
+;;; ----- Languages -----
 
+;; Rust
+(require 'lsp-rust)
+(setq lsp-rust-analyzer-cargo-target-dir t)
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-hook 'rust-ts-mode-hook #'lsp-deferred)
 
-(require 'apheleia)
-(apheleia-global-mode t)
-(setq apheleia-formatters-respect-indent-level nil)
-
-(add-to-list 'apheleia-formatters '(nixpkgs-fmt "nixpkgs-fmt"))
-(add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt))
-
+;; Web / Svelte
 (require 'web-mode)
-(add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
 (setq web-mode-script-padding 2)
 (setq web-mode-code-indent-offset 2)
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+(add-hook 'web-mode-hook #'lsp-deferred)
 
+;; Java
+(require 'lsp-java)
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
+(add-hook 'java-ts-mode-hook #'lsp-deferred)
+
+;; TypeScript / JavaScript
 (require 'typescript-ts-mode)
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-(add-hook 'typescript-ts-mode-hook #'lsp-deferred)
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
-(add-hook 'tsx-ts-mode-hook #'lsp-deferred)
-
 (require 'js)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-jsx-mode))
-(add-hook 'js-ts-mode-hook #'lsp-deferred)
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
-(add-hook 'js-jsx-mode-hook #'lsp-deferred)
-
 (require 'lsp-eslint)
 (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . js-ts-mode))
+(add-hook 'typescript-ts-mode-hook #'lsp-deferred)
+(add-hook 'tsx-ts-mode-hook #'lsp-deferred)
+(add-hook 'js-ts-mode-hook #'lsp-deferred)
+(add-hook 'js-jsx-mode-hook #'lsp-deferred)
 
+;; JSON
 (require 'json-ts-mode)
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 
-(setq flycheck-emacs-lisp-load-path load-path)
-(global-flycheck-mode)
-
-(require 'yasnippet)
-(yas-global-mode)
-
+;; C / C++
+(require 'lsp-clangd)
+(add-to-list 'lsp-clients-clangd-args "--log=error")
 (add-hook 'c-mode-hook #'lsp-deferred)
 (add-hook 'c++-mode-hook #'lsp-deferred)
 
-(require 'lsp-clangd)
-(add-to-list 'lsp-clients-clangd-args "--log=error")
-
+;; SQL
 (require 'lsp-sqls)
 (setq lsp-sqls-workspace-config-path nil)
-
-(require 'docstr)
-(setq docstr-key-support t)
-(global-docstr-mode)
 
 (defvar cape-sql-keywords
   '("SERIAL" "PRIMARY KEY" "NOT NULL" "UNIQUE" "DEFAULT"
@@ -221,39 +231,45 @@
     "CREATE" "TABLE" "INSERT" "UPDATE" "DELETE" "VALUES"
     "JOIN" "ON DELETE" "ON UPDATE")
   "List of common ANSI SQL keywords for completion.")
-
 (require 'cape-keyword)
 (add-to-list 'cape-keyword-list (cons 'sql-mode cape-sql-keywords))
 
+;; Typst
+(require 'typst-ts-mode)
+(add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
+(lsp-register-client (make-lsp-client
+                      :new-connection (lsp-stdio-connection "tinymist")
+                      :activation-fn (lsp-activate-on "typst")
+                      :server-id 'tinymist))
 
-(defun lsp-booster--advice-json-parse (old-fn &rest args)
-  "Try to parse bytecode instead of json."
-  (or
-   (when (equal (following-char) ?#)
-     (let ((bytecode (read (current-buffer))))
-       (when (byte-code-function-p bytecode)
-         (funcall bytecode))))
-   (apply old-fn args)))
-(advice-add (if (progn (require 'json)
-                       (fboundp 'json-parse-buffer))
-                'json-parse-buffer
-              'json-read)
-            :around
-            #'lsp-booster--advice-json-parse)
+;;; ----- Tools -----
 
-(defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
-  "Prepend emacs-lsp-booster command to lsp CMD."
-  (let ((orig-result (funcall old-fn cmd test?)))
-    (if (and (not test?)                             ;; for check lsp-server-present?
-             (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
-             lsp-use-plists
-             (not (functionp 'json-rpc-connection))  ;; native json-rpc
-             (executable-find "emacs-lsp-booster"))
-        (progn
-          (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
-            (setcar orig-result command-from-exec-path))
-          (message "Using emacs-lsp-booster for %s!" orig-result)
-          (cons "emacs-lsp-booster" orig-result))
-      orig-result)))
-(advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+;; Magit
+(require 'magit)
+(setq magit-process-apply-ansi-colors t)
+(setq transient-default-level 7)
+
+;; Apheleia (formatting)
+(require 'apheleia)
+(setq apheleia-formatters-respect-indent-level nil)
+(add-to-list 'apheleia-formatters '(nixpkgs-fmt "nixpkgs-fmt"))
+(add-to-list 'apheleia-mode-alist '(nix-ts-mode . nixpkgs-fmt))
+(add-to-list 'apheleia-mode-alist '(web-mode . prettier-svelte))
+
+;; Yasnippet
+(require 'yasnippet)
+
+;; Docstr
+(require 'docstr)
+(setq docstr-key-support t)
+
+;;; ----- Global Modes -----
+
+(global-flycheck-mode)
+(global-treesit-fold-mode)
+(global-treesit-fold-indicators-mode)
+(apheleia-global-mode t)
+(yas-global-mode)
+(global-docstr-mode)
+
 ;;; dev.el ends here
