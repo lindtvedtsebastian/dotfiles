@@ -21,10 +21,8 @@
 (setq mouse-wheel-scroll-amount '(2 ((control) . text-scale)))
 (setq display-line-numbers-type 'relative)   ; Set line number mode to be relative
 
-(tool-bar-mode -1)                           ; Disable the toolbar
 (set-fringe-mode 10)                         ; Set fringe size
 (electric-pair-mode)                         ; Automatically pair characters
-(scroll-bar-mode -1)                         ; Disable visible scrollbar
 (column-number-mode)                         ; Enable column numbers in the modeline
 
 ;; Remove jsonrpc event hook for performance increase...

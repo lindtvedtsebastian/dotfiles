@@ -108,4 +108,10 @@
     (setq prev (cdr section)))
   (message "\n%-20s %.2fs\n" "total" total))
 
+;; Restore GC threshold and file-name-handler-alist after init
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024))
+            (setq file-name-handler-alist sl/file-name-handler-alist)))
+
 ;;; init.el ends here
