@@ -13,6 +13,7 @@ org-roam.db
 bookmarks
 recentf.eld
 savehist
+undo-fu-session
 .dap-breakpoints
 custom.el
 eclipse.jdt.ls

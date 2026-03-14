@@ -58,7 +58,8 @@
     flyover              ; Overlay display for flycheck/flymake
     treesit-fold         ; Code folding using treesit
     web-mode             ; Major mode for template based files
-    avy))                ; Visual jump navigation
+    avy                  ; Visual jump navigation
+    undo-fu-session))    ; Persistent undo history
 
 
 (require 'straight) ; Make flymake happy

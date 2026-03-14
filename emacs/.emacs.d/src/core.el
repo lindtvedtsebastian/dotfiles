@@ -75,6 +75,11 @@
 (setq recentf-auto-cleanup 'never)
 (recentf-mode)
 
+;; Persistent undo
+(require 'undo-fu-session)
+(setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+(undo-fu-session-global-mode)
+
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil) ; Allow re-using dired buffers
 
