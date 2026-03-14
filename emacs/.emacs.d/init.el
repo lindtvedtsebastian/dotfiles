@@ -94,7 +94,7 @@
         (load (file-name-sans-extension fullpath)))))))
 
 ;; Load all .el files from ~/.emacs.d/src recursively
-(load-directory "~/.emacs.d/src")
+(load-directory (concat user-emacs-directory "src"))
 
 ;; Report startup times
 (let ((total 0)

@@ -101,8 +101,7 @@
 (set-face-attribute 'flyover-marker nil :foreground "#f1f5f9")
 
 (require 'lsp-rust)
-(when (eq system-type 'darwin)
-  (setq lsp-rust-analyzer-cargo-target-dir t))
+(setq lsp-rust-analyzer-cargo-target-dir t)
 
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
 

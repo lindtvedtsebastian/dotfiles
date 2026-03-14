@@ -1,16 +1,11 @@
-#!/bin/bash 
+#!/bin/bash
 source "$ZDOTDIR/colors.zsh"
+
+# Machine-specific config (paths, tools, completions)
+[ -f "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+
+# EAT (Emulate A Terminal) shell integration
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/prompt.zsh"
-source "$ZDOTDIR/homebrew.zsh"
-
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    eval "$(direnv hook zsh)"
-fi
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    eval "$(rbenv init - --no-rehash zsh)"
-    export PATH="/opt/homebrew/opt/llvm/bin/:$PATH"
-    export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-    export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-fi

@@ -11,3 +11,8 @@ projects
 org-roam.db
 .org-id-locations
 bookmarks
+.dap-breakpoints
+custom.el
+eclipse.jdt.ls
+tramp
+workspace

@@ -11,7 +11,6 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 ├── hypr/           # Hyprland window manager (Linux)
 ├── quickshell/     # Quickshell status bar (Linux/Hyprland)
 ├── nixos/          # NixOS system configuration (Linux)
-├── dependencies/   # Vendored packages (tree-sitter-qml, qml-ts-mode)
 └── flake.nix       # NixOS flake entry point
 ```
 
@@ -41,6 +40,10 @@ stow emacs zsh hypr quickshell
 sudo nixos-rebuild switch --flake .#desktop
 ```
 
+## Machine-specific configuration
+
+Machine-specific shell config (tool paths, completions, environment) goes in `zsh/.config/zsh/.zshrc.local`. This file is gitignored and sourced automatically if present.
+
 ## Packages
 
 ### emacs (cross-platform)
@@ -55,13 +58,11 @@ Modular Emacs configuration using [straight.el](https://github.com/radian-softwa
 | `early-init.el` | Pre-GUI initialization |
 | `src/core.el` | Basic settings, UI, behavior |
 | `src/dev.el` | LSP, Rust, Go, Python, JS/TS, Java, C/C++ |
-| `src/org.el` | Org-mode with org-roam |
 | `src/bindings.el` | Keybindings |
 | `src/completion.el` | Vertico, Consult, Corfu |
 | `src/visual.el` | Theme configuration |
 | `src/modeline.el` | Modeline setup |
 | `src/utils.el` | Utility functions |
-| `src/latex.el` | AUCTeX configuration |
 | `src/env.el` | Environment variables |
 | `themes/` | Custom themes (nimbus, balanced) |
 
@@ -75,10 +76,10 @@ Minimal zsh configuration with XDG compliance.
 |------|---------|
 | `.zshenv` | Environment variables, XDG paths |
 | `.zshrc` | Main shell configuration |
+| `.zshrc.local` | Machine-specific config (gitignored) |
 | `prompt.zsh` | Git-aware prompt with status indicators |
 | `completion.zsh` | Completion settings |
 | `colors.zsh` | Color definitions |
-| `homebrew.zsh` | macOS Homebrew environment |
 
 ### hypr (Linux)
 
@@ -114,13 +115,6 @@ sudo nixos-rebuild switch --flake .#desktop
 # or
 sudo nixos-rebuild switch --flake .#laptop
 ```
-
-### dependencies (vendored)
-
-Vendored tree-sitter grammar and Emacs mode for QML syntax highlighting (used with Quickshell development).
-
-- `tree-sitter-qml/` - Tree-sitter grammar
-- `qml-ts-mode/` - Emacs tree-sitter mode
 
 ## Manual Installation
 

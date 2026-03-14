@@ -11,6 +11,3 @@ export SAVEHIST=10000 # maximum events in history file
 
 # encoding
 export LANG=en_US.UTF-8
-
-# add cargo to path
-export PATH=$PATH:$HOME/.cargo/bin
