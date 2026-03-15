@@ -11,6 +11,21 @@
 
 (set-frame-parameter nil 'alpha-background 80)
 
+;; Frame size: ~50% of screen, centered
+(when (display-graphic-p)
+  (when-let* ((attrs (frame-monitor-attributes))
+              (workarea (alist-get 'workarea attrs)))
+    (let* ((x (nth 0 workarea))
+           (y (nth 1 workarea))
+           (sw (nth 2 workarea))
+           (sh (nth 3 workarea))
+           (fw (/ sw 2))
+           (fh (round (* sh 0.75))))
+      (set-frame-size (selected-frame) fw fh t)
+      (set-frame-position (selected-frame)
+                          (+ x (/ (- sw fw) 2))
+                          (+ y (/ (- sh fh) 2))))))
+
 (setq dired-listing-switches "-lah")
 
 (require 'colorful-mode)
