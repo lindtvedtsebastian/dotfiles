@@ -59,6 +59,16 @@
 
 (add-hook 'window-size-change-functions #'sl/dashboard--on-resize)
 
+(defun sl/dashboard--on-buffer-show (frame)
+  "Re-render dashboard when it becomes visible in FRAME."
+  (dolist (window (window-list frame))
+    (with-current-buffer (window-buffer window)
+      (when (eq major-mode 'sl/dashboard-mode)
+        (sl/dashboard-render)
+        (sl/dashboard--center window)))))
+
+(add-hook 'window-buffer-change-functions #'sl/dashboard--on-buffer-show)
+
 ;;; ----- Logo -----
 
 (defun sl/dashboard--logo ()
@@ -283,7 +293,8 @@
     buf))
 
 (defun sl/dashboard-open ()
-  "Switch to the dashboard buffer, creating it if needed."
+  "Switch to the dashboard buffer, creating it if needed.
+Re-renders content to refresh recent files and projects."
   (interactive)
   (switch-to-buffer (sl/dashboard-buffer)))
 
