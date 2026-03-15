@@ -7,7 +7,4 @@
 
 (exec-path-from-shell-initialize)
 
-(require 'direnv)
-(direnv-mode)
-
 ;;; env.el ends here

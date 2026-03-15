@@ -44,7 +44,6 @@
     scroll-on-drag       ; Interactive scrolling
 	apheleia             ; Formatting all the things
     graphql-mode         ; Major mode for graphql files
-    direnv               ; Direnv integration
     nix-ts-mode          ; Major mode for nix files
     swift-mode           ; Major mode for swift files
     lsp-mode             ; Language Server Protocol

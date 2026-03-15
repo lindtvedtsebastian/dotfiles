@@ -62,7 +62,6 @@
     pkgs.gimp
     pkgs.via
     pkgs.obs-studio
-    pkgs.direnv
     pkgs.tree-sitter
     pkgs.psmisc
     pkgs.nil
