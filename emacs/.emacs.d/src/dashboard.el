@@ -22,6 +22,7 @@
 (define-derived-mode sl/dashboard-mode special-mode "Dashboard"
   "Major mode for the dashboard buffer."
   (setq-local cursor-type nil)
+  (setq-local fill-column sl/dashboard--width)
   (add-hook 'window-configuration-change-hook
             #'sl/dashboard--center-windows nil t))
 
@@ -75,21 +76,9 @@
 
 ;;; ----- Helpers -----
 
-(defun sl/dashboard--center-text (text)
-  "Return TEXT padded to center it within the content width."
-  (let ((padding (max 0 (/ (- sl/dashboard--width (length text)) 2))))
-    (concat (make-string padding ?\s) text)))
-
-(defun sl/dashboard--shortcut-row (key1 desc1 key2 desc2)
-  "Insert a row with two shortcuts: KEY1 DESC1 and KEY2 DESC2."
-  (let* ((left-width (+ (length key1) 2 (length desc1)))
-         (gap (max 1 (- 20 left-width))))
-    (insert (propertize key1 'face '(:inherit font-lock-keyword-face :weight bold)))
-    (insert (propertize (format "  %s" desc1) 'face 'shadow))
-    (insert (make-string gap ?\s))
-    (insert (propertize key2 'face '(:inherit font-lock-keyword-face :weight bold)))
-    (insert (propertize (format "  %s" desc2) 'face 'shadow))
-    (insert "\n")))
+(defun sl/dashboard--block-pad (width)
+  "Return padding string to center a block of WIDTH within the content area."
+  (make-string (max 0 (/ (- sl/dashboard--width width) 2)) ?\s))
 
 ;;; ----- Render -----
 
@@ -102,53 +91,97 @@
     ;; Logo (GUI) or text fallback (terminal)
     (if (display-graphic-p)
         (sl/dashboard--logo)
-      (insert (propertize (sl/dashboard--center-text "emacs")
-                          'face '(:inherit font-lock-keyword-face :height 1.8 :weight bold))))
+      (insert (propertize "emacs" 'face '(:inherit font-lock-keyword-face :height 1.8 :weight bold)))
+      (center-line))
     (insert "\n\n\n")
 
-    ;; Shortcut grid (2x2) - mark first item for cursor placement
+    ;; Shortcut grid (2x2, centered as a block with aligned columns)
     (setq first-item (point-marker))
-    (sl/dashboard--shortcut-row "r" "recent" "f" "find file")
-    (sl/dashboard--shortcut-row "p" "projects" "m" "magit")
+    (let* ((col2 17)
+           (grid-w (+ col2 12))
+           (pad (sl/dashboard--block-pad grid-w)))
+      (dolist (row '(("r" "recent" "f" "find file")
+                     ("p" "projects" "m" "magit")))
+        (let* ((k1 (nth 0 row)) (d1 (nth 1 row))
+               (k2 (nth 2 row)) (d2 (nth 3 row))
+               (gap (max 1 (- col2 (+ (length k1) 2 (length d1))))))
+          (insert pad)
+          (insert (propertize k1 'face '(:inherit font-lock-keyword-face :weight bold)))
+          (insert (propertize (format "  %s" d1) 'face 'shadow))
+          (insert (make-string gap ?\s))
+          (insert (propertize k2 'face '(:inherit font-lock-keyword-face :weight bold)))
+          (insert (propertize (format "  %s" d2) 'face 'shadow))
+          (insert "\n"))))
     (insert "\n\n")
 
     ;; Recent files
-    (insert (propertize (sl/dashboard--center-text "recent")
-                        'face '(:inherit font-lock-keyword-face :height 1.1)))
+    (insert (propertize "recent" 'face '(:inherit font-lock-keyword-face :height 1.1)))
+    (center-line)
     (insert "\n\n")
     (let ((recents (seq-take (seq-filter (lambda (f) (not (string-match-p "/straight/" f)))
                                          recentf-list)
                              10)))
       (if recents
-          (dolist (file recents)
-            (insert-text-button (file-name-nondirectory file)
-                               'action (lambda (_) (find-file file))
-                               'face 'default
-                               'follow-link t
-                               'help-echo (abbreviate-file-name file))
-            (insert "\n"))
-        (insert (propertize "no recent files yet\n" 'face 'shadow))))
+          (let* ((entries (mapcar (lambda (f)
+                                   (let ((name (file-name-nondirectory f))
+                                         (dir (abbreviate-file-name (file-name-directory f))))
+                                     (list name dir f)))
+                                 recents))
+                 (max-name (apply #'max (mapcar (lambda (e) (length (car e))) entries)))
+                 (max-row (apply #'max
+                                 (mapcar (lambda (e) (+ max-name 4 (length (nth 1 e))))
+                                         entries)))
+                 (pad (sl/dashboard--block-pad max-row)))
+            (dolist (entry entries)
+              (let ((name (nth 0 entry))
+                    (dir (nth 1 entry))
+                    (file (nth 2 entry))
+                    (name-gap (make-string (- (+ max-name 4) (length (nth 0 entry))) ?\s)))
+                (insert pad)
+                (insert-text-button name
+                                   'action (lambda (_) (find-file file))
+                                   'face 'default
+                                   'follow-link t)
+                (insert (propertize (concat name-gap dir) 'face 'shadow))
+                (insert "\n"))))
+        (insert (propertize "no recent files yet" 'face 'shadow))
+        (center-line)
+        (insert "\n")))
     (insert "\n\n")
 
     ;; Projects
-    (insert (propertize (sl/dashboard--center-text "projects")
-                        'face '(:inherit font-lock-keyword-face :height 1.1)))
+    (insert (propertize "projects" 'face '(:inherit font-lock-keyword-face :height 1.1)))
+    (center-line)
     (insert "\n\n")
     (let ((projects (project-known-project-roots)))
       (if projects
-          (dolist (proj (seq-take projects 8))
-            (let* ((path (abbreviate-file-name (directory-file-name proj)))
-                   (name (file-name-nondirectory path))
-                   (gap (max 1 (- 24 (length name)))))
-              (insert-text-button name
-                                 'action (lambda (_) (project-switch-project proj))
-                                 'face 'default
-                                 'follow-link t)
-              (insert (propertize (concat (make-string gap ?\s) path) 'face 'shadow))
-              (insert "\n")))
-        (insert (propertize "no known projects\n" 'face 'shadow))))
+          (let* ((entries (mapcar (lambda (proj)
+                                   (let* ((path (abbreviate-file-name (directory-file-name proj)))
+                                          (name (file-name-nondirectory path)))
+                                     (list name path proj)))
+                                 (seq-take projects 8)))
+                 (max-name (apply #'max (mapcar (lambda (e) (length (car e))) entries)))
+                 (max-row (apply #'max
+                                 (mapcar (lambda (e) (+ max-name 4 (length (nth 1 e))))
+                                         entries)))
+                 (pad (sl/dashboard--block-pad max-row)))
+            (dolist (entry entries)
+              (let ((name (nth 0 entry))
+                    (path (nth 1 entry))
+                    (proj (nth 2 entry))
+                    (name-gap (make-string (- (+ max-name 4) (length (nth 0 entry))) ?\s)))
+                (insert pad)
+                (insert-text-button name
+                                   'action (lambda (_) (project-switch-project proj))
+                                   'face 'default
+                                   'follow-link t)
+                (insert (propertize (concat name-gap path) 'face 'shadow))
+                (insert "\n"))))
+        (insert (propertize "no known projects" 'face 'shadow))
+        (center-line)
+        (insert "\n")))
 
-    ;; Create overlay for vertical centering (updated by sl/dashboard--center)
+    ;; Vertical centering overlay
     (setq sl/dashboard--top-overlay (make-overlay (point-min) (point-min)))
 
     (goto-char first-item)))
