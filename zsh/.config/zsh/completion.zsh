@@ -5,11 +5,11 @@
 
   fpath=($ZDOTDIR $fpath)
 
-  if [[ ! -d $ZDOTDIR/plugins/zsh-autosuggestions ]]                                               
+  if [[ ! -d $ZDOTDIR/plugins/zsh-autosuggestions ]]
       then
-          echo "${RED}zsh-autosuggestions not found, cloning${NOCOLOR}"
-          git clone "http://github.com/zsh-users/zsh-autosuggestions" $ZDOTDIR/plugins/zsh-autosuggestions
-          echo "${GREEN}zsh-autosuggestions successfully cloned${NOCOLOR}"
+          print -P "%F{red}zsh-autosuggestions not found, cloning%f"
+          git clone "https://github.com/zsh-users/zsh-autosuggestions" $ZDOTDIR/plugins/zsh-autosuggestions
+          print -P "%F{green}zsh-autosuggestions successfully cloned%f"
   fi
 
   source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
