@@ -14,3 +14,13 @@
 
   source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+  if [[ ! -d $ZDOTDIR/plugins/zsh-syntax-highlighting ]]
+      then
+          print -P "%F{red}zsh-syntax-highlighting not found, cloning%f"
+          git clone "https://github.com/zsh-users/zsh-syntax-highlighting" $ZDOTDIR/plugins/zsh-syntax-highlighting
+          print -P "%F{green}zsh-syntax-highlighting successfully cloned%f"
+  fi
+
+  # Must be sourced last, after all ZLE widgets are defined
+  source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
