@@ -1,0 +1,23 @@
+# History
+HISTFILE="$ZDOTDIR/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+
+# Directory navigation
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+# Globbing
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+
+# General
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
