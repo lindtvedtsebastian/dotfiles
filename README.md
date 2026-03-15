@@ -7,6 +7,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 ```
 .
 ├── emacs/          # Emacs configuration (cross-platform)
+├── ghostty/        # Ghostty terminal emulator (macOS)
 ├── zsh/            # Zsh shell configuration (cross-platform)
 ├── hypr/           # Hyprland window manager (Linux)
 ├── quickshell/     # Quickshell status bar (Linux/Hyprland)
@@ -24,7 +25,7 @@ brew install stow
 
 # Clone and install
 git clone <repo> ~/dotfiles && cd ~/dotfiles
-stow emacs zsh
+stow emacs ghostty zsh
 ```
 
 ### NixOS
@@ -65,6 +66,16 @@ Modular Emacs configuration using [straight.el](https://github.com/radian-softwa
 | `src/utils.el` | Utility functions |
 | `src/env.el` | Environment variables |
 | `themes/` | Custom themes (nimbus, balanced) |
+
+### ghostty (macOS)
+
+[Ghostty](https://ghostty.org/) terminal emulator configuration.
+
+**Targets:** `~/.config/ghostty/`
+
+| File | Purpose |
+|------|---------|
+| `config` | Theme and font settings |
 
 ### zsh (cross-platform)
 
@@ -136,6 +147,7 @@ stow -D emacs
 | Package | macOS | NixOS |
 |---------|:-----:|:-----:|
 | emacs | Yes | Yes |
+| ghostty | Yes | - |
 | zsh | Yes | Yes |
 | hypr | - | Yes |
 | quickshell | - | Yes |
