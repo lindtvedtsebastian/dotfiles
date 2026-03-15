@@ -1,2 +1,24 @@
 theme = AtomOneLight
 font-family = Iosevka
+font-size = 14
+
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+window-padding-color = extend
+
+cursor-style = bar
+cursor-style-blink = false
+
+macos-titlebar-style = tabs
+window-theme = light
+
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+confirm-close-surface = false
+macos-option-as-alt = left
+quit-after-last-window-closed = false
+window-save-state = always
+shell-integration = zsh
+
+scrollback-limit = 10000000
