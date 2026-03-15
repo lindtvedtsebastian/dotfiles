@@ -115,6 +115,7 @@
 (define-key leader-keys/buffer (kbd "n") '("next" . next-buffer))
 (define-key leader-keys/buffer (kbd "p") '("prev" . previous-buffer))
 (define-key leader-keys/buffer (kbd "r") '("revert" . revert-buffer-quick))
+(define-key leader-keys/buffer (kbd "d") '("dashboard" . sl/dashboard-open))
 
 ;; Window
 (defvar leader-keys/window)

@@ -282,6 +282,11 @@
       (sl/dashboard-render))
     buf))
 
+(defun sl/dashboard-open ()
+  "Switch to the dashboard buffer, creating it if needed."
+  (interactive)
+  (switch-to-buffer (sl/dashboard-buffer)))
+
 ;;; ----- Keybindings -----
 
 (evil-define-key 'normal sl/dashboard-mode-map
