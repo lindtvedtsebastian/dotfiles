@@ -85,6 +85,12 @@
         (add-to-list 'sl/load-times `(,(file-name-base fullpath) . ,(current-time)))
         (load (file-name-sans-extension fullpath)))))))
 
+;; Import environment variables from the shell before loading config.
+;; This must run early so that packages loaded later (e.g. with-editor)
+;; can find executables installed via Homebrew.
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 ;; Add src to load-path for require/provide between config files
 (add-to-list 'load-path (concat user-emacs-directory "src") t)
 
