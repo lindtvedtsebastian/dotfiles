@@ -180,14 +180,7 @@ Places the worktree as a sibling of the current worktree directory."
             (kill-buffer buf))))
       (magit-worktree-delete path))))
 
-(defvar leader-keys/worktree)
-(define-prefix-command 'leader-keys/worktree)
-(define-key leader-keys/project (kbd "w") '("worktree" . leader-keys/worktree))
-(define-key leader-keys/worktree (kbd "c") '("create" . sl/worktree-create))
-(define-key leader-keys/worktree (kbd "d") '("delete" . sl/worktree-delete))
-(define-key leader-keys/worktree (kbd "a") '("add parent" . sl/worktree-parent-add))
-(define-key leader-keys/worktree (kbd "r") '("remove parent" . sl/worktree-parent-remove))
-
 (setq project-prompter #'sl/project-prompt-dir)
 
+(provide 'worktree)
 ;;; worktree.el ends here

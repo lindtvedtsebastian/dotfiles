@@ -64,6 +64,17 @@
 (define-key leader-keys/project (kbd "g") '("magit" . magit-project-status))
 (define-key leader-keys/project (kbd "e") '("eshell" . project-eshell))
 (define-key leader-keys/project (kbd "k") '("kill buffers" . project-kill-buffers))
+
+;; Worktree keys
+(require 'worktree)
+(defvar leader-keys/worktree)
+(define-prefix-command 'leader-keys/worktree)
+(define-key leader-keys/project (kbd "w") '("worktree" . leader-keys/worktree))
+(define-key leader-keys/worktree (kbd "c") '("create" . sl/worktree-create))
+(define-key leader-keys/worktree (kbd "d") '("delete" . sl/worktree-delete))
+(define-key leader-keys/worktree (kbd "a") '("add parent" . sl/worktree-parent-add))
+(define-key leader-keys/worktree (kbd "r") '("remove parent" . sl/worktree-parent-remove))
+
 ;; lsp-mode
 (defvar leader-keys/lsp)
 (define-prefix-command 'leader-keys/lsp)
