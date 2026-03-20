@@ -15,7 +15,7 @@ window-theme = light
 
 copy-on-select = clipboard
 mouse-hide-while-typing = true
-confirm-close-surface = false
+confirm-close-surface = true
 macos-option-as-alt = left
 quit-after-last-window-closed = false
 window-save-state = always
