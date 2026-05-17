@@ -19,12 +19,25 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 
 ### macOS
 
-```bash
-# Install stow if needed
-brew install stow
+One-shot bootstrap for a fresh Mac. Installs Xcode CLT, Homebrew, every
+brew/cask in `Brewfile`, then stows the macOS packages:
 
-# Clone and install
+```bash
 git clone <repo> ~/dotfiles && cd ~/dotfiles
+./bootstrap.sh
+```
+
+The script is idempotent. Sub-steps:
+
+```bash
+./bootstrap.sh brew   # just Homebrew + Brewfile
+./bootstrap.sh stow   # just (re)link dotfiles
+```
+
+Manual equivalent:
+
+```bash
+brew install stow
 stow emacs ghostty zsh
 ```
 
