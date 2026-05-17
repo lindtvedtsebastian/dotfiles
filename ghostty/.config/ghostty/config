@@ -1,4 +1,5 @@
 theme = Atom One Light
+# theme = Atom One Dark
 font-family = Iosevka
 font-size = 14
 
@@ -10,7 +11,7 @@ window-padding-color = extend
 cursor-style = bar
 cursor-style-blink = false
 
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 window-theme = light
 
 copy-on-select = clipboard
@@ -18,7 +19,7 @@ mouse-hide-while-typing = true
 confirm-close-surface = true
 macos-option-as-alt = left
 quit-after-last-window-closed = false
-window-save-state = always
+window-save-state = never
 shell-integration = zsh
 
 scrollback-limit = 10000000
