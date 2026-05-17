@@ -46,7 +46,11 @@ run_stow() {
     mv "$HOME/.emacs.d" "$backup"
   fi
   say "Stowing: ${PACKAGES[*]}"
-  cd "$DOTFILES" && stow --target="$HOME" --restow "${PACKAGES[@]}"
+  cd "$DOTFILES" && stow \
+    --target="$HOME" \
+    --restow \
+    --ignore='\.DS_Store$' \
+    "${PACKAGES[@]}"
 }
 
 case "${1:-all}" in
