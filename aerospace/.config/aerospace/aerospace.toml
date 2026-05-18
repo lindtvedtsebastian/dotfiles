@@ -64,6 +64,10 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
+# Move the current workspace to another monitor.
+ctrl-alt-shift-h = 'move-workspace-to-monitor --wrap-around prev'
+ctrl-alt-shift-l = 'move-workspace-to-monitor --wrap-around next'
+
 # Layout & sizing. alt is the soft action, alt-shift the big one.
 alt-f = 'fullscreen'
 alt-shift-f = 'layout floating tiling'
